@@ -1,6 +1,8 @@
 import { Github } from "@medusajs/icons"
 import { Button, Heading } from "@medusajs/ui"
-
+import { Suspense } from "react"
+import SkeletonProductGrid from "@modules/skeletons/templates/skeleton-product-grid"
+import PaginatedProducts from "@modules/store/templates/paginated-products"
 const Hero = () => {
   return (
     <div>
