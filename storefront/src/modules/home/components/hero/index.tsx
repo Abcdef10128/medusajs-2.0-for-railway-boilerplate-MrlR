@@ -5,7 +5,7 @@ import SkeletonProductGrid from "@modules/skeletons/templates/skeleton-product-g
 import PaginatedProducts from "@modules/store/templates/paginated-products"
 const Hero = () => {
   return (
-    <div>
+
 <div className="h-[75vh] w-full border-b border-ui-border-base relative bg-ui-bg-subtle">
       <div className="absolute inset-0 z-10 flex flex-col justify-center items-center text-center small:p-32 gap-6">
         <span>
@@ -33,18 +33,9 @@ const Hero = () => {
       </div>
     </div>
   
-    <div className="py-12 content-container">
-        <div className="mb-8 text-center">
-          <Heading level="h2" className="text-3xl leading-10 text-ui-fg-base font-normal">
-            Featured Products
-          </Heading>
-        </div>
-        <Suspense fallback={<SkeletonProductGrid />}>
-          <FeaturedProducts />
-        </Suspense>
-    </div>
 
-    </div>
+
+
     
 
 )
