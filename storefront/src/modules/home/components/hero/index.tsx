@@ -75,6 +75,7 @@ const Hero = ({ countryCode }: { countryCode: string }) => {
         </div>
       </div>
 
+
       {/* Products Section */}
       <div className="py-12 content-container">
         <div className="mb-8">
