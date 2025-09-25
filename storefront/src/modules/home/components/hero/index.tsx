@@ -68,8 +68,8 @@ const Hero = () => {
       </div> */}
 
       {/* Слайдер */}
-      <div className="mx-auto">
-        <Carousel setApi={setApi} className="max-w-[1280px]">
+      <div className="max-w-[1280px] mx-auto">
+        <Carousel setApi={setApi} className="w-full">
           <CarouselContent className="">
             {Array.from({ length: 5 }).map((_, index) => (
               <CarouselItem key={index} className="">
