@@ -68,12 +68,12 @@ const Hero = () => {
       </div> */}
 
       {/* Слайдер */}
-      <div className="w-[1280px]">
-        <Carousel setApi={setApi} className="w-full">
-          <CarouselContent className="w-full">
+      <div className="max-w-[1280px] mx-auto">
+        <Carousel setApi={setApi} className="">
+          <CarouselContent className="">
             {Array.from({ length: 5 }).map((_, index) => (
-              <CarouselItem key={index} className="w-full">
-                <Card className="w-full">
+              <CarouselItem key={index} className="">
+                <Card className="">
                   <CardContent className="flex aspect-video items-center justify-center p-6 w-full">
                     <span className="text-4xl font-semibold">{index + 1}</span>
                   </CardContent>
