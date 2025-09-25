@@ -5,7 +5,7 @@ import { Button, Heading } from "@medusajs/ui"
 import { Suspense } from "react"
 import SkeletonProductGrid from "@modules/skeletons/templates/skeleton-product-grid"
 import PaginatedProducts from "@modules/store/templates/paginated-products"
-
+const MemoizedPaginatedProducts = React.memo(PaginatedProducts);
 import * as React from "react"
 
 import { Carousel,
@@ -68,7 +68,7 @@ const Hero = () => {
       </div> */}
 
       {/* Слайдер */}
-      <div className="mx-auto max-w-[1400px] p-5">
+      <div className="mx-auto max-w-[1450px] p-5">
         <Carousel setApi={setApi} className="w-full">
           <CarouselContent>
             {Array.from({ length: 5 }).map((_, index) => (
@@ -98,7 +98,7 @@ const Hero = () => {
         </div>
         
         <Suspense fallback={<SkeletonProductGrid />}>
-          <PaginatedProducts
+          <MemoizedPaginatedProducts
             sortBy="created_at"
             page={1}
             countryCode={"ua"}
