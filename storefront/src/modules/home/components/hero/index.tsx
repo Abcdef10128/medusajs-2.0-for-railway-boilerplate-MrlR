@@ -73,7 +73,7 @@ const Hero = () => {
           <CarouselContent className="w-full">
             {Array.from({ length: 5 }).map((_, index) => (
               <CarouselItem key={index} className="w-full">
-                <Card className="w-full h-8">
+                <Card className="w-full aspect-video">
                   <CardContent className="flex aspect-square items-center justify-center p-6 w-full">
                     <span className="text-4xl font-semibold">{index + 1}</span>
                   </CardContent>
