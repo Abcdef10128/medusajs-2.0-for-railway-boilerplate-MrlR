@@ -38,7 +38,7 @@ const Hero = () => {
   return (
     <div className="w-full">
       {/* Hero секция */}
-      <div className="h-[75vh] w-full border-b border-ui-border-base relative bg-ui-bg-subtle">
+      {/* <div className="h-[75vh] w-full border-b border-ui-border-base relative bg-ui-bg-subtle">
         <div className="absolute inset-0 z-10 flex flex-col justify-center items-center text-center small:p-32 gap-6">
           <span>
             <Heading
@@ -64,29 +64,29 @@ const Hero = () => {
             </h1>
           </a>
         </div>
-      </div>
+      </div> */}
 
       {/* Слайдер */}
       <div className="mx-auto max-w-xs">
-      <Carousel setApi={setApi} className="w-full max-w-xs">
-        <CarouselContent>
-          {Array.from({ length: 5 }).map((_, index) => (
-            <CarouselItem key={index}>
-              <Card>
-                <CardContent className="flex aspect-square items-center justify-center p-6">
-                  <span className="text-4xl font-semibold">{index + 1}</span>
-                </CardContent>
-              </Card>
-            </CarouselItem>
-          ))}
-        </CarouselContent>
-        <CarouselPrevious />
-        <CarouselNext />
-      </Carousel>
-      <div className="text-muted-foreground py-2 text-center text-sm">
-        Slide {current} of {count}
+        <Carousel setApi={setApi} className="w-full max-w-xs">
+          <CarouselContent>
+            {Array.from({ length: 5 }).map((_, index) => (
+              <CarouselItem key={index}>
+                <Card>
+                  <CardContent className="flex aspect-square items-center justify-center p-6">
+                    <span className="text-4xl font-semibold">{index + 1}</span>
+                  </CardContent>
+                </Card>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <CarouselPrevious />
+          <CarouselNext />
+        </Carousel>
+        <div className="text-muted-foreground py-2 text-center text-sm">
+          Slide {current} of {count}
+        </div>
       </div>
-    </div>
 
       {/* Секция товаров */}
       <div className="py-12 content-container">
