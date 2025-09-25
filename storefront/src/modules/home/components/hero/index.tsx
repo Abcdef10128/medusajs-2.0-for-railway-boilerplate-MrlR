@@ -1,10 +1,40 @@
+"use client"
+
 import { Github } from "@medusajs/icons"
 import { Button, Heading } from "@medusajs/ui"
 import { Suspense } from "react"
 import SkeletonProductGrid from "@modules/skeletons/templates/skeleton-product-grid"
 import PaginatedProducts from "@modules/store/templates/paginated-products"
 
+import * as React from "react"
+
+import { Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+  type CarouselApi, } from "@lib/components/ui/carousel"
+import { Card, CardContent } from "@lib/components/ui/card"
+
+
+
 const Hero = () => {
+  const [api, setApi] = React.useState<CarouselApi>()
+  const [current, setCurrent] = React.useState(0)
+  const [count, setCount] = React.useState(0)
+
+  React.useEffect(() => {
+    if (!api) {
+      return
+    }
+
+    setCount(api.scrollSnapList().length)
+    setCurrent(api.selectedScrollSnap() + 1)
+
+    api.on("select", () => {
+      setCurrent(api.selectedScrollSnap() + 1)
+    })
+  }, [api])
   return (
     <div className="w-full">
       {/* Hero секция */}
@@ -36,11 +66,33 @@ const Hero = () => {
         </div>
       </div>
 
+      {/* Слайдер */}
+      <div className="mx-auto max-w-xs">
+      <Carousel setApi={setApi} className="w-full max-w-xs">
+        <CarouselContent>
+          {Array.from({ length: 5 }).map((_, index) => (
+            <CarouselItem key={index}>
+              <Card>
+                <CardContent className="flex aspect-square items-center justify-center p-6">
+                  <span className="text-4xl font-semibold">{index + 1}</span>
+                </CardContent>
+              </Card>
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+        <CarouselPrevious />
+        <CarouselNext />
+      </Carousel>
+      <div className="text-muted-foreground py-2 text-center text-sm">
+        Slide {current} of {count}
+      </div>
+    </div>
+
       {/* Секция товаров */}
       <div className="py-12 content-container">
         <div className="mb-8 text-center">
           <Heading level="h2" className="text-2xl-semi">
-            Featured Products
+            All products
           </Heading>
         </div>
         
