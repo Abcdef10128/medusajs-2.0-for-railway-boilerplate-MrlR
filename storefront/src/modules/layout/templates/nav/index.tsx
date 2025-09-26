@@ -113,7 +113,7 @@ export default async function Nav() {
             >
 
               <img src="/logo_vector_png.png" className="size-9" alt="" />
-              <p className="font-semibold">smerch</p>
+              <p className="font-medium">smerch</p>
             </LocalizedClientLink>
           </div>
 
