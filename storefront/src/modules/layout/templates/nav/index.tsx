@@ -148,8 +148,8 @@ export default async function Nav() {
                           <TabsTrigger value="password">Password</TabsTrigger>
                         </TabsList>
                         <TabsContent value="account">
-                          <Card>
-                            <CardContent>
+                          <Card className="p-2">
+                            {/* <CardContent> */}
                               <Table>
                                 <TableCaption>A list of your recent invoices.</TableCaption>
                                 <TableHeader>
@@ -177,7 +177,7 @@ export default async function Nav() {
                                   </TableRow>
                                 </TableFooter>
                               </Table>
-                            </CardContent>
+                            {/* </CardContent> */}
                           
                           
                             {/* <CardHeader>
