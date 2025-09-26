@@ -17,16 +17,15 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@lib/components/ui/dialog"
-import { PriceDialog } from "./priceDialog"
 
-
-export default async function Nav() {
+interface NavProps {
+  onPriceClick: () => void
+}
+export default async function Nav({ onPriceClick }: NavProps) {
   const regions = await listRegions().then((regions: StoreRegion[]) => regions)
 
   return (
-    <Dialog>
-      <form>
-      <PriceDialog />
+
       
         <div className="sticky top-0 inset-x-0 z-50 group">
           <header className="relative h-16 mx-auto border-b duration-200 bg-white border-ui-border-base">
@@ -53,6 +52,7 @@ export default async function Nav() {
                     
                       <DialogTrigger asChild>
                         <LocalizedClientLink
+                        onClick={onPriceClick}
                           className="hover:text-ui-fg-base"
                           href="#"
                           data-testid="nav-account-link"
@@ -99,25 +99,7 @@ export default async function Nav() {
             </nav>
           </header>
         </div>                      
-        {/* <DialogContent className="sm:max-w-[425px]">
-          <DialogHeader>
-            <DialogTitle>Edit profile</DialogTitle>
-            <DialogDescription>
-              Make changes to your profile here. Click save when you&apos;re
-              done.
-            </DialogDescription>
-          </DialogHeader>
-          <div className="grid gap-4">
 
-          </div>
-          <DialogFooter>
-            <DialogClose asChild>
-              <Button variant="outline">Cancel</Button>
-            </DialogClose>
-            <Button type="submit">Save changes</Button>
-          </DialogFooter>
-        </DialogContent> */}
-      </form>
-    </Dialog>
+
   )
 }

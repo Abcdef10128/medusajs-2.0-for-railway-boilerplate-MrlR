@@ -30,7 +30,7 @@ const [isPriceDialogOpen, setIsPriceDialogOpen] = useState(false)
   return (
     <div>
 
-      <Nav />
+      <Nav onPriceClick={() => setIsPriceDialogOpen(true)} />
       <main className="relative">{children}</main>
       <Footer />
 
