@@ -120,7 +120,7 @@ export default async function Nav() {
               /> */}
 
               
-              <img src="/logo_vector_png.png" className="invert size-8" alt="" />
+              <img src="/logo_vector_png.png" className="size-8" alt="" />
               
             </LocalizedClientLink>
           </div>
