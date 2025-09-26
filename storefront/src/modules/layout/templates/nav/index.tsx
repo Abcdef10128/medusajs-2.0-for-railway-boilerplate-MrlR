@@ -8,7 +8,7 @@ import {
   TableHeader,
   TableRow,
 } from "@lib/components/ui/table"
-
+import Image from "next/image"
 const invoices = [
   {
     invoice: "INV001",
@@ -111,6 +111,13 @@ export default async function Nav() {
               className="txt-compact-xlarge-plus hover:text-ui-fg-base uppercase"
               data-testid="nav-store-link"
             >
+              <Image
+                src="storefront\public\logo_vector_png.png"
+                alt="Logo"
+                width={200}
+                height={200}
+              />
+
               
               <img src="storefront\public\logo_vector_png.png" alt="" />
               smerch
