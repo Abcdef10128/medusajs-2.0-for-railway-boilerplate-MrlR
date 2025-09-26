@@ -150,7 +150,7 @@ export default async function Nav() {
                         <TabsContent value="account">
                           <Card className="p-2">
                             {/* <CardContent> */}
-                              <Table>
+                              <Table className="border-3">
                                 <TableCaption>A list of your recent invoices.</TableCaption>
                                 <TableHeader>
                                   <TableRow>
