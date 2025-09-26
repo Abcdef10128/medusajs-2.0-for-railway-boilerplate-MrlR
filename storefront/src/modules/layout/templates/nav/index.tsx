@@ -23,7 +23,7 @@ import {
 interface NavProps {
   onPriceClick: () => void
 }
-export default async function Nav({ onPriceClick }: NavProps) {
+export default function Nav({ onPriceClick }: NavProps) {
   // const regions = await listRegions().then((regions: StoreRegion[]) => regions)
    const [regions, setRegions] = useState<StoreRegion[]>([])
  
@@ -56,14 +56,7 @@ export default async function Nav({ onPriceClick }: NavProps) {
                 <div className="hidden small:flex items-center gap-x-6 h-full">
 
 
-                        <LocalizedClientLink
-                        onClick={onPriceClick}
-                          className="hover:text-ui-fg-base"
-                          href="#"
-                          data-testid="nav-account-link"
-                        >
-                          Ціни
-                        </LocalizedClientLink>
+
 
                         <button
                           onClick={onPriceClick}
