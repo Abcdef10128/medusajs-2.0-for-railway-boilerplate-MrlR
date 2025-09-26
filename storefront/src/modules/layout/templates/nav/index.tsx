@@ -120,7 +120,7 @@ export default async function Nav() {
               />
 
               
-              <img src="storefront\public\logo_vector_png.png" alt="" />
+              <img src="storefront\public\logo_vector_png.png" className="invert" alt="" />
               smerch
             </LocalizedClientLink>
           </div>
@@ -139,6 +139,7 @@ export default async function Nav() {
                     </LocalizedClientLink>
                   </DialogTrigger>
                   <DialogContent className="sm:max-w-[425px]">
+                    <DialogTitle></DialogTitle>
                     {/* <DialogHeader>
                       <DialogTitle>Edit profile</DialogTitle>
                       <DialogDescription>
