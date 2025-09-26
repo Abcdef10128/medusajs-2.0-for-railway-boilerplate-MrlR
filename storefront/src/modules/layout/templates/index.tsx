@@ -31,12 +31,12 @@ const [isPriceDialogOpen, setIsPriceDialogOpen] = useState(false)
 
   return (
     <div>
+      <Dialog open={isPriceDialogOpen} onOpenChange={setIsPriceDialogOpen}>
 
       <Nav onPriceClick={() => setIsPriceDialogOpen(true)} />
       <main className="relative">{children}</main>
       <Footer />
 
-      <Dialog open={isPriceDialogOpen} onOpenChange={setIsPriceDialogOpen}>
       
 
               <DialogContent className="sm:max-w-[425px]">
