@@ -7,7 +7,7 @@ import { StoreRegion } from "@medusajs/types"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 import CartButton from "@modules/layout/components/cart-button"
 import SideMenu from "@modules/layout/components/side-menu"
-
+import { useEffect, useState } from 'react'
 import { Button } from "@lib/components/ui/button"
 import {
   Dialog,
@@ -24,8 +24,12 @@ interface NavProps {
   onPriceClick: () => void
 }
 export default async function Nav({ onPriceClick }: NavProps) {
-  const regions = await listRegions().then((regions: StoreRegion[]) => regions)
-
+  // const regions = await listRegions().then((regions: StoreRegion[]) => regions)
+   const [regions, setRegions] = useState<StoreRegion[]>([])
+ 
+  useEffect(() => {
+    listRegions().then((regions: StoreRegion[]) => setRegions(regions))
+  }, [])
   return (
 
       
