@@ -108,14 +108,15 @@ export default async function Nav() {
           <div className="flex items-center h-full">
             <LocalizedClientLink
               href="/"
-              className="txt-compact-xlarge-plus hover:text-ui-fg-base uppercase"
+              className="txt-compact-xlarge-plus hover:text-ui-fg-base uppercase flex items-center"
               data-testid="nav-store-link"
             >
               <Image
                 src="storefront\public\logo_vector_png.png"
                 alt="Logo"
-                width={200}
-                height={200}
+                className="invert"
+                width={50}
+                height={50}
               />
 
               
