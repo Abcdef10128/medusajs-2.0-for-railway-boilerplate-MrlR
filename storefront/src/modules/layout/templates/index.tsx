@@ -3,7 +3,7 @@ import React from "react"
 import Footer from "@modules/layout/templates/footer"
 import Nav from "@modules/layout/templates/nav"
 
-
+import { useState } from 'react'
 
 
 import { Button } from "@lib/components/ui/button"
@@ -24,13 +24,19 @@ import {
 const Layout: React.FC<{
   children: React.ReactNode
 }> = ({ children }) => {
+
+const [isPriceDialogOpen, setIsPriceDialogOpen] = useState(false)
+
   return (
     <div>
-      <Dialog>
-      <form>
+
       <Nav />
       <main className="relative">{children}</main>
       <Footer />
+
+      <Dialog open={isPriceDialogOpen} onOpenChange={setIsPriceDialogOpen}>
+      <form>
+
               <DialogContent className="sm:max-w-[425px]">
                 <DialogHeader>
                   <DialogTitle>Edit profile</DialogTitle>
@@ -49,6 +55,7 @@ const Layout: React.FC<{
                   <Button type="submit">Save changes</Button>
                 </DialogFooter>
               </DialogContent>
+
           </form>
       </Dialog>
     </div>

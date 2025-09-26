@@ -17,6 +17,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@lib/components/ui/dialog"
+import { PriceDialog } from "./priceDialog"
 
 
 export default async function Nav() {
@@ -25,7 +26,7 @@ export default async function Nav() {
   return (
     <Dialog>
       <form>
-
+      <PriceDialog />
       
         <div className="sticky top-0 inset-x-0 z-50 group">
           <header className="relative h-16 mx-auto border-b duration-200 bg-white border-ui-border-base">
