@@ -1,3 +1,5 @@
+'use client'
+
 import { Suspense } from "react"
 
 import { listRegions } from "@lib/data/regions"
