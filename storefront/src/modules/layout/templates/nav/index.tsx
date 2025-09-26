@@ -98,7 +98,7 @@ export default async function Nav() {
             </nav>
           </header>
         </div>                      
-        <DialogContent className="sm:max-w-[425px]">
+        {/* <DialogContent className="sm:max-w-[425px]">
           <DialogHeader>
             <DialogTitle>Edit profile</DialogTitle>
             <DialogDescription>
@@ -115,7 +115,7 @@ export default async function Nav() {
             </DialogClose>
             <Button type="submit">Save changes</Button>
           </DialogFooter>
-        </DialogContent>
+        </DialogContent> */}
       </form>
     </Dialog>
   )
