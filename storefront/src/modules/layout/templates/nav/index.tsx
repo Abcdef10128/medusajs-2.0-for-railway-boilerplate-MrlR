@@ -55,7 +55,8 @@ export default async function Nav() {
               className="txt-compact-xlarge-plus hover:text-ui-fg-base uppercase"
               data-testid="nav-store-link"
             >
-              Medusa Store
+              <img src="C:\Users\Admin\Desktop\medusa\medusajs-2.0-for-railway-boilerplate-MrlR\storefront\public\logo_vector_png.png" alt="" />
+              smerch
             </LocalizedClientLink>
           </div>
 
@@ -148,13 +149,7 @@ export default async function Nav() {
                   </DialogContent>
                 </form>
               </Dialog>
-              <LocalizedClientLink
-                className="hover:text-ui-fg-base"
-                href="/account"
-                data-testid="nav-account-link"
-              >
-                Ціни
-              </LocalizedClientLink>
+
               {process.env.NEXT_PUBLIC_FEATURE_SEARCH_ENABLED && (
                 <LocalizedClientLink
                   className="hover:text-ui-fg-base"
