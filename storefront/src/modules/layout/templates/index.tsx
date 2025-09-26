@@ -37,9 +37,10 @@ const [isPriceDialogOpen, setIsPriceDialogOpen] = useState(false)
       <Footer />
 
       <Dialog open={isPriceDialogOpen} onOpenChange={setIsPriceDialogOpen}>
-      <form>
+      
 
               <DialogContent className="sm:max-w-[425px]">
+      <form>          
                 <DialogHeader>
                   <DialogTitle>Edit profile</DialogTitle>
                   <DialogDescription>
@@ -56,10 +57,10 @@ const [isPriceDialogOpen, setIsPriceDialogOpen] = useState(false)
                   </DialogClose>
                   <Button type="submit">Save changes</Button>
                 </DialogFooter>
-                
+          </form>      
               </DialogContent>
 
-          </form>
+          
       </Dialog>
     </div>
   )
