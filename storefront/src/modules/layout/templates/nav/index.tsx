@@ -59,7 +59,13 @@ export default async function Nav({ onPriceClick }: NavProps) {
                           Ціни
                         </LocalizedClientLink>
 
-                      
+                        <button
+                          onClick={onPriceClick}
+                          className="hover:text-ui-fg-base cursor-pointer bg-transparent border-none text-inherit font-inherit p-0 m-0"
+                          data-testid="nav-price-button"
+                        >
+                          Ціни
+                        </button>
 
                     
 
