@@ -108,20 +108,12 @@ export default async function Nav() {
           <div className="flex items-center h-full">
             <LocalizedClientLink
               href="/"
-              className="txt-compact-xlarge-plus hover:text-ui-fg-base flex items-center"
+              className="txt-compact-xlarge-plus hover:text-ui-fg-base flex items-center gap-1"
               data-testid="nav-store-link"
             >
-              {/* <Image
-                src="/logo_vector_png.png"
-                alt="Logo"
-                className="invert"
-                width={50}
-                height={50}
-              /> */}
 
-              
               <img src="/logo_vector_png.png" className="size-9" alt="" />
-              smerch
+              <p className="font-semibold">smerch</p>
             </LocalizedClientLink>
           </div>
 
