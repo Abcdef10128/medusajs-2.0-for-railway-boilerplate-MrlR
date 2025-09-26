@@ -49,8 +49,7 @@ export default async function Nav({ onPriceClick }: NavProps) {
               <div className="flex items-center gap-x-6 h-full flex-1 basis-0 justify-end">
                 <div className="hidden small:flex items-center gap-x-6 h-full">
 
-                    <Dialog>
-                      <DialogTrigger asChild>
+
                         <LocalizedClientLink
                         onClick={onPriceClick}
                           className="hover:text-ui-fg-base"
@@ -59,8 +58,7 @@ export default async function Nav({ onPriceClick }: NavProps) {
                         >
                           Ціни
                         </LocalizedClientLink>
-                      </DialogTrigger>
-                    </Dialog>
+
                       
 
                     

@@ -1,3 +1,5 @@
+'use client'
+
 import React from "react"
 
 import Footer from "@modules/layout/templates/footer"
@@ -54,6 +56,7 @@ const [isPriceDialogOpen, setIsPriceDialogOpen] = useState(false)
                   </DialogClose>
                   <Button type="submit">Save changes</Button>
                 </DialogFooter>
+                
               </DialogContent>
 
           </form>
