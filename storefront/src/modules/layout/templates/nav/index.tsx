@@ -6,6 +6,19 @@ import LocalizedClientLink from "@modules/common/components/localized-client-lin
 import CartButton from "@modules/layout/components/cart-button"
 import SideMenu from "@modules/layout/components/side-menu"
 
+import { Button } from "@lib/components/ui/button"
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@lib/components/ui/dialog"
+
+
 export default async function Nav() {
   const regions = await listRegions().then((regions: StoreRegion[]) => regions)
 
@@ -31,6 +44,44 @@ export default async function Nav() {
 
           <div className="flex items-center gap-x-6 h-full flex-1 basis-0 justify-end">
             <div className="hidden small:flex items-center gap-x-6 h-full">
+              <Dialog>
+                <form>
+                  <DialogTrigger asChild>
+                    <LocalizedClientLink
+                      className="hover:text-ui-fg-base"
+                      href="#"
+                      data-testid="nav-account-link"
+                    >
+                      Ціни
+                    </LocalizedClientLink>
+                  </DialogTrigger>
+                  <DialogContent className="sm:max-w-[425px]">
+                    <DialogHeader>
+                      <DialogTitle>Edit profile</DialogTitle>
+                      <DialogDescription>
+                        Make changes to your profile here. Click save when you&apos;re
+                        done.
+                      </DialogDescription>
+                    </DialogHeader>
+                    <div className="grid gap-4">
+
+                    </div>
+                    <DialogFooter>
+                      <DialogClose asChild>
+                        <Button variant="outline">Cancel</Button>
+                      </DialogClose>
+                      <Button type="submit">Save changes</Button>
+                    </DialogFooter>
+                  </DialogContent>
+                </form>
+              </Dialog>
+              <LocalizedClientLink
+                className="hover:text-ui-fg-base"
+                href="/account"
+                data-testid="nav-account-link"
+              >
+                Ціни
+              </LocalizedClientLink>
               {process.env.NEXT_PUBLIC_FEATURE_SEARCH_ENABLED && (
                 <LocalizedClientLink
                   className="hover:text-ui-fg-base"
