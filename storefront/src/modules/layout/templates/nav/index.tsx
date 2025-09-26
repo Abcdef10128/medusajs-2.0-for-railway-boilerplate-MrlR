@@ -120,8 +120,8 @@ export default async function Nav() {
               /> */}
 
               
-              <img src="/logo_vector_png.png" className="size-8" alt="" />
-              
+              <img src="/logo_vector_png.png" className="size-9" alt="" />
+              smerch
             </LocalizedClientLink>
           </div>
 
@@ -289,7 +289,7 @@ export default async function Nav() {
                 href="/account"
                 data-testid="nav-account-link"
               >
-                Account
+                Аккаунт
               </LocalizedClientLink>
             </div>
             <Suspense
@@ -299,7 +299,7 @@ export default async function Nav() {
                   href="/cart"
                   data-testid="nav-cart-link"
                 >
-                  Cart (0)
+                  Кошик (0)
                 </LocalizedClientLink>
               }
             >
