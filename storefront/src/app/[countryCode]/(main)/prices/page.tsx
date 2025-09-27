@@ -104,14 +104,10 @@ export default function Prices() {
 const [pricesOpen, setPricesOpen] = useState(true)
 
   return (
-    <div className="fixed grid w-full place-items-center">
+    <div className="fixed grid w-full place-items-center inset-0">
       <Card>
                      <form>
 
-
-                       <div className="grid gap-4">
-   
-                       </div>
                        <div className="flex w-full max-w-sm flex-col gap-6">
                          <Tabs defaultValue="account">
                            <TabsList>
