@@ -160,7 +160,7 @@ export default async function Nav() {
                           <TabsTrigger value="password">Password</TabsTrigger>
                         </TabsList>
                         <TabsContent value="account">
-                          <Card className="p-2">
+                          <Card className="p-2 gap-6">
                             {/* <CardContent> */}
                               <Table className="border-3">
                                 <TableCaption>A list of your recent invoices.</TableCaption>
@@ -190,7 +190,7 @@ export default async function Nav() {
                                 </TableFooter>
                               </Table>
 
-
+                            <Label>Матеріал</Label>
 
                             <Select>
                               <SelectTrigger className="w-full">
@@ -208,8 +208,7 @@ export default async function Nav() {
                               </SelectContent>
                             </Select>
 
-                                <Label htmlFor="tabs-demo-name">Name</Label>
-                              <CardTitle>Account</CardTitle>
+                                <Label>Ламінація</Label>
 
                               <Select>
                               <SelectTrigger className="w-full">
