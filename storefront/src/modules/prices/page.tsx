@@ -97,17 +97,17 @@ import {
   TabsTrigger,
 } from "@lib/components/ui/tabs"
 
-interface PricesDialogProps {
-    open: boolean
-    onOpenChange : (open: boolean) => void
-}
+// interface PricesDialogProps {
+//     open: boolean
+//     onOpenChange : (open: boolean) => void
+// }
 
 import { useState } from "react"
+export default function Prices() {
 const [pricesOpen, setPricesOpen] = useState(true)
-export default function Prices({open, onOpenChange}: PricesDialogProps) {
 
   return (
-    <Dialog open={open} onOpenChange={onOpenChange}>
+    <Dialog open={pricesOpen} onOpenChange={setPricesOpen}>
                 <form>
                   {/* <DialogTrigger asChild>
                     <LocalizedClientLink

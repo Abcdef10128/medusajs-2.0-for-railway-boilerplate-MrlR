@@ -35,13 +35,11 @@ const Hero = () => {
       setCurrent(api.selectedScrollSnap() + 1)
     })
   }, [api])
-    const [pricesOpen, setPricesOpen] = React.useState(false)
   return (
         
     <div className="w-full">
       <Prices 
-        open={pricesOpen} 
-        onOpenChange={setPricesOpen} 
+
       />
       {/* Hero секция */}
       {/* <div className="h-[75vh] w-full border-b border-ui-border-base relative bg-ui-bg-subtle">
