@@ -104,7 +104,7 @@ export default function Prices() {
 const [pricesOpen, setPricesOpen] = useState(true)
 
   return (
-    <div className="fixed grid w-full place-items-center inset-0">
+    <div className="relative grid w-full place-items-center inset-0">
       <Card>
                      <form>
 
