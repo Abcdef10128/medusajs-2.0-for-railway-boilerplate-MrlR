@@ -96,10 +96,12 @@ import {
   TabsList,
   TabsTrigger,
 } from "@lib/components/ui/tabs"
+import { useState } from "react"
+const [pricesOpen, setPricesOpen] = useState(true)
 export default async function Prices() {
 
   return (
-    <Dialog open={true}>
+    <Dialog open={pricesOpen}>
                 <form>
                   {/* <DialogTrigger asChild>
                     <LocalizedClientLink
