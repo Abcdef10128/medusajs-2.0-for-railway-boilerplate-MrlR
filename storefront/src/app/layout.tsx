@@ -16,10 +16,10 @@ export default function RootLayout(props: {
       <body>
         <main className="relative">
           {props.children}
-
+          {props.modal}
           
         </main>
-        {props.modal}
+        
       </body>
     </html>
   )
