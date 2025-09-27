@@ -15,7 +15,7 @@ import { Carousel,
   CarouselPrevious,
   type CarouselApi, } from "@lib/components/ui/carousel"
 import { Card, CardContent } from "@lib/components/ui/card"
-import Prices from "@modules/prices/page"
+import Prices from "@modules/prices"
 
 
 const Hero = () => {
