@@ -6,20 +6,11 @@ export const metadata: Metadata = {
   metadataBase: new URL(getBaseURL()),
 }
 
-export default function RootLayout(props: { 
-  children: React.ReactNode ,
-  modal: React.ReactNode
-
-} ) {
+export default function RootLayout(props: { children: React.ReactNode }) {
   return (
     <html lang="en" data-mode="light">
       <body>
-        <main className="relative">
-          {props.children}
-          {props.modal}
-          
-        </main>
-        
+        <main className="relative">{props.children}</main>
       </body>
     </html>
   )
