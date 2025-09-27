@@ -107,7 +107,7 @@ const [pricesOpen, setPricesOpen] = useState(true)
       
                      
 
-                       <div className="flex w-full max-w-sm flex-col gap-6">
+                       <div className="flex max-w-sm flex-col gap-6">
                          <Tabs defaultValue="account">
                            <TabsList>
                              <TabsTrigger value="account">Account</TabsTrigger>
