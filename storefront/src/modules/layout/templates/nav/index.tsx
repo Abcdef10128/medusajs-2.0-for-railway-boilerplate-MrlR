@@ -189,22 +189,43 @@ export default async function Nav() {
                                   </TableRow>
                                 </TableFooter>
                               </Table>
-                              
-                              <Select>
-                              <SelectTrigger className="w-[180px]">
-                                <SelectValue placeholder="Select a fruit" />
+
+
+
+                            <Select>
+                              <SelectTrigger className="w-full">
+                                <SelectValue placeholder="Матеріал" />
                               </SelectTrigger>
                               <SelectContent>
                                 <SelectGroup>
-                                  <SelectLabel>Fruits</SelectLabel>
-                                  <SelectItem value="apple">Apple</SelectItem>
-                                  <SelectItem value="banana">Banana</SelectItem>
-                                  <SelectItem value="blueberry">Blueberry</SelectItem>
-                                  <SelectItem value="grapes">Grapes</SelectItem>
-                                  <SelectItem value="pineapple">Pineapple</SelectItem>
+                                  {/* <SelectLabel>Fruits</SelectLabel> */}
+                                  <SelectItem value="apple">Самоклеючий папір</SelectItem>
+                                  <SelectItem value="banana">Плівка біла</SelectItem>
+                                  <SelectItem value="blueberry">Плівка прозора</SelectItem>
+                                  <SelectItem value="grapes">Плівка срібло</SelectItem>
+                                  <SelectItem value="pineapple">Плівка золото</SelectItem>
                                 </SelectGroup>
                               </SelectContent>
                             </Select>
+
+                                <Label htmlFor="tabs-demo-name">Name</Label>
+                              <CardTitle>Account</CardTitle>
+
+                              <Select>
+                              <SelectTrigger className="w-full">
+                                <SelectValue placeholder="Ламінація" />
+                              </SelectTrigger>
+                              <SelectContent>
+                                <SelectGroup>
+                                  {/* <SelectLabel>Fruits</SelectLabel> */}
+                                  <SelectItem value="apple">Глінсова</SelectItem>
+                                  <SelectItem value="banana">Матова</SelectItem>
+                                  <SelectItem value="blueberry">Soft touch</SelectItem>
+
+                                </SelectGroup>
+                              </SelectContent>
+                            </Select>
+
                             {/* </CardContent> */}
                           
                           
