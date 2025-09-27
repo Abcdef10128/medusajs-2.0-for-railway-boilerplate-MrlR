@@ -107,12 +107,12 @@ const [pricesOpen, setPricesOpen] = useState(true)
   return (
 
     <Dialog open={pricesOpen} onOpenChange={setPricesOpen}>
-        <form>
+        
             <DialogContent>
                 <PricesComponent />
             </DialogContent>
             
-        </form>
+        
                 
               </Dialog>
   )
