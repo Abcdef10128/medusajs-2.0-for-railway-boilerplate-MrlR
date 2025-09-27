@@ -104,7 +104,7 @@ export default function Prices() {
 const [pricesOpen, setPricesOpen] = useState(true)
 
   return (
-    <div className="absolute inset-0 flex items-center justify-center">
+    <div className="grid place-items-center h-[100vh] w-full">
       <Card className="p-6">
                      <form>
 
