@@ -105,8 +105,8 @@ const [pricesOpen, setPricesOpen] = useState(true)
 
   return (
 
-       <Dialog open={pricesOpen} onOpenChange={setPricesOpen}>
-        1122333
+      //  <Dialog open={pricesOpen} onOpenChange={setPricesOpen}>
+        
                    <form>
                      {/* <DialogTrigger asChild>
                        <LocalizedClientLink
@@ -288,7 +288,7 @@ const [pricesOpen, setPricesOpen] = useState(true)
                        </DialogFooter>
                      </DialogContent>
                    </form>
-                 </Dialog>
+                //  </Dialog>
   )
 }
 
