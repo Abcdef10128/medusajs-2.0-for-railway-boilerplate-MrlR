@@ -99,7 +99,7 @@ import {
 export default async function Prices() {
 
   return (
-    <Dialog>
+    <Dialog open={true}>
                 <form>
                   {/* <DialogTrigger asChild>
                     <LocalizedClientLink
