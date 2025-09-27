@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 export default async function PageLayout(props: { children: React.ReactNode, modal: React.ReactNode }) {
   return (
-    <div className="pt-6">
+    <div className="pt-[150px]">
       <Nav />
       {props.children}
       {props.modal}
