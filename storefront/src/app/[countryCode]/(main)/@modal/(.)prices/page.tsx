@@ -100,137 +100,14 @@ import {
 
 
 import { useState } from "react"
+import PricesComponent from "../../prices"
 export default function Prices() {
 const [pricesOpen, setPricesOpen] = useState(true)
 
   return (
 
     <Dialog open={pricesOpen} onOpenChange={setPricesOpen}>
-                <form>
-
-                  <DialogContent className="sm:max-w-[425px]">
-                    <DialogTitle></DialogTitle>
-                    <DialogHeader>
-                      <DialogTitle>Edit profile</DialogTitle>
-                      <DialogDescription>
-                        Make changes to your profile here. Click save when you&apos;re
-                        done.
-                      </DialogDescription>
-                    </DialogHeader>
-                    <div className="grid gap-4">
-
-                    </div>
-                    <div className="flex w-full max-w-sm flex-col gap-6">
-                      <Tabs defaultValue="account">
-                        <TabsList>
-                          <TabsTrigger value="account">Account</TabsTrigger>
-                          <TabsTrigger value="password">Password</TabsTrigger>
-                        </TabsList>
-                        <TabsContent value="account">
-                          <Card className="p-2 gap-6">
-                              <Table className="border-3">
-                                <TableHeader>
-                                  <TableRow>
-                                    <TableHead className="w-[100px]"></TableHead>
-                                    <TableHead>A6</TableHead>
-                                    <TableHead>A5</TableHead>
-                                    <TableHead>A4</TableHead>
-                                    <TableHead className="text-right">A3</TableHead>
-                                  </TableRow>
-                                </TableHeader>
-                                <TableBody>
-                                  {invoices.map((invoice) => (
-                                    <TableRow key={invoice.invoice}>
-                                      <TableCell className="font-medium">{invoice.invoice}</TableCell>
-                                      <TableCell>{invoice.paymentStatus}</TableCell>
-                                      <TableCell>{invoice.paymentMethod}</TableCell>
-                                      <TableCell className="text-right">{invoice.totalAmount}</TableCell>
-                                    </TableRow>
-                                  ))}
-                                </TableBody>
-                                <TableFooter>
-                                  <TableRow>
-                                    <TableCell colSpan={3}>Total</TableCell>
-                                    <TableCell className="text-right">$2,500.00</TableCell>
-                                  </TableRow>
-                                </TableFooter>
-                              </Table>
-
-                            <Label>Матеріал</Label>
-
-                            <Select>
-                              <SelectTrigger className="w-full">
-                                <SelectValue placeholder="Матеріал" />
-                              </SelectTrigger>
-                              <SelectContent>
-                                <SelectGroup>
-                                  <SelectItem value="apple">Самоклеючий папір</SelectItem>
-                                  <SelectItem value="banana">Плівка біла</SelectItem>
-                                  <SelectItem value="blueberry">Плівка прозора</SelectItem>
-                                  <SelectItem value="grapes">Плівка срібло</SelectItem>
-                                  <SelectItem value="pineapple">Плівка золото</SelectItem>
-                                </SelectGroup>
-                              </SelectContent>
-                            </Select>
-
-                                <Label>Ламінація</Label>
-
-                              <Select>
-                              <SelectTrigger className="w-full">
-                                <SelectValue placeholder="Ламінація" />
-                              </SelectTrigger>
-                              <SelectContent>
-                                <SelectGroup>
-                                  <SelectItem value="apple">Глінсова</SelectItem>
-                                  <SelectItem value="banana">Матова</SelectItem>
-                                  <SelectItem value="blueberry">Soft touch</SelectItem>
-
-                                </SelectGroup>
-                              </SelectContent>
-                            </Select>
-
-                          </Card>
-                        </TabsContent>
-                        <TabsContent value="password">
-                          <Table>
-                          <TableCaption>A list of your recent invoices.</TableCaption>
-                          <TableHeader>
-                            <TableRow>
-                              <TableHead className="w-[100px]">Invoice</TableHead>
-                              <TableHead>Status</TableHead>
-                              <TableHead>Method</TableHead>
-                              <TableHead className="text-right">Amount</TableHead>
-                            </TableRow>
-                          </TableHeader>
-                          <TableBody>
-                            {invoices.map((invoice) => (
-                              <TableRow key={invoice.invoice}>
-                                <TableCell className="font-medium">{invoice.invoice}</TableCell>
-                                <TableCell>{invoice.paymentStatus}</TableCell>
-                                <TableCell>{invoice.paymentMethod}</TableCell>
-                                <TableCell className="text-right">{invoice.totalAmount}</TableCell>
-                              </TableRow>
-                            ))}
-                          </TableBody>
-                          <TableFooter>
-                            <TableRow>
-                              <TableCell colSpan={3}>Total</TableCell>
-                              <TableCell className="text-right">$2,500.00</TableCell>
-                            </TableRow>
-                          </TableFooter>
-                        </Table>
-
-                        </TabsContent>
-                      </Tabs>
-                    </div>
-                    <DialogFooter>
-                      <DialogClose asChild>
-                        <Button variant="outline">Cancel</Button>
-                      </DialogClose>
-                      <Button type="submit">Save changes</Button>
-                    </DialogFooter>
-                  </DialogContent>
-                </form>
+                <PricesComponent />
               </Dialog>
   )
 }
