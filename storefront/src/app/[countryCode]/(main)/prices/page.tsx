@@ -104,8 +104,8 @@ export default function Prices() {
 const [pricesOpen, setPricesOpen] = useState(true)
 
   return (
-    <div className="grid place-items-center min-h-[80vh]">
-      <Card>
+    <div className="grid place-items-center h-[100vh] ">
+      <Card className="p-6">
                      <form>
 
                        <div className="flex w-full max-w-sm flex-col gap-6">
