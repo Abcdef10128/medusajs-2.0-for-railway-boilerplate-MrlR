@@ -112,13 +112,13 @@ export default async function Prices() {
                   </DialogTrigger> */}
                   <DialogContent className="sm:max-w-[425px]">
                     <DialogTitle></DialogTitle>
-                    {/* <DialogHeader>
+                    <DialogHeader>
                       <DialogTitle>Edit profile</DialogTitle>
                       <DialogDescription>
                         Make changes to your profile here. Click save when you&apos;re
                         done.
                       </DialogDescription>
-                    </DialogHeader> */}
+                    </DialogHeader>
                     <div className="grid gap-4">
 
                     </div>
