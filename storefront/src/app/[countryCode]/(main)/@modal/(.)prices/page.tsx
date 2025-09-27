@@ -108,7 +108,7 @@ const [pricesOpen, setPricesOpen] = useState(true)
 
     <Dialog open={pricesOpen} onOpenChange={setPricesOpen}>
         
-            <DialogContent>
+            <DialogContent className="w-auto">
                 <PricesComponent />
             </DialogContent>
             
