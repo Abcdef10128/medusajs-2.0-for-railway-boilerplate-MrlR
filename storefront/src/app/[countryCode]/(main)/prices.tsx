@@ -105,7 +105,7 @@ const [pricesOpen, setPricesOpen] = useState(true)
 
   return (
       
-                     <form>
+                     
 
                        <div className="flex w-full max-w-sm flex-col gap-6">
                          <Tabs defaultValue="account">
@@ -216,7 +216,7 @@ const [pricesOpen, setPricesOpen] = useState(true)
                          </Tabs>
                        </div>
 
-                      </form>
+                      
 
                     
         
