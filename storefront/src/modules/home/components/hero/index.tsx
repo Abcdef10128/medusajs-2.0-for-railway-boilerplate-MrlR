@@ -15,7 +15,6 @@ import { Carousel,
   CarouselPrevious,
   type CarouselApi, } from "@lib/components/ui/carousel"
 import { Card, CardContent } from "@lib/components/ui/card"
-import Prices from "@modules/prices"
 
 
 const Hero = () => {
@@ -38,9 +37,7 @@ const Hero = () => {
   return (
         
     <div className="w-full">
-      <Prices 
 
-      />
       {/* Hero секция */}
       {/* <div className="h-[75vh] w-full border-b border-ui-border-base relative bg-ui-bg-subtle">
         <div className="absolute inset-0 z-10 flex flex-col justify-center items-center text-center small:p-32 gap-6">
