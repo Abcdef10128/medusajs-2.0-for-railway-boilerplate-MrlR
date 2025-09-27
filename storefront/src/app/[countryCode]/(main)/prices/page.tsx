@@ -105,7 +105,7 @@ export default function Prices() {
 const [pricesOpen, setPricesOpen] = useState(true)
 
   return (
-    <div className="absolute inset-0 flex items-center justify-center">
+    <div className="absolute inset-0 flex items-center justify-center h-[100vh]">
       <Card className="p-6">
                      <PricesComponent />
                     </Card>
