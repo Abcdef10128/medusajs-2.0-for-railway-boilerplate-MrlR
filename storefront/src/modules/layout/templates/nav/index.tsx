@@ -8,6 +8,17 @@ import {
   TableHeader,
   TableRow,
 } from "@lib/components/ui/table"
+
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from "@lib/components/ui/select"
+
 import Image from "next/image"
 const invoices = [
   {
@@ -124,7 +135,7 @@ export default async function Nav() {
                   <DialogTrigger asChild>
                     <LocalizedClientLink
                       className="hover:text-ui-fg-base"
-                      href="#"
+                      href="/"
                       data-testid="nav-account-link"
                     >
                       Ціни
@@ -178,6 +189,22 @@ export default async function Nav() {
                                   </TableRow>
                                 </TableFooter>
                               </Table>
+                              
+                              <Select>
+                              <SelectTrigger className="w-[180px]">
+                                <SelectValue placeholder="Select a fruit" />
+                              </SelectTrigger>
+                              <SelectContent>
+                                <SelectGroup>
+                                  <SelectLabel>Fruits</SelectLabel>
+                                  <SelectItem value="apple">Apple</SelectItem>
+                                  <SelectItem value="banana">Banana</SelectItem>
+                                  <SelectItem value="blueberry">Blueberry</SelectItem>
+                                  <SelectItem value="grapes">Grapes</SelectItem>
+                                  <SelectItem value="pineapple">Pineapple</SelectItem>
+                                </SelectGroup>
+                              </SelectContent>
+                            </Select>
                             {/* </CardContent> */}
                           
                           
