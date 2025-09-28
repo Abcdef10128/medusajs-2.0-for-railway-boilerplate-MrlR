@@ -209,19 +209,19 @@ const [quantity, setQuantity] = useState([50])
                                         </TableCell>
                                         <TableCell>
                                             {quantity[0] < 50 && (
-                                            <span>({(quantity[0] * 108).toFixed(2)} грн)</span>
+                                            <span>{(quantity[0] * 108).toFixed(0)} грн</span>
                                             )}
                                             {quantity[0] >= 50 && quantity[0] < 100 && (
-                                            <span>({(quantity[0] * 100).toFixed(2)} грн)</span>
+                                            <span>{(quantity[0] * 100).toFixed(0)} грн</span>
                                             )}
                                             {quantity[0] >= 100 && quantity[0] < 500 && (
-                                            <span>({(quantity[0] * 76).toFixed(2)} грн)</span>
+                                            <span>{(quantity[0] * 76).toFixed(0)} грн</span>
                                             )}
                                             {quantity[0] >= 500 && quantity[0] < 1000 && (
-                                            <span>({(quantity[0] * 70).toFixed(2)} грн)</span>
+                                            <span>{(quantity[0] * 70).toFixed(0)} грн</span>
                                             )}
                                             {quantity[0] >= 1000 && quantity[0] < 2500 && (
-                                            <span>({(quantity[0] * 64).toFixed(2)} грн)</span>
+                                            <span>{(quantity[0] * 64).toFixed(0)} грн</span>
                                             )}
 
                                         </TableCell>
