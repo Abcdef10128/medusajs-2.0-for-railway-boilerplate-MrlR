@@ -49,6 +49,12 @@ const invoices = [
     a4: "19000грн",
     a3: "35000грн",
   },  {
+    amount: "1000",
+    a6: "11000грн",
+    a5: "19000грн",
+    a4: "35000грн",
+    a3: "64000грн",
+  }, {
     amount: "2500",
     a6: "24000грн",
     a5: "44000грн",
@@ -135,16 +141,102 @@ const [quantity, setQuantity] = useState([50])
                                          <TableCell>{invoice.a5}</TableCell>
                                          <TableCell>{invoice.a4}</TableCell>
                                          <TableCell>{invoice.a3}</TableCell>
-                                         {/* <TableCell className="text-right">{invoice.amount}</TableCell> */}
                                        </TableRow>
                                      ))}
                                    </TableBody>
                                    <TableFooter>
                                      <TableRow>
-                                       <TableCell colSpan={4}>Total</TableCell>
-                                       <TableCell className="text-right">
-                                        {quantity[0]} шт. (${(quantity[0] * 1).toFixed(2)})
+                                       <TableCell >
+                                        {quantity[0]} шт. 
                                         </TableCell>
+
+
+                                        
+                                        <TableCell>
+                                            {quantity[0] < 50 && (
+                                            <span>({(quantity[0] * 28).toFixed(2)} грн)</span>
+                                            )}
+                                            {quantity[0] >= 50 && quantity[0] < 100 && (
+                                            <span>({(quantity[0] * 20).toFixed(2)} грн)</span>
+                                            )}
+                                            {quantity[0] >= 100 && quantity[0] < 500 && (
+                                            <span>({(quantity[0] * 14).toFixed(2)} грн)</span>
+                                            )}
+                                            {quantity[0] >= 500 && quantity[0] < 1000 && (
+                                            <span>({(quantity[0] * 12,5).toFixed(2)} грн)</span>
+                                            )}
+                                            {quantity[0] >= 1000 && quantity[0] < 2500 && (
+                                            <span>({(quantity[0] * 10).toFixed(2)} грн)</span>
+                                            )}
+
+                                        </TableCell>
+
+                                        <TableCell>
+                                            {quantity[0] < 50 && (
+                                            <span>({(quantity[0] * 46).toFixed(2)} грн)</span>
+                                            )}
+                                            {quantity[0] >= 50 && quantity[0] < 100 && (
+                                            <span>({(quantity[0] * 30).toFixed(2)} грн)</span>
+                                            )}
+                                            {quantity[0] >= 100 && quantity[0] < 500 && (
+                                            <span>({(quantity[0] * 25).toFixed(2)} грн)</span>
+                                            )}
+                                            {quantity[0] >= 500 && quantity[0] < 1000 && (
+                                            <span>({(quantity[0] * 22).toFixed(2)} грн)</span>
+                                            )}
+                                            {quantity[0] >= 1000 && quantity[0] < 2500 && (
+                                            <span>({(quantity[0] * 19).toFixed(2)} грн)</span>
+                                            )}
+
+                                        </TableCell>
+                                        <TableCell>
+                                            {quantity[0] < 50 && (
+                                            <span>({(quantity[0] * 64).toFixed(2)} грн)</span>
+                                            )}
+                                            {quantity[0] >= 50 && quantity[0] < 100 && (
+                                            <span>({(quantity[0] * 54).toFixed(2)} грн)</span>
+                                            )}
+                                            {quantity[0] >= 100 && quantity[0] < 500 && (
+                                            <span>({(quantity[0] * 44).toFixed(2)} грн)</span>
+                                            )}
+                                            {quantity[0] >= 500 && quantity[0] < 1000 && (
+                                            <span>({(quantity[0] * 38).toFixed(2)} грн)</span>
+                                            )}
+                                            {quantity[0] >= 1000 && quantity[0] < 2500 && (
+                                            <span>({(quantity[0] * 35).toFixed(2)} грн)</span>
+                                            )}
+
+                                        </TableCell>
+                                        <TableCell>
+                                            {quantity[0] < 50 && (
+                                            <span>({(quantity[0] * 108).toFixed(2)} грн)</span>
+                                            )}
+                                            {quantity[0] >= 50 && quantity[0] < 100 && (
+                                            <span>({(quantity[0] * 100).toFixed(2)} грн)</span>
+                                            )}
+                                            {quantity[0] >= 100 && quantity[0] < 500 && (
+                                            <span>({(quantity[0] * 76).toFixed(2)} грн)</span>
+                                            )}
+                                            {quantity[0] >= 500 && quantity[0] < 1000 && (
+                                            <span>({(quantity[0] * 70).toFixed(2)} грн)</span>
+                                            )}
+                                            {quantity[0] >= 1000 && quantity[0] < 2500 && (
+                                            <span>({(quantity[0] * 64).toFixed(2)} грн)</span>
+                                            )}
+
+                                        </TableCell>
+                                        {quantity[0]} шт. (${(quantity[0] * 1).toFixed(2)})
+                                       
+                                                                           
+
+
+                                        {quantity[0] >= 50 && quantity[0] < 100 && <span className="text-yellow-500">⚠️ Почти скидка</span>}
+                                        {quantity[0] >= 100 && quantity[0] < 500 && <span className="text-blue-500">🎉 Скидка 5%</span>}
+                                        {quantity[0] >= 500 && quantity[0] < 1000 && <span className="text-green-500">🎉 Скидка 10%</span>}
+                                        {quantity[0] >= 1000 && <span className="text-green-700">🔥 Максимальная скидка!</span>}
+                                        (                                      
+                                        {(quantity[0] * 1).toFixed(2)}грн)
+                                        
                                      </TableRow>
                                    </TableFooter>
                                  </Table>
@@ -156,6 +248,7 @@ const [quantity, setQuantity] = useState([50])
                                     defaultValue={[50]}
                                     max={2500}
                                     step={1}
+                                    min={5}
                                     className={cn("w-full", className)}
                                     {...props}
                                 />
