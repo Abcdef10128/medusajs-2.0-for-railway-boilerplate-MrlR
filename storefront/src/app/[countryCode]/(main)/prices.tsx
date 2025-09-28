@@ -100,7 +100,11 @@ import { cn } from "@lib/lib/utils"
 import { Slider } from "@lib/components/ui/slider"
 type SliderProps = React.ComponentProps<typeof Slider>
 
-
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@lib/components/ui/tooltip"
 import { useState } from "react"
 export default function PricesComponent({ className, ...props }: SliderProps) {
 const [pricesOpen, setPricesOpen] = useState(true)
@@ -111,10 +115,10 @@ const [pricesOpen, setPricesOpen] = useState(true)
 
                        <div className="flex max-w-sm flex-col gap-6">
                          <Tabs defaultValue="account">
-                           <TabsList>
+                           {/* <TabsList>
                              <TabsTrigger value="account">Account</TabsTrigger>
                              <TabsTrigger value="password">Password</TabsTrigger>
-                           </TabsList>
+                           </TabsList> */}
                            <TabsContent value="account" className="flex flex-col gap-2">
                              
                                {/* <CardContent> */}
@@ -146,14 +150,22 @@ const [pricesOpen, setPricesOpen] = useState(true)
                                      </TableRow>
                                    </TableFooter>
                                  </Table>
-   
+                                <Tooltip>
+                                <TooltipTrigger>
+                                    
                                 <Slider
                                     defaultValue={[50]}
                                     max={100}
                                     step={1}
-                                    className={cn("w-[60%]", className)}
+                                    className={cn("w-full", className)}
                                     {...props}
                                 />
+                                </TooltipTrigger>
+                                <TooltipContent>
+                                    <p>Add to library</p>
+                                </TooltipContent>
+                                </Tooltip>
+
    
                                <Select>
                                 <Label>Матеріал</Label>
