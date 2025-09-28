@@ -1,185 +1,340 @@
 "use client"
 
-import { useState, useMemo } from "react"
+import {
+  Table,
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableFooter,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@lib/components/ui/table"
+
 import {
   Select,
   SelectContent,
   SelectGroup,
   SelectItem,
+  SelectLabel,
   SelectTrigger,
   SelectValue,
 } from "@lib/components/ui/select"
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@lib/components/ui/table"
-import { Label } from "@lib/components/ui/label"
 
-// Базовые цены
-const baseInvoices = [
+import Image from "next/image"
+const invoices = [
   {
     amount: "10",
-    a6: 550,
-    a5: 700,
-    a4: 1000,
-    a3: 1250,
+    a6: "550грн",
+    a5: "700грн",
+    a4: "1000грн",
+    a3: "1250грн",
   },
-  {
+    {
     amount: "50",
-    a6: 1200,
-    a5: 1600,
-    a4: 2800,
-    a3: 5000,
-  },
-  {
+    a6: "1200грн",
+    a5: "1600грн",
+    a4: "2800грн",
+    a3: "5000грн",
+  },  {
     amount: "100",
-    a6: 1650,
-    a5: 2850,
-    a4: 5000,
-    a3: 8750,
-  },
-  {
+    a6: "1650грн",
+    a5: "2850грн",
+    a4: "5000грн",
+    a3: "8750грн",
+  },  {
     amount: "500",
-    a6: 6400,
-    a5: 11000,
-    a4: 19000,
-    a3: 35000,
-  },
-  {
+    a6: "6400грн",
+    a5: "11000грн",
+    a4: "19000грн",
+    a3: "35000грн",
+  },  {
     amount: "1000",
-    a6: 11000,
-    a5: 19000,
-    a4: 35000,
-    a3: 64000,
-  },
-  {
+    a6: "11000грн",
+    a5: "19000грн",
+    a4: "35000грн",
+    a3: "64000грн",
+  }, {
     amount: "2500",
-    a6: 24000,
-    a5: 44000,
-    a4: 80000,
-    a3: 145000,
+    a6: "24000грн",
+    a5: "44000грн",
+    a4: "80000грн",
+    a3: "145000грн",
   },
+
 ]
 
-// Доплаты за материал (за штуку)
-const materialPrices = {
-  "self-adhesive": { a6: 0, a5: 0, a4: 0, a3: 0 },
-  "white-film": { a6: 2, a5: 4, a4: 8, a3: 16 },
-  "clear-film": { a6: 6, a5: 11, a4: 23, a3: 46 },
-  "silver-film": { a6: 12, a5: 24, a4: 48, a3: 96 },
-  "gold-film": { a6: 12, a5: 24, a4: 48, a3: 96 },
-}
+import { Button } from "@lib/components/ui/button"
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@lib/components/ui/dialog"
+import { AppWindowIcon, CodeIcon } from "lucide-react"
 
-// Доплаты за ламинацию (за штуку)
-const laminationPrices = {
-  "glossy": { a6: 0, a5: 0, a4: 0, a3: 0 },
-  "matte": { a6: 1, a5: 1, a4: 1, a3: 1 },
-  "soft-touch": { a6: 14, a5: 14, a4: 14, a3: 14 },
-}
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@lib/components/ui/card"
+import { Input } from "@lib/components/ui/input"
+import { Label } from "@lib/components/ui/label"
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from "@lib/components/ui/tabs"
+import { cn } from "@lib/lib/utils"
+import { Slider } from "@lib/components/ui/slider"
+type SliderProps = React.ComponentProps<typeof Slider>
 
-export default function PriceCalculator() {
-  const [selectedMaterial, setSelectedMaterial] = useState("self-adhesive")
-  const [selectedLamination, setSelectedLamination] = useState("glossy")
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@lib/components/ui/tooltip"
+import { useState } from "react"
 
-  // Пересчет цен с учетом выбранных опций
-  const calculatedInvoices = useMemo(() => {
-    return baseInvoices.map(invoice => {
-      const amount = parseInt(invoice.amount)
-      const materialExtra = materialPrices[selectedMaterial] || materialPrices["self-adhesive"]
-      const laminationExtra = laminationPrices[selectedLamination] || laminationPrices["glossy"]
 
-      return {
-        amount: invoice.amount,
-        a6: invoice.a6 + (materialExtra.a6 + laminationExtra.a6) * amount,
-        a5: invoice.a5 + (materialExtra.a5 + laminationExtra.a5) * amount,
-        a4: invoice.a4 + (materialExtra.a4 + laminationExtra.a4) * amount,
-        a3: invoice.a3 + (materialExtra.a3 + laminationExtra.a3) * amount,
-      }
-    })
-  }, [selectedMaterial, selectedLamination])
 
+export default function PricesComponent({ className, ...props }: SliderProps) {
+const [pricesOpen, setPricesOpen] = useState(true)
+const [quantity, setQuantity] = useState([50])
   return (
-    <div className="space-y-6">
-      {/* Селекторы */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div>
-          <Select value={selectedMaterial} onValueChange={setSelectedMaterial}>
-            <Label>Матеріал</Label>
-            <SelectTrigger className="w-full">
-              <SelectValue placeholder="Матеріал" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectGroup>
-                <SelectItem value="self-adhesive">
-                  Самоклеючий папір
-                </SelectItem>
-                <SelectItem value="white-film">
-                  Плівка біла (A6 - +2грн/шт, А5 - +4грн/шт, A4 - +8грн/шт, А3 - +16грн/шт)
-                </SelectItem>
-                <SelectItem value="clear-film">
-                  Плівка прозора (A6 - +6грн/шт, А5 - +11грн/шт, A4 - +23грн/шт, А3 - +46грн/шт)
-                </SelectItem>
-                <SelectItem value="silver-film">
-                  Плівка срібло (A6 - +12грн/шт, А5 - +24грн/шт, A4 - +48грн/шт, А3 - +96грн/шт)
-                </SelectItem>
-                <SelectItem value="gold-film">
-                  Плівка золото (A6 - +12грн/шт, А5 - +24грн/шт, A4 - +48грн/шт, А3 - +96грн/шт)
-                </SelectItem>
-              </SelectGroup>
-            </SelectContent>
-          </Select>
-        </div>
+      
+                     
 
-        <div>
-          <Select value={selectedLamination} onValueChange={setSelectedLamination}>
-            <Label>Ламінація</Label>
-            <SelectTrigger className="w-full">
-              <SelectValue placeholder="Ламінація" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectGroup>
-                <SelectItem value="glossy">
-                  Глінсова (A6 - +0грн/шт, А5 - +0грн/шт, A4 - +0грн/шт, А3 - +0грн/шт)
-                </SelectItem>
-                <SelectItem value="matte">
-                  Матова (A6 - +1грн/шт, А5 - +1грн/шт, A4 - +1грн/шт, А3 - +1грн/шт)
-                </SelectItem>
-                <SelectItem value="soft-touch">
-                  Soft touch (A6 - +14грн/шт, А5 - +14грн/шт, A4 - +14грн/шт, А3 - +14грн/шт)
-                </SelectItem>
-              </SelectGroup>
-            </SelectContent>
-          </Select>
-        </div>
-      </div>
+                       <div className="flex max-w-sm flex-col gap-6">
+                         <Tabs defaultValue="account" className="pt-6">
+                           {/* <TabsList>
+                             <TabsTrigger value="account">Account</TabsTrigger>
+                             <TabsTrigger value="password">Password</TabsTrigger>
+                           </TabsList> */}
+                           <TabsContent value="account" className="flex flex-col gap-5">
+                             
+                               {/* <CardContent> */}
+                                 <Table className="border-3">
+                                   {/* <TableCaption>A list of your recent invoices.</TableCaption> */}
+                                   <TableHeader>
+                                     <TableRow>
+                                       <TableHead className="w-[100px]"></TableHead>
+                                       <TableHead>A6</TableHead>
+                                       <TableHead>A5</TableHead>
+                                       <TableHead>A4</TableHead>
+                                       <TableHead className="text-right">A3</TableHead>
+                                     </TableRow>
+                                   </TableHeader>
+                                   <TableBody>
+                                     {invoices.map((invoice) => (
+                                       <TableRow key={invoice.amount}>
+                                         <TableCell className="font-medium">{invoice.amount}</TableCell>
+                                         <TableCell>{invoice.a6}</TableCell>
+                                         <TableCell>{invoice.a5}</TableCell>
+                                         <TableCell>{invoice.a4}</TableCell>
+                                         <TableCell>{invoice.a3}</TableCell>
+                                       </TableRow>
+                                     ))}
+                                   </TableBody>
+                                   {/* <TableFooter>
+                                     <TableRow>
+                                       <TableCell >
+                                        {quantity[0]} шт. 
+                                        </TableCell>
 
-      {/* Таблица с динамическими ценами */}
-      <Table className="border-3">
-        <TableHeader>
-          <TableRow>
-            <TableHead className="w-[100px]">Количество</TableHead>
-            <TableHead>A6</TableHead>
-            <TableHead>A5</TableHead>
-            <TableHead>A4</TableHead>
-            <TableHead>A3</TableHead>
-          </TableRow>
-        </TableHeader>
-        <TableBody>
-          {calculatedInvoices.map((invoice) => (
-            <TableRow key={invoice.amount}>
-              <TableCell className="font-medium">{invoice.amount}</TableCell>
-              <TableCell>{invoice.a6}грн</TableCell>
-              <TableCell>{invoice.a5}грн</TableCell>
-              <TableCell>{invoice.a4}грн</TableCell>
-              <TableCell>{invoice.a3}грн</TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </div>
+
+                                        
+                                        <TableCell>
+                                            {quantity[0] < 50 && (
+                                            <span>{(quantity[0] * 28)} грн</span>
+                                            )}
+                                            {quantity[0] >= 50 && quantity[0] < 100 && (
+                                            <span>{(quantity[0] * 20)} грн</span>
+                                            )}
+                                            {quantity[0] >= 100 && quantity[0] < 500 && (
+                                            <span>{(quantity[0] * 14)} грн</span>
+                                            )}
+                                            {quantity[0] >= 500 && quantity[0] < 1000 && (
+                                            <span>{(quantity[0] * 11)} грн</span>
+                                            )}
+                                            {quantity[0] >= 1000 && quantity[0] <= 2500 && (
+                                            <span>{(quantity[0] * 10)} грн</span>
+                                            )}
+
+                                        </TableCell>
+
+                                        <TableCell>
+                                            {quantity[0] < 50 && (
+                                            <span>{(quantity[0] * 46)} грн</span>
+                                            )}
+                                            {quantity[0] >= 50 && quantity[0] < 100 && (
+                                            <span>{(quantity[0] * 30)} грн</span>
+                                            )}
+                                            {quantity[0] >= 100 && quantity[0] < 500 && (
+                                            <span>{(quantity[0] * 25)} грн</span>
+                                            )}
+                                            {quantity[0] >= 500 && quantity[0] < 1000 && (
+                                            <span>{(quantity[0] * 22)} грн</span>
+                                            )}
+                                            {quantity[0] >= 1000 && quantity[0] <= 2500 && (
+                                            <span>{(quantity[0] * 18)} грн</span>
+                                            )}
+
+                                        </TableCell>
+                                        <TableCell>
+                                            {quantity[0] < 50 && (
+                                            <span>{(quantity[0] * 64)} грн</span>
+                                            )}
+                                            {quantity[0] >= 50 && quantity[0] < 100 && (
+                                            <span>{(quantity[0] * 54)} грн</span>
+                                            )}
+                                            {quantity[0] >= 100 && quantity[0] < 500 && (
+                                            <span>{(quantity[0] * 44)} грн</span>
+                                            )}
+                                            {quantity[0] >= 500 && quantity[0] < 1000 && (
+                                            <span>{(quantity[0] * 38)} грн</span>
+                                            )}
+                                            {quantity[0] >= 1000 && quantity[0] <= 2500 && (
+                                            <span>{(quantity[0] * 34)} грн</span>
+                                            )}
+
+                                        </TableCell>
+                                        <TableCell>
+                                            {quantity[0] < 50 && (
+                                            <span>{(quantity[0] * 108)} грн</span>
+                                            )}
+                                            {quantity[0] >= 50 && quantity[0] < 100 && (
+                                            <span>{(quantity[0] * 100)} грн</span>
+                                            )}
+                                            {quantity[0] >= 100 && quantity[0] < 500 && (
+                                            <span>{(quantity[0] * 76)} грн</span>
+                                            )}
+                                            {quantity[0] >= 500 && quantity[0] < 1000 && (
+                                            <span>{(quantity[0] * 70)} грн</span>
+                                            )}
+                                            {quantity[0] >= 1000 && quantity[0] <= 2500 && (
+                                            <span>{(quantity[0] * 62)} грн</span>
+                                            )}
+
+                                        </TableCell>
+
+                                        
+                                     </TableRow>
+                                   </TableFooter> */}
+                                 </Table>
+
+{/*                                     
+                                <Slider
+                                    value={quantity}
+                                            onValueChange={setQuantity}
+                                    defaultValue={[50]}
+                                    max={2500}
+                                    step={1}
+                                    min={5}
+                                    className={cn("w-full", className)}
+                                    {...props}
+                                /> */}
+
+                                <div>
+                               <Select>
+                                <Label>Матеріал</Label>
+                                 <SelectTrigger className="w-full">
+                                   <SelectValue placeholder="Матеріал" />
+                                 </SelectTrigger>
+                                 <SelectContent>
+                                   <SelectGroup>
+                                     {/* <SelectLabel>Fruits</SelectLabel> */}
+                                     <SelectItem value="apple">Самоклеючий папір</SelectItem>
+                                     <SelectItem value="banana">Плівка біла</SelectItem>
+                                     <SelectItem value="blueberry">Плівка прозора</SelectItem>
+                                     <SelectItem value="grapes">Плівка срібло</SelectItem>
+                                     <SelectItem value="pineapple">Плівка золото</SelectItem>
+                                   </SelectGroup>
+                                 </SelectContent>
+                               </Select>
+                                </div>
+
+   
+                                <div>
+                                <Select>
+                                    <Label>Ламінація</Label>
+                                 <SelectTrigger className="w-full">
+                                   <SelectValue placeholder="Ламінація" />
+                                 </SelectTrigger>
+                                 <SelectContent>
+                                   <SelectGroup>
+                                     {/* <SelectLabel>Fruits</SelectLabel> */}
+                                     <SelectItem value="apple">Глінсова</SelectItem>
+                                     <SelectItem value="banana">Матова</SelectItem>
+                                     <SelectItem value="blueberry">Soft touch</SelectItem>
+   
+                                   </SelectGroup>
+                                 </SelectContent>
+                               </Select> 
+                                    </div>   
+   
+
+   
+
+                             
+                           </TabsContent>
+                           <TabsContent value="password">
+                             <Table>
+                             <TableCaption>A list of your recent invoices.</TableCaption>
+                             <TableHeader>
+                               <TableRow>
+                                 <TableHead className="w-[100px]">Invoice</TableHead>
+                                 <TableHead>Status</TableHead>
+                                 <TableHead>Method</TableHead>
+                                 <TableHead className="text-right">Amount</TableHead>
+                               </TableRow>
+                             </TableHeader>
+                             <TableBody>
+                               {invoices.map((invoice) => (
+                                //  <TableRow key={invoice.invoice}>
+                                //    <TableCell className="font-medium">{invoice.invoice}</TableCell>
+                                //    <TableCell>{invoice.paymentStatus}</TableCell>
+                                //    <TableCell>{invoice.paymentMethod}</TableCell>
+                                //    <TableCell className="text-right">{invoice.totalAmount}</TableCell>
+                                //  </TableRow>
+                                <TableRow key={invoice.amount}>
+                                         <TableCell className="font-medium">{invoice.amount}</TableCell>
+                                         <TableCell>{invoice.a6}</TableCell>
+                                         <TableCell>{invoice.a5}</TableCell>
+                                         <TableCell>{invoice.a4}</TableCell>
+                                         <TableCell>{invoice.a3}</TableCell>
+                                         <TableCell className="text-right">{invoice.amount}</TableCell>
+                                       </TableRow>
+                               ))}
+                             </TableBody>
+                             <TableFooter>
+                               <TableRow>
+                                 <TableCell colSpan={3}>Total</TableCell>
+                                 <TableCell className="text-right">$2,500.00</TableCell>
+                               </TableRow>
+                             </TableFooter>
+                           </Table>
+
+                           </TabsContent>
+                         </Tabs>
+                       </div>
+
+                      
+
+                    
+        
+
+               
   )
 }
+
+
+
