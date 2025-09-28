@@ -101,12 +101,22 @@ import {
 
 import { useState } from "react"
 import PricesComponent from "../../prices"
-export default function Prices() {
-const [pricesOpen, setPricesOpen] = useState(true)
+import { useRouter } from "next/navigation"
 
+export default function Prices() {
+
+  const router = useRouter()
+  const [open, setOpen] = useState(false)
+
+  const handleOpenChange = (isOpen: boolean) => {
+  if (!isOpen) {
+    router.back()
+  }
+  setOpen(isOpen)
+}
   return (
 
-    <Dialog open={pricesOpen} onOpenChange={setPricesOpen}>
+    <Dialog open={open} onOpenChange={setOpen}>
         
             <DialogContent className="w-auto">
                 <PricesComponent />
