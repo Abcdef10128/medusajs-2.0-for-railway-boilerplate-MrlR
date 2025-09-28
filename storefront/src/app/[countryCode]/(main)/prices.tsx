@@ -113,7 +113,7 @@ const [pricesOpen, setPricesOpen] = useState(true)
                              <TabsTrigger value="account">Account</TabsTrigger>
                              <TabsTrigger value="password">Password</TabsTrigger>
                            </TabsList>
-                           <TabsContent value="account">
+                           <TabsContent value="account" className="gap-4">
                              
                                {/* <CardContent> */}
                                  <Table className="border-3">
@@ -164,9 +164,10 @@ const [pricesOpen, setPricesOpen] = useState(true)
                                  </SelectContent>
                                </Select>
    
-                                   <Label>Ламінація</Label>
+                                   
    
                                  <Select>
+                                    <Label>Ламінація</Label>
                                  <SelectTrigger className="w-full">
                                    <SelectValue placeholder="Ламінація" />
                                  </SelectTrigger>
