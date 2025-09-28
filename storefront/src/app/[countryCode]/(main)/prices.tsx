@@ -242,4 +242,3 @@ const [quantity, setQuantity] = useState([50])
                
   )
 }
-
