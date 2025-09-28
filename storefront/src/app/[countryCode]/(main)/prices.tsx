@@ -41,6 +41,7 @@ import { cn } from "@lib/lib/utils"
 
 
 import { useMemo, useState } from "react"
+import { Mail } from "lucide-react"
 
 
 export default function PricesComponent() {
@@ -142,17 +143,17 @@ const calculatedInvoices = useMemo(() => {
                                        <TableHead>A6</TableHead>
                                        <TableHead>A5</TableHead>
                                        <TableHead>A4</TableHead>
-                                       <TableHead className="text-right">A3</TableHead>
+                                       <TableHead >A3</TableHead>
                                      </TableRow>
                                    </TableHeader>
                                    <TableBody>
                                      {calculatedInvoices.map((invoice) => (
                                        <TableRow key={invoice.amount}>
                                          <TableCell className="font-medium">{invoice.amount}</TableCell>
-                                         <TableCell>{invoice.a6}</TableCell>
-                                         <TableCell>{invoice.a5}</TableCell>
-                                         <TableCell>{invoice.a4}</TableCell>
-                                         <TableCell>{invoice.a3}</TableCell>
+                                         <TableCell>{invoice.a6} грн</TableCell>
+                                         <TableCell>{invoice.a5} грн</TableCell>
+                                         <TableCell>{invoice.a4} грн</TableCell>
+                                         <TableCell>{invoice.a3} грн</TableCell>
                                        </TableRow>
                                      ))}
                                    </TableBody>
@@ -228,6 +229,7 @@ const calculatedInvoices = useMemo(() => {
 
                            </TabsContent>
                          </Tabs>
+                         <Button>Замовити <Mail/></Button>
                        </div>
 
                       
