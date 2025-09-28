@@ -51,41 +51,41 @@ export default function PricesComponent() {
 const baseInvoices = [
   {
     amount: "10",
-    a6: "550грн",
-    a5: "700грн",
-    a4: "1000грн",
-    a3: "1250грн",
+    a6: "550",
+    a5: "700",
+    a4: "1000",
+    a3: "1250",
   },
     {
     amount: "50",
-    a6: "1200грн",
-    a5: "1600грн",
-    a4: "2800грн",
-    a3: "5000грн",
+    a6: "1200",
+    a5: "1600",
+    a4: "2800",
+    a3: "5000",
   },  {
     amount: "100",
-    a6: "1650грн",
-    a5: "2850грн",
-    a4: "5000грн",
-    a3: "8750грн",
+    a6: "1650",
+    a5: "2850",
+    a4: "5000",
+    a3: "8750",
   },  {
     amount: "500",
-    a6: "6400грн",
-    a5: "11000грн",
-    a4: "19000грн",
-    a3: "35000грн",
+    a6: "6400",
+    a5: "11000",
+    a4: "19000",
+    a3: "35000",
   },  {
     amount: "1000",
-    a6: "11000грн",
-    a5: "19000грн",
-    a4: "35000грн",
-    a3: "64000грн",
+    a6: "11000",
+    a5: "19000",
+    a4: "35000",
+    a3: "64000",
   }, {
     amount: "2500",
-    a6: "24000грн",
-    a5: "44000грн",
-    a4: "80000грн",
-    a3: "145000грн",
+    a6: "24000",
+    a5: "44000",
+    a4: "80000",
+    a3: "145000",
   },
 
 ]
@@ -156,104 +156,10 @@ const calculatedInvoices = useMemo(() => {
                                        </TableRow>
                                      ))}
                                    </TableBody>
-                                   {/* <TableFooter>
-                                     <TableRow>
-                                       <TableCell >
-                                        {quantity[0]} шт. 
-                                        </TableCell>
 
-
-                                        
-                                        <TableCell>
-                                            {quantity[0] < 50 && (
-                                            <span>{(quantity[0] * 28)} грн</span>
-                                            )}
-                                            {quantity[0] >= 50 && quantity[0] < 100 && (
-                                            <span>{(quantity[0] * 20)} грн</span>
-                                            )}
-                                            {quantity[0] >= 100 && quantity[0] < 500 && (
-                                            <span>{(quantity[0] * 14)} грн</span>
-                                            )}
-                                            {quantity[0] >= 500 && quantity[0] < 1000 && (
-                                            <span>{(quantity[0] * 11)} грн</span>
-                                            )}
-                                            {quantity[0] >= 1000 && quantity[0] <= 2500 && (
-                                            <span>{(quantity[0] * 10)} грн</span>
-                                            )}
-
-                                        </TableCell>
-
-                                        <TableCell>
-                                            {quantity[0] < 50 && (
-                                            <span>{(quantity[0] * 46)} грн</span>
-                                            )}
-                                            {quantity[0] >= 50 && quantity[0] < 100 && (
-                                            <span>{(quantity[0] * 30)} грн</span>
-                                            )}
-                                            {quantity[0] >= 100 && quantity[0] < 500 && (
-                                            <span>{(quantity[0] * 25)} грн</span>
-                                            )}
-                                            {quantity[0] >= 500 && quantity[0] < 1000 && (
-                                            <span>{(quantity[0] * 22)} грн</span>
-                                            )}
-                                            {quantity[0] >= 1000 && quantity[0] <= 2500 && (
-                                            <span>{(quantity[0] * 18)} грн</span>
-                                            )}
-
-                                        </TableCell>
-                                        <TableCell>
-                                            {quantity[0] < 50 && (
-                                            <span>{(quantity[0] * 64)} грн</span>
-                                            )}
-                                            {quantity[0] >= 50 && quantity[0] < 100 && (
-                                            <span>{(quantity[0] * 54)} грн</span>
-                                            )}
-                                            {quantity[0] >= 100 && quantity[0] < 500 && (
-                                            <span>{(quantity[0] * 44)} грн</span>
-                                            )}
-                                            {quantity[0] >= 500 && quantity[0] < 1000 && (
-                                            <span>{(quantity[0] * 38)} грн</span>
-                                            )}
-                                            {quantity[0] >= 1000 && quantity[0] <= 2500 && (
-                                            <span>{(quantity[0] * 34)} грн</span>
-                                            )}
-
-                                        </TableCell>
-                                        <TableCell>
-                                            {quantity[0] < 50 && (
-                                            <span>{(quantity[0] * 108)} грн</span>
-                                            )}
-                                            {quantity[0] >= 50 && quantity[0] < 100 && (
-                                            <span>{(quantity[0] * 100)} грн</span>
-                                            )}
-                                            {quantity[0] >= 100 && quantity[0] < 500 && (
-                                            <span>{(quantity[0] * 76)} грн</span>
-                                            )}
-                                            {quantity[0] >= 500 && quantity[0] < 1000 && (
-                                            <span>{(quantity[0] * 70)} грн</span>
-                                            )}
-                                            {quantity[0] >= 1000 && quantity[0] <= 2500 && (
-                                            <span>{(quantity[0] * 62)} грн</span>
-                                            )}
-
-                                        </TableCell>
-
-                                        
-                                     </TableRow>
-                                   </TableFooter> */}
                                  </Table>
 
-{/*                                     
-                                <Slider
-                                    value={quantity}
-                                            onValueChange={setQuantity}
-                                    defaultValue={[50]}
-                                    max={2500}
-                                    step={1}
-                                    min={5}
-                                    className={cn("w-full", className)}
-                                    {...props}
-                                /> */}
+
 
                                 <div>
                                <Select value={selectedMaterial} onValueChange={setSelectedMaterial}>
