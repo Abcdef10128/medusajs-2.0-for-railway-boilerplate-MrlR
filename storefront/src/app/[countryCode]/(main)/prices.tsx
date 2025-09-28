@@ -145,9 +145,10 @@ const [pricesOpen, setPricesOpen] = useState(true)
                                    </TableFooter>
                                  </Table>
    
-                               <Label>Матеріал</Label>
+                               
    
                                <Select>
+                                <Label>Матеріал</Label>
                                  <SelectTrigger className="w-full">
                                    <SelectValue placeholder="Матеріал" />
                                  </SelectTrigger>
