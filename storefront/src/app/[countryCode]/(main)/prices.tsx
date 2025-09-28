@@ -132,7 +132,7 @@ const [pricesOpen, setPricesOpen] = useState(true)
                                          <TableCell>{invoice.a5}</TableCell>
                                          <TableCell>{invoice.a4}</TableCell>
                                          <TableCell>{invoice.a3}</TableCell>
-                                         <TableCell className="text-right">{invoice.amount}</TableCell>
+                                         {/* <TableCell className="text-right">{invoice.amount}</TableCell> */}
                                        </TableRow>
                                      ))}
                                    </TableBody>
