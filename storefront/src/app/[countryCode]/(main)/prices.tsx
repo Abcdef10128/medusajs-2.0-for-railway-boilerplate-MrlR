@@ -130,7 +130,7 @@ const [quantity, setQuantity] = useState([50])
                                        <TableHead>A6</TableHead>
                                        <TableHead>A5</TableHead>
                                        <TableHead>A4</TableHead>
-                                       <TableHead className="text-right">A3</TableHead>
+                                       <TableHead >A3</TableHead>
                                      </TableRow>
                                    </TableHeader>
                                    <TableBody>
@@ -325,6 +325,7 @@ const [quantity, setQuantity] = useState([50])
 
                            </TabsContent>
                          </Tabs>
+                         <Button>Замовити </Button>
                        </div>
 
                       
