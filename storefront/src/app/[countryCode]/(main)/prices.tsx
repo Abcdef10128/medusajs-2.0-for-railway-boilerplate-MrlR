@@ -154,56 +154,56 @@ const [quantity, setQuantity] = useState([50])
                                         
                                         <TableCell>
                                             {quantity[0] < 50 && (
-                                            <span>({(quantity[0] * 28).toFixed(2)} грн)</span>
+                                            <span>{(quantity[0] * 28).toFixed(2)} грн</span>
                                             )}
                                             {quantity[0] >= 50 && quantity[0] < 100 && (
-                                            <span>({(quantity[0] * 20).toFixed(2)} грн)</span>
+                                            <span>{(quantity[0] * 20).toFixed(2)} грн</span>
                                             )}
                                             {quantity[0] >= 100 && quantity[0] < 500 && (
-                                            <span>({(quantity[0] * 14).toFixed(2)} грн)</span>
+                                            <span>{(quantity[0] * 14).toFixed(2)} грн</span>
                                             )}
                                             {quantity[0] >= 500 && quantity[0] < 1000 && (
-                                            <span>({(quantity[0] * 12,5).toFixed(2)} грн)</span>
+                                            <span>{(quantity[0] * 12).toFixed(2)} грн</span>
                                             )}
                                             {quantity[0] >= 1000 && quantity[0] < 2500 && (
-                                            <span>({(quantity[0] * 10).toFixed(2)} грн)</span>
+                                            <span>{(quantity[0] * 10).toFixed(2)} грн</span>
                                             )}
 
                                         </TableCell>
 
                                         <TableCell>
                                             {quantity[0] < 50 && (
-                                            <span>({(quantity[0] * 46).toFixed(2)} грн)</span>
+                                            <span>{(quantity[0] * 46).toFixed(2)} грн</span>
                                             )}
                                             {quantity[0] >= 50 && quantity[0] < 100 && (
-                                            <span>({(quantity[0] * 30).toFixed(2)} грн)</span>
+                                            <span>{(quantity[0] * 30).toFixed(2)} грн</span>
                                             )}
                                             {quantity[0] >= 100 && quantity[0] < 500 && (
-                                            <span>({(quantity[0] * 25).toFixed(2)} грн)</span>
+                                            <span>{(quantity[0] * 25).toFixed(2)} грн</span>
                                             )}
                                             {quantity[0] >= 500 && quantity[0] < 1000 && (
-                                            <span>({(quantity[0] * 22).toFixed(2)} грн)</span>
+                                            <span>{(quantity[0] * 22).toFixed(2)} грн</span>
                                             )}
                                             {quantity[0] >= 1000 && quantity[0] < 2500 && (
-                                            <span>({(quantity[0] * 19).toFixed(2)} грн)</span>
+                                            <span>{(quantity[0] * 19).toFixed(2)} грн</span>
                                             )}
 
                                         </TableCell>
                                         <TableCell>
                                             {quantity[0] < 50 && (
-                                            <span>({(quantity[0] * 64).toFixed(2)} грн)</span>
+                                            <span>{(quantity[0] * 64).toFixed(2)} грн</span>
                                             )}
                                             {quantity[0] >= 50 && quantity[0] < 100 && (
-                                            <span>({(quantity[0] * 54).toFixed(2)} грн)</span>
+                                            <span>{(quantity[0] * 54).toFixed(2)} грн</span>
                                             )}
                                             {quantity[0] >= 100 && quantity[0] < 500 && (
-                                            <span>({(quantity[0] * 44).toFixed(2)} грн)</span>
+                                            <span>{(quantity[0] * 44).toFixed(2)} грн</span>
                                             )}
                                             {quantity[0] >= 500 && quantity[0] < 1000 && (
-                                            <span>({(quantity[0] * 38).toFixed(2)} грн)</span>
+                                            <span>{(quantity[0] * 38).toFixed(2)} грн</span>
                                             )}
                                             {quantity[0] >= 1000 && quantity[0] < 2500 && (
-                                            <span>({(quantity[0] * 35).toFixed(2)} грн)</span>
+                                            <span>{(quantity[0] * 35).toFixed(2)} грн</span>
                                             )}
 
                                         </TableCell>
