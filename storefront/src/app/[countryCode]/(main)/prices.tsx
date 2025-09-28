@@ -8,7 +8,7 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select"
+} from "@lib/components/ui/select"
 import {
   Table,
   TableBody,
@@ -16,8 +16,8 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/ui/table"
-import { Label } from "@/components/ui/label"
+} from "@lib/components/ui/table"
+import { Label } from "@lib/components/ui/label"
 
 // Базовые цены
 const baseInvoices = [
