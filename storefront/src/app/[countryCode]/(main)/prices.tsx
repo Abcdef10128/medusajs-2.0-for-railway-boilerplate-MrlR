@@ -24,47 +24,38 @@ import {
 import Image from "next/image"
 const invoices = [
   {
-    invoice: "4",
-    paymentStatus: "422грн",
-    totalAmount: "$250.00",
-    paymentMethod: "Credit Card",
+    amount: "10",
+    a6: "550грн",
+    a5: "700грн",
+    a4: "1000грн",
+    a3: "1250грн",
   },
-  {
-    invoice: "INV002",
-    paymentStatus: "Pending",
-    totalAmount: "$150.00",
-    paymentMethod: "PayPal",
+    {
+    amount: "50",
+    a6: "1200грн",
+    a5: "1600грн",
+    a4: "2800грн",
+    a3: "5000грн",
+  },  {
+    amount: "100",
+    a6: "1650грн",
+    a5: "2850грн",
+    a4: "5000грн",
+    a3: "8750грн",
+  },  {
+    amount: "500",
+    a6: "6400грн",
+    a5: "11000грн",
+    a4: "19000грн",
+    a3: "35000грн",
+  },  {
+    amount: "2500",
+    a6: "24000грн",
+    a5: "44000грн",
+    a4: "80000грн",
+    a3: "145000грн",
   },
-  {
-    invoice: "INV003",
-    paymentStatus: "Unpaid",
-    totalAmount: "$350.00",
-    paymentMethod: "Bank Transfer",
-  },
-  {
-    invoice: "INV004",
-    paymentStatus: "Paid",
-    totalAmount: "$450.00",
-    paymentMethod: "Credit Card",
-  },
-  {
-    invoice: "INV005",
-    paymentStatus: "Paid",
-    totalAmount: "$550.00",
-    paymentMethod: "PayPal",
-  },
-  {
-    invoice: "INV006",
-    paymentStatus: "Pending",
-    totalAmount: "$200.00",
-    paymentMethod: "Bank Transfer",
-  },
-  {
-    invoice: "INV007",
-    paymentStatus: "Unpaid",
-    totalAmount: "$300.00",
-    paymentMethod: "Credit Card",
-  },
+
 ]
 
 import { Button } from "@lib/components/ui/button"
@@ -114,7 +105,7 @@ const [pricesOpen, setPricesOpen] = useState(true)
                      
 
                        <div className="flex max-w-sm flex-col gap-6">
-                         <Tabs defaultValue="account">
+                         <Tabs defaultValue="account" className="pt-6">
                            {/* <TabsList>
                              <TabsTrigger value="account">Account</TabsTrigger>
                              <TabsTrigger value="password">Password</TabsTrigger>
@@ -135,11 +126,13 @@ const [pricesOpen, setPricesOpen] = useState(true)
                                    </TableHeader>
                                    <TableBody>
                                      {invoices.map((invoice) => (
-                                       <TableRow key={invoice.invoice}>
-                                         <TableCell className="font-medium">{invoice.invoice}</TableCell>
-                                         <TableCell>{invoice.paymentStatus}</TableCell>
-                                         <TableCell>{invoice.paymentMethod}</TableCell>
-                                         <TableCell className="text-right">{invoice.totalAmount}</TableCell>
+                                       <TableRow key={invoice.amount}>
+                                         <TableCell className="font-medium">{invoice.amount}</TableCell>
+                                         <TableCell>{invoice.a6}</TableCell>
+                                         <TableCell>{invoice.a5}</TableCell>
+                                         <TableCell>{invoice.a4}</TableCell>
+                                         <TableCell>{invoice.a3}</TableCell>
+                                         <TableCell className="text-right">{invoice.amount}</TableCell>
                                        </TableRow>
                                      ))}
                                    </TableBody>
@@ -216,12 +209,20 @@ const [pricesOpen, setPricesOpen] = useState(true)
                              </TableHeader>
                              <TableBody>
                                {invoices.map((invoice) => (
-                                 <TableRow key={invoice.invoice}>
-                                   <TableCell className="font-medium">{invoice.invoice}</TableCell>
-                                   <TableCell>{invoice.paymentStatus}</TableCell>
-                                   <TableCell>{invoice.paymentMethod}</TableCell>
-                                   <TableCell className="text-right">{invoice.totalAmount}</TableCell>
-                                 </TableRow>
+                                //  <TableRow key={invoice.invoice}>
+                                //    <TableCell className="font-medium">{invoice.invoice}</TableCell>
+                                //    <TableCell>{invoice.paymentStatus}</TableCell>
+                                //    <TableCell>{invoice.paymentMethod}</TableCell>
+                                //    <TableCell className="text-right">{invoice.totalAmount}</TableCell>
+                                //  </TableRow>
+                                <TableRow key={invoice.amount}>
+                                         <TableCell className="font-medium">{invoice.amount}</TableCell>
+                                         <TableCell>{invoice.a6}</TableCell>
+                                         <TableCell>{invoice.a5}</TableCell>
+                                         <TableCell>{invoice.a4}</TableCell>
+                                         <TableCell>{invoice.a3}</TableCell>
+                                         <TableCell className="text-right">{invoice.amount}</TableCell>
+                                       </TableRow>
                                ))}
                              </TableBody>
                              <TableFooter>
