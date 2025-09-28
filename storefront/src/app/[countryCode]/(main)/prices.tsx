@@ -119,7 +119,7 @@ const [pricesOpen, setPricesOpen] = useState(true)
                              <TabsTrigger value="account">Account</TabsTrigger>
                              <TabsTrigger value="password">Password</TabsTrigger>
                            </TabsList> */}
-                           <TabsContent value="account" className="flex flex-col gap-2">
+                           <TabsContent value="account" className="flex flex-col gap-5">
                              
                                {/* <CardContent> */}
                                  <Table className="border-3">
@@ -160,7 +160,7 @@ const [pricesOpen, setPricesOpen] = useState(true)
                                     {...props}
                                 />
 
-   
+                                <div>
                                <Select>
                                 <Label>Матеріал</Label>
                                  <SelectTrigger className="w-full">
@@ -177,10 +177,11 @@ const [pricesOpen, setPricesOpen] = useState(true)
                                    </SelectGroup>
                                  </SelectContent>
                                </Select>
+                                </div>
+
    
-                                   
-   
-                                 <Select>
+                                <div>
+                                <Select>
                                     <Label>Ламінація</Label>
                                  <SelectTrigger className="w-full">
                                    <SelectValue placeholder="Ламінація" />
@@ -194,7 +195,10 @@ const [pricesOpen, setPricesOpen] = useState(true)
    
                                    </SelectGroup>
                                  </SelectContent>
-                               </Select>
+                               </Select> 
+                                    </div>   
+   
+
    
 
                              
