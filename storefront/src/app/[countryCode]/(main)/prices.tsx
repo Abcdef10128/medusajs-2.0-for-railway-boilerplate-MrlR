@@ -144,7 +144,7 @@ const [quantity, setQuantity] = useState([50])
                                        </TableRow>
                                      ))}
                                    </TableBody>
-                                   <TableFooter>
+                                   {/* <TableFooter>
                                      <TableRow>
                                        <TableCell >
                                         {quantity[0]} шт. 
@@ -163,7 +163,7 @@ const [quantity, setQuantity] = useState([50])
                                             <span>{(quantity[0] * 14)} грн</span>
                                             )}
                                             {quantity[0] >= 500 && quantity[0] < 1000 && (
-                                            <span>{(quantity[0] * 12)} грн</span>
+                                            <span>{(quantity[0] * 11)} грн</span>
                                             )}
                                             {quantity[0] >= 1000 && quantity[0] <= 2500 && (
                                             <span>{(quantity[0] * 10)} грн</span>
@@ -173,65 +173,65 @@ const [quantity, setQuantity] = useState([50])
 
                                         <TableCell>
                                             {quantity[0] < 50 && (
-                                            <span>{(quantity[0] * 46).toFixed(2)} грн</span>
+                                            <span>{(quantity[0] * 46)} грн</span>
                                             )}
                                             {quantity[0] >= 50 && quantity[0] < 100 && (
-                                            <span>{(quantity[0] * 30).toFixed(2)} грн</span>
+                                            <span>{(quantity[0] * 30)} грн</span>
                                             )}
                                             {quantity[0] >= 100 && quantity[0] < 500 && (
-                                            <span>{(quantity[0] * 25).toFixed(2)} грн</span>
+                                            <span>{(quantity[0] * 25)} грн</span>
                                             )}
                                             {quantity[0] >= 500 && quantity[0] < 1000 && (
-                                            <span>{(quantity[0] * 22).toFixed(2)} грн</span>
+                                            <span>{(quantity[0] * 22)} грн</span>
                                             )}
                                             {quantity[0] >= 1000 && quantity[0] <= 2500 && (
-                                            <span>{(quantity[0] * 19).toFixed(2)} грн</span>
+                                            <span>{(quantity[0] * 18)} грн</span>
                                             )}
 
                                         </TableCell>
                                         <TableCell>
                                             {quantity[0] < 50 && (
-                                            <span>{(quantity[0] * 64).toFixed(2)} грн</span>
+                                            <span>{(quantity[0] * 64)} грн</span>
                                             )}
                                             {quantity[0] >= 50 && quantity[0] < 100 && (
-                                            <span>{(quantity[0] * 54).toFixed(2)} грн</span>
+                                            <span>{(quantity[0] * 54)} грн</span>
                                             )}
                                             {quantity[0] >= 100 && quantity[0] < 500 && (
-                                            <span>{(quantity[0] * 44).toFixed(2)} грн</span>
+                                            <span>{(quantity[0] * 44)} грн</span>
                                             )}
                                             {quantity[0] >= 500 && quantity[0] < 1000 && (
-                                            <span>{(quantity[0] * 38).toFixed(2)} грн</span>
+                                            <span>{(quantity[0] * 38)} грн</span>
                                             )}
                                             {quantity[0] >= 1000 && quantity[0] <= 2500 && (
-                                            <span>{(quantity[0] * 35).toFixed(2)} грн</span>
+                                            <span>{(quantity[0] * 34)} грн</span>
                                             )}
 
                                         </TableCell>
                                         <TableCell>
                                             {quantity[0] < 50 && (
-                                            <span>{(quantity[0] * 108).toFixed(0)} грн</span>
+                                            <span>{(quantity[0] * 108)} грн</span>
                                             )}
                                             {quantity[0] >= 50 && quantity[0] < 100 && (
-                                            <span>{(quantity[0] * 100).toFixed(0)} грн</span>
+                                            <span>{(quantity[0] * 100)} грн</span>
                                             )}
                                             {quantity[0] >= 100 && quantity[0] < 500 && (
-                                            <span>{(quantity[0] * 76).toFixed(0)} грн</span>
+                                            <span>{(quantity[0] * 76)} грн</span>
                                             )}
                                             {quantity[0] >= 500 && quantity[0] < 1000 && (
-                                            <span>{(quantity[0] * 70).toFixed(0)} грн</span>
+                                            <span>{(quantity[0] * 70)} грн</span>
                                             )}
                                             {quantity[0] >= 1000 && quantity[0] <= 2500 && (
-                                            <span>{(quantity[0] * 64).toFixed(0)} грн</span>
+                                            <span>{(quantity[0] * 62)} грн</span>
                                             )}
 
                                         </TableCell>
 
                                         
                                      </TableRow>
-                                   </TableFooter>
+                                   </TableFooter> */}
                                  </Table>
 
-                                    
+{/*                                     
                                 <Slider
                                     value={quantity}
                                             onValueChange={setQuantity}
@@ -241,7 +241,7 @@ const [quantity, setQuantity] = useState([50])
                                     min={5}
                                     className={cn("w-full", className)}
                                     {...props}
-                                />
+                                /> */}
 
                                 <div>
                                <Select>
