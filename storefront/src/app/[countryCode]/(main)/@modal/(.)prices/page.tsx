@@ -99,7 +99,7 @@ import {
 
 
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import PricesComponent from "../../prices"
 import { useRouter } from "next/navigation"
 
@@ -107,6 +107,10 @@ export default function Prices() {
 
   const router = useRouter()
   const [open, setOpen] = useState(false)
+
+  useEffect(() => {
+    setOpen(true)
+  }, [])
 
   const handleOpenChange = (isOpen: boolean) => {
   if (!isOpen) {
