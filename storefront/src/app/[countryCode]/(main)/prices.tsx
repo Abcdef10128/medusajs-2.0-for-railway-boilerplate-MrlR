@@ -96,11 +96,13 @@ import {
   TabsList,
   TabsTrigger,
 } from "@lib/components/ui/tabs"
-
+import { cn } from "@lib/lib/utils"
+import { Slider } from "@lib/components/ui/slider"
+type SliderProps = React.ComponentProps<typeof Slider>
 
 
 import { useState } from "react"
-export default function PricesComponent() {
+export default function PricesComponent({ className, ...props }: SliderProps) {
 const [pricesOpen, setPricesOpen] = useState(true)
 
   return (
@@ -145,7 +147,13 @@ const [pricesOpen, setPricesOpen] = useState(true)
                                    </TableFooter>
                                  </Table>
    
-                               
+                                <Slider
+                                    defaultValue={[50]}
+                                    max={100}
+                                    step={1}
+                                    className={cn("w-[60%]", className)}
+                                    {...props}
+                                />
    
                                <Select>
                                 <Label>Матеріал</Label>
