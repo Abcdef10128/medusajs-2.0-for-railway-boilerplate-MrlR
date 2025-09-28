@@ -150,21 +150,15 @@ const [pricesOpen, setPricesOpen] = useState(true)
                                      </TableRow>
                                    </TableFooter>
                                  </Table>
-                                <Tooltip>
-                                <TooltipTrigger>
+
                                     
                                 <Slider
                                     defaultValue={[50]}
-                                    max={100}
+                                    max={1000}
                                     step={1}
                                     className={cn("w-full", className)}
                                     {...props}
                                 />
-                                </TooltipTrigger>
-                                <TooltipContent>
-                                    <p>Add to library</p>
-                                </TooltipContent>
-                                </Tooltip>
 
    
                                <Select>
