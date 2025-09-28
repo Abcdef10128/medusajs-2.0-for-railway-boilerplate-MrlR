@@ -121,7 +121,7 @@ export default function Prices() {
   return (
 
     <Dialog open={open} onOpenChange={handleOpenChange}>
-        <DialogTitle />
+        
             <DialogContent className="w-auto">
                 <PricesComponent />
             </DialogContent>
