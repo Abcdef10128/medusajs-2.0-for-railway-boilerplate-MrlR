@@ -22,7 +22,8 @@ import {
 } from "@lib/components/ui/select"
 
 import Image from "next/image"
-const invoices = [
+import { useMemo } from "react"
+const baseInvoices = [
   {
     amount: "10",
     a6: "550грн",
@@ -63,6 +64,24 @@ const invoices = [
   },
 
 ]
+
+const materials = [
+  { value: "paper", label: "Самоклеючий папір", prices: { a6: 0, a5: 0, a4: 0, a3: 0 } },
+  { value: "film-white", label: "Плівка біла", prices: { a6: 2, a5: 4, a4: 8, a3: 16 } },
+  { value: "film-clear", label: "Плівка прозора", prices: { a6: 6, a5: 11, a4: 23, a3: 46 } },
+  { value: "film-silver", label: "Плівка срібло", prices: { a6: 12, a5: 24, a4: 48, a3: 96 } },
+  { value: "film-gold", label: "Плівка золото", prices: { a6: 12, a5: 24, a4: 48, a3: 96 } },
+]
+
+// Данные о ламинации с ценами
+const laminations = [
+  { value: "gloss", label: "Глянсова", prices: { a6: 0, a5: 0, a4: 0, a3: 0 } },
+  { value: "matt", label: "Матова", prices: { a6: 1, a5: 1, a4: 1, a3: 1 } },
+  { value: "soft", label: "Soft touch", prices: { a6: 14, a5: 14, a4: 14, a3: 14 } },
+]
+
+
+
 
 import { Button } from "@lib/components/ui/button"
 import {
@@ -107,138 +126,121 @@ import { useState } from "react"
 
 
 export default function PricesComponent({ className, ...props }: SliderProps) {
+
+  const [selectedMaterial, setSelectedMaterial] = useState("")
+  const [selectedLamination, setSelectedLamination] = useState("")
+
+  // Вычисляем обновленные цены
+  const updatedInvoices = useMemo(() => {
+    const materialPrices = materials.find(m => m.value === selectedMaterial)?.prices || { a6: 0, a5: 0, a4: 0, a3: 0 }
+    const laminationPrices = laminations.find(l => l.value === selectedLamination)?.prices || { a6: 0, a5: 0, a4: 0, a3: 0 }
+
+    return baseInvoices.map(invoice => ({
+      amount: invoice.amount,
+      a6: `${invoice.a6 + (materialPrices.a6 + laminationPrices.a6) * parseInt(invoice.amount)}грн`,
+      a5: `${invoice.a5 + (materialPrices.a5 + laminationPrices.a5) * parseInt(invoice.amount)}грн`,
+      a4: `${invoice.a4 + (materialPrices.a4 + laminationPrices.a4) * parseInt(invoice.amount)}грн`,
+      a3: `${invoice.a3 + (materialPrices.a3 + laminationPrices.a3) * parseInt(invoice.amount)}грн`,
+    }))
+  }, [selectedMaterial, selectedLamination])
+
+
 const [pricesOpen, setPricesOpen] = useState(true)
 const [quantity, setQuantity] = useState([50])
   return (
-      
-                     
+<div className="space-y-6">
+      <div className="grid grid-cols-2 gap-4">
+        <div>
+          <Label htmlFor="material">Матеріал</Label>
+          <Select value={selectedMaterial} onValueChange={setSelectedMaterial}>
+            <SelectTrigger id="material" className="w-full">
+              <SelectValue placeholder="Виберіть матеріал" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectGroup>
+                {materials.map((material) => (
+                  <SelectItem key={material.value} value={material.value}>
+                    {material.label}
+                    {material.prices.a6 > 0 && (
+                      <span className="text-xs text-gray-500 block">
+                        A6: +{material.prices.a6}грн, A5: +{material.prices.a5}грн, A4: +{material.prices.a4}грн, A3: +{material.prices.a3}грн
+                      </span>
+                    )}
+                  </SelectItem>
+                ))}
+              </SelectGroup>
+            </SelectContent>
+          </Select>
+        </div>
 
-                       <div className="flex max-w-sm flex-col gap-6">
-                         <Tabs defaultValue="account" className="pt-6">
-                           {/* <TabsList>
-                             <TabsTrigger value="account">Account</TabsTrigger>
-                             <TabsTrigger value="password">Password</TabsTrigger>
-                           </TabsList> */}
-                           <TabsContent value="account" className="flex flex-col gap-5">
-                             
-                               {/* <CardContent> */}
-                                 <Table className="border-3">
-                                   {/* <TableCaption>A list of your recent invoices.</TableCaption> */}
-                                   <TableHeader>
-                                     <TableRow>
-                                       <TableHead className="w-[100px]"></TableHead>
-                                       <TableHead>A6</TableHead>
-                                       <TableHead>A5</TableHead>
-                                       <TableHead>A4</TableHead>
-                                       <TableHead >A3</TableHead>
-                                     </TableRow>
-                                   </TableHeader>
-                                   <TableBody>
-                                     {invoices.map((invoice) => (
-                                       <TableRow key={invoice.amount}>
-                                         <TableCell className="font-medium">{invoice.amount}</TableCell>
-                                         <TableCell>{invoice.a6}</TableCell>
-                                         <TableCell>{invoice.a5}</TableCell>
-                                         <TableCell>{invoice.a4}</TableCell>
-                                         <TableCell>{invoice.a3}</TableCell>
-                                       </TableRow>
-                                     ))}
-                                   </TableBody>
+        <div>
+          <Label htmlFor="lamination">Ламінація</Label>
+          <Select value={selectedLamination} onValueChange={setSelectedLamination}>
+            <SelectTrigger id="lamination" className="w-full">
+              <SelectValue placeholder="Виберіть ламінацію" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectGroup>
+                {laminations.map((lamination) => (
+                  <SelectItem key={lamination.value} value={lamination.value}>
+                    {lamination.label}
+                    {lamination.prices.a6 > 0 && (
+                      <span className="text-xs text-gray-500 block">
+                        A6: +{lamination.prices.a6}грн, A5: +{lamination.prices.a5}грн, A4: +{lamination.prices.a4}грн, A3: +{lamination.prices.a3}грн
+                      </span>
+                    )}
+                  </SelectItem>
+                ))}
+              </SelectGroup>
+            </SelectContent>
+          </Select>
+        </div>
+      </div>
 
-                                 </Table>
+      <div>
+        <Table className="border">
+          <TableHeader>
+            <TableRow>
+              <TableHead className="w-[100px]">Кількість</TableHead>
+              <TableHead>A6</TableHead>
+              <TableHead>A5</TableHead>
+              <TableHead>A4</TableHead>
+              <TableHead>A3</TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            {updatedInvoices.map((invoice) => (
+              <TableRow key={invoice.amount}>
+                <TableCell className="font-medium">{invoice.amount}</TableCell>
+                <TableCell>{invoice.a6}</TableCell>
+                <TableCell>{invoice.a5}</TableCell>
+                <TableCell>{invoice.a4}</TableCell>
+                <TableCell>{invoice.a3}</TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
 
-
-
-                                <div>
-                               <Select>
-                                <Label>Матеріал</Label>
-                                 <SelectTrigger className="w-full">
-                                   <SelectValue placeholder="Матеріал" />
-                                 </SelectTrigger>
-                                 <SelectContent>
-                                   <SelectGroup>
-                                     {/* <SelectLabel>Fruits</SelectLabel> */}
-                                     <SelectItem value="">Самоклеючий папір</SelectItem>
-                                     <SelectItem value="">Плівка біла</SelectItem>
-                                     <SelectItem value="">Плівка прозора</SelectItem>
-                                     <SelectItem value="">Плівка срібло</SelectItem>
-                                     <SelectItem value="">Плівка золото</SelectItem>
-                                   </SelectGroup>
-                                 </SelectContent>
-                               </Select>
-                                </div>
-
-   
-                                <div>
-                                <Select>
-                                    <Label>Ламінація</Label>
-                                 <SelectTrigger className="w-full">
-                                   <SelectValue placeholder="Ламінація" />
-                                 </SelectTrigger>
-                                 <SelectContent>
-                                   <SelectGroup>
-                                     {/* <SelectLabel>Fruits</SelectLabel> */}
-                                     <SelectItem value="">Глінсова</SelectItem>
-                                     <SelectItem value="">Матова</SelectItem>
-                                     <SelectItem value="">Soft touch</SelectItem>
-   
-                                   </SelectGroup>
-                                 </SelectContent>
-                               </Select> 
-                                    </div>   
-   
-
-   
-
-                             
-                           </TabsContent>
-                           <TabsContent value="password">
-                             <Table>
-                             <TableCaption>A list of your recent invoices.</TableCaption>
-                             <TableHeader>
-                               <TableRow>
-                                 <TableHead className="w-[100px]">Invoice</TableHead>
-                                 <TableHead>Status</TableHead>
-                                 <TableHead>Method</TableHead>
-                                 <TableHead className="text-right">Amount</TableHead>
-                               </TableRow>
-                             </TableHeader>
-                             <TableBody>
-                               {invoices.map((invoice) => (
-                                //  <TableRow key={invoice.invoice}>
-                                //    <TableCell className="font-medium">{invoice.invoice}</TableCell>
-                                //    <TableCell>{invoice.paymentStatus}</TableCell>
-                                //    <TableCell>{invoice.paymentMethod}</TableCell>
-                                //    <TableCell className="text-right">{invoice.totalAmount}</TableCell>
-                                //  </TableRow>
-                                <TableRow key={invoice.amount}>
-                                         <TableCell className="font-medium">{invoice.amount}</TableCell>
-                                         <TableCell>{invoice.a6}</TableCell>
-                                         <TableCell>{invoice.a5}</TableCell>
-                                         <TableCell>{invoice.a4}</TableCell>
-                                         <TableCell>{invoice.a3}</TableCell>
-                                         <TableCell className="text-right">{invoice.amount}</TableCell>
-                                       </TableRow>
-                               ))}
-                             </TableBody>
-                             <TableFooter>
-                               <TableRow>
-                                 <TableCell colSpan={3}>Total</TableCell>
-                                 <TableCell className="text-right">$2,500.00</TableCell>
-                               </TableRow>
-                             </TableFooter>
-                           </Table>
-
-                           </TabsContent>
-                         </Tabs>
-                         <Button>Замовити </Button>
-                       </div>
-
-                      
-
-                    
-        
-
+        {/* Показываем выбранные опции */}
+        {(selectedMaterial || selectedLamination) && (
+          <div className="mt-4 p-4 bg-gray-50 rounded-lg">
+            <p className="text-sm text-gray-600">
+              <strong>Вибрані опції:</strong>
+            </p>
+            {selectedMaterial && (
+              <p className="text-sm">
+                Матеріал: {materials.find(m => m.value === selectedMaterial)?.label}
+              </p>
+            )}
+            {selectedLamination && (
+              <p className="text-sm">
+                Ламінація: {laminations.find(l => l.value === selectedLamination)?.label}
+              </p>
+            )}
+          </div>
+        )}
+      </div>
+    </div>
                
   )
 }
