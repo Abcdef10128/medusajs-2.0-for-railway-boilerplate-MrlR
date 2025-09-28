@@ -130,7 +130,7 @@ const [quantity, setQuantity] = useState([50])
                                        <TableHead>A6</TableHead>
                                        <TableHead>A5</TableHead>
                                        <TableHead>A4</TableHead>
-                                       <TableHead >A3</TableHead>
+                                       <TableHead className="text-right">A3</TableHead>
                                      </TableRow>
                                    </TableHeader>
                                    <TableBody>
@@ -144,10 +144,104 @@ const [quantity, setQuantity] = useState([50])
                                        </TableRow>
                                      ))}
                                    </TableBody>
+                                   {/* <TableFooter>
+                                     <TableRow>
+                                       <TableCell >
+                                        {quantity[0]} шт. 
+                                        </TableCell>
 
+
+                                        
+                                        <TableCell>
+                                            {quantity[0] < 50 && (
+                                            <span>{(quantity[0] * 28)} грн</span>
+                                            )}
+                                            {quantity[0] >= 50 && quantity[0] < 100 && (
+                                            <span>{(quantity[0] * 20)} грн</span>
+                                            )}
+                                            {quantity[0] >= 100 && quantity[0] < 500 && (
+                                            <span>{(quantity[0] * 14)} грн</span>
+                                            )}
+                                            {quantity[0] >= 500 && quantity[0] < 1000 && (
+                                            <span>{(quantity[0] * 11)} грн</span>
+                                            )}
+                                            {quantity[0] >= 1000 && quantity[0] <= 2500 && (
+                                            <span>{(quantity[0] * 10)} грн</span>
+                                            )}
+
+                                        </TableCell>
+
+                                        <TableCell>
+                                            {quantity[0] < 50 && (
+                                            <span>{(quantity[0] * 46)} грн</span>
+                                            )}
+                                            {quantity[0] >= 50 && quantity[0] < 100 && (
+                                            <span>{(quantity[0] * 30)} грн</span>
+                                            )}
+                                            {quantity[0] >= 100 && quantity[0] < 500 && (
+                                            <span>{(quantity[0] * 25)} грн</span>
+                                            )}
+                                            {quantity[0] >= 500 && quantity[0] < 1000 && (
+                                            <span>{(quantity[0] * 22)} грн</span>
+                                            )}
+                                            {quantity[0] >= 1000 && quantity[0] <= 2500 && (
+                                            <span>{(quantity[0] * 18)} грн</span>
+                                            )}
+
+                                        </TableCell>
+                                        <TableCell>
+                                            {quantity[0] < 50 && (
+                                            <span>{(quantity[0] * 64)} грн</span>
+                                            )}
+                                            {quantity[0] >= 50 && quantity[0] < 100 && (
+                                            <span>{(quantity[0] * 54)} грн</span>
+                                            )}
+                                            {quantity[0] >= 100 && quantity[0] < 500 && (
+                                            <span>{(quantity[0] * 44)} грн</span>
+                                            )}
+                                            {quantity[0] >= 500 && quantity[0] < 1000 && (
+                                            <span>{(quantity[0] * 38)} грн</span>
+                                            )}
+                                            {quantity[0] >= 1000 && quantity[0] <= 2500 && (
+                                            <span>{(quantity[0] * 34)} грн</span>
+                                            )}
+
+                                        </TableCell>
+                                        <TableCell>
+                                            {quantity[0] < 50 && (
+                                            <span>{(quantity[0] * 108)} грн</span>
+                                            )}
+                                            {quantity[0] >= 50 && quantity[0] < 100 && (
+                                            <span>{(quantity[0] * 100)} грн</span>
+                                            )}
+                                            {quantity[0] >= 100 && quantity[0] < 500 && (
+                                            <span>{(quantity[0] * 76)} грн</span>
+                                            )}
+                                            {quantity[0] >= 500 && quantity[0] < 1000 && (
+                                            <span>{(quantity[0] * 70)} грн</span>
+                                            )}
+                                            {quantity[0] >= 1000 && quantity[0] <= 2500 && (
+                                            <span>{(quantity[0] * 62)} грн</span>
+                                            )}
+
+                                        </TableCell>
+
+                                        
+                                     </TableRow>
+                                   </TableFooter> */}
                                  </Table>
 
-
+{/*                                     
+                                <Slider
+                                    value={quantity}
+                                            onValueChange={setQuantity}
+                                    defaultValue={[50]}
+                                    max={2500}
+                                    step={1}
+                                    min={5}
+                                    className={cn("w-full", className)}
+                                    {...props}
+                                /> */}
 
                                 <div>
                                <Select>
@@ -158,11 +252,11 @@ const [quantity, setQuantity] = useState([50])
                                  <SelectContent>
                                    <SelectGroup>
                                      {/* <SelectLabel>Fruits</SelectLabel> */}
-                                     <SelectItem value="">Самоклеючий папір</SelectItem>
-                                     <SelectItem value="">Плівка біла</SelectItem>
-                                     <SelectItem value="">Плівка прозора</SelectItem>
-                                     <SelectItem value="">Плівка срібло</SelectItem>
-                                     <SelectItem value="">Плівка золото</SelectItem>
+                                     <SelectItem value="apple">Самоклеючий папір</SelectItem>
+                                     <SelectItem value="banana">Плівка біла</SelectItem>
+                                     <SelectItem value="blueberry">Плівка прозора</SelectItem>
+                                     <SelectItem value="grapes">Плівка срібло</SelectItem>
+                                     <SelectItem value="pineapple">Плівка золото</SelectItem>
                                    </SelectGroup>
                                  </SelectContent>
                                </Select>
@@ -178,9 +272,9 @@ const [quantity, setQuantity] = useState([50])
                                  <SelectContent>
                                    <SelectGroup>
                                      {/* <SelectLabel>Fruits</SelectLabel> */}
-                                     <SelectItem value="">Глінсова</SelectItem>
-                                     <SelectItem value="">Матова</SelectItem>
-                                     <SelectItem value="">Soft touch</SelectItem>
+                                     <SelectItem value="apple">Глінсова</SelectItem>
+                                     <SelectItem value="banana">Матова</SelectItem>
+                                     <SelectItem value="blueberry">Soft touch</SelectItem>
    
                                    </SelectGroup>
                                  </SelectContent>
@@ -231,7 +325,6 @@ const [quantity, setQuantity] = useState([50])
 
                            </TabsContent>
                          </Tabs>
-                         <Button>Замовити </Button>
                        </div>
 
                       
@@ -242,3 +335,6 @@ const [quantity, setQuantity] = useState([50])
                
   )
 }
+
+
+
