@@ -97,9 +97,12 @@ import {
   TooltipTrigger,
 } from "@lib/components/ui/tooltip"
 import { useState } from "react"
+
+
+
 export default function PricesComponent({ className, ...props }: SliderProps) {
 const [pricesOpen, setPricesOpen] = useState(true)
-
+const [quantity, setQuantity] = useState([50])
   return (
       
                      
@@ -138,16 +141,20 @@ const [pricesOpen, setPricesOpen] = useState(true)
                                    </TableBody>
                                    <TableFooter>
                                      <TableRow>
-                                       <TableCell colSpan={3}>Total</TableCell>
-                                       <TableCell className="text-right">$2,500.00</TableCell>
+                                       <TableCell colSpan={4}>Total</TableCell>
+                                       <TableCell className="text-right">
+                                        {quantity[0]} шт. (${(quantity[0] * 1).toFixed(2)})
+                                        </TableCell>
                                      </TableRow>
                                    </TableFooter>
                                  </Table>
 
                                     
                                 <Slider
+                                    value={quantity}
+                                            onValueChange={setQuantity}
                                     defaultValue={[50]}
-                                    max={1000}
+                                    max={2500}
                                     step={1}
                                     className={cn("w-full", className)}
                                     {...props}
