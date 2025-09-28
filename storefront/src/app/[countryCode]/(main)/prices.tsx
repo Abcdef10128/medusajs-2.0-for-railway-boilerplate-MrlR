@@ -225,17 +225,7 @@ const [quantity, setQuantity] = useState([50])
                                             )}
 
                                         </TableCell>
-                                        {quantity[0]} шт. (${(quantity[0] * 1).toFixed(2)})
-                                       
-                                                                           
 
-
-                                        {quantity[0] >= 50 && quantity[0] < 100 && <span className="text-yellow-500">⚠️ Почти скидка</span>}
-                                        {quantity[0] >= 100 && quantity[0] < 500 && <span className="text-blue-500">🎉 Скидка 5%</span>}
-                                        {quantity[0] >= 500 && quantity[0] < 1000 && <span className="text-green-500">🎉 Скидка 10%</span>}
-                                        {quantity[0] >= 1000 && <span className="text-green-700">🔥 Максимальная скидка!</span>}
-                                        (                                      
-                                        {(quantity[0] * 1).toFixed(2)}грн)
                                         
                                      </TableRow>
                                    </TableFooter>
