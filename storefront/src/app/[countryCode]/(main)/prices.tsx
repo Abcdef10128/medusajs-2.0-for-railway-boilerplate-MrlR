@@ -113,7 +113,7 @@ const [pricesOpen, setPricesOpen] = useState(true)
                              <TabsTrigger value="account">Account</TabsTrigger>
                              <TabsTrigger value="password">Password</TabsTrigger>
                            </TabsList>
-                           <TabsContent value="account" className="gap-4">
+                           <TabsContent value="account" className="flex flex-colgap-4">
                              
                                {/* <CardContent> */}
                                  <Table className="border-3">
