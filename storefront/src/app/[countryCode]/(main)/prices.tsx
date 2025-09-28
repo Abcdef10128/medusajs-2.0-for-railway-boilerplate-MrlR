@@ -22,7 +22,33 @@ import {
 } from "@lib/components/ui/select"
 
 import Image from "next/image"
-const invoices = [
+
+import { Button } from "@lib/components/ui/button"
+
+
+
+
+import { Input } from "@lib/components/ui/input"
+import { Label } from "@lib/components/ui/label"
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from "@lib/components/ui/tabs"
+import { cn } from "@lib/lib/utils"
+
+
+
+import { useMemo, useState } from "react"
+
+
+export default function PricesComponent() {
+
+ const [selectedMaterial, setSelectedMaterial] = useState('');
+  const [selectedLamination, setSelectedLamination] = useState('');
+
+const baseInvoices = [
   {
     amount: "10",
     a6: "550грн",
@@ -63,52 +89,38 @@ const invoices = [
   },
 
 ]
+const materialPrices = {
+    'paper': { a6: 0, a5: 0, a4: 0, a3: 0 },
+    'white-film': { a6: 2, a5: 4, a4: 8, a3: 16 },
+    'clear-film': { a6: 6, a5: 11, a4: 23, a3: 46 },
+    'silver-film': { a6: 12, a5: 24, a4: 48, a3: 96 },
+    'gold-film': { a6: 12, a5: 24, a4: 48, a3: 96 },
+  };
 
-import { Button } from "@lib/components/ui/button"
-import {
-  Dialog,
-  DialogClose,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@lib/components/ui/dialog"
-import { AppWindowIcon, CodeIcon } from "lucide-react"
+  // Доплаты за ламинацию (за штуку)
+  const laminationPrices = {
+    'glossy': { a6: 0, a5: 0, a4: 0, a3: 0 },
+    'matte': { a6: 1, a5: 1, a4: 1, a3: 1 },
+    'soft-touch': { a6: 14, a5: 14, a4: 14, a3: 14 },
+  };
 
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@lib/components/ui/card"
-import { Input } from "@lib/components/ui/input"
-import { Label } from "@lib/components/ui/label"
-import {
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
-} from "@lib/components/ui/tabs"
-import { cn } from "@lib/lib/utils"
-import { Slider } from "@lib/components/ui/slider"
-type SliderProps = React.ComponentProps<typeof Slider>
+const calculatedInvoices = useMemo(() => {
+    const materialExtra = materialPrices[selectedMaterial] || { a6: 0, a5: 0, a4: 0, a3: 0 };
+    const laminationExtra = laminationPrices[selectedLamination] || { a6: 0, a5: 0, a4: 0, a3: 0 };
 
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from "@lib/components/ui/tooltip"
-import { useState } from "react"
+    return baseInvoices.map(invoice => {
+      const quantity = parseInt(invoice.amount);
+      
+      return {
+        ...invoice,
+        a6: invoice.a6 + (materialExtra.a6 + laminationExtra.a6) * quantity,
+        a5: invoice.a5 + (materialExtra.a5 + laminationExtra.a5) * quantity,
+        a4: invoice.a4 + (materialExtra.a4 + laminationExtra.a4) * quantity,
+        a3: invoice.a3 + (materialExtra.a3 + laminationExtra.a3) * quantity,
+      };
+    });
+  }, [selectedMaterial, selectedLamination]);
 
-
-
-export default function PricesComponent({ className, ...props }: SliderProps) {
-const [pricesOpen, setPricesOpen] = useState(true)
-const [quantity, setQuantity] = useState([50])
   return (
       
                      
@@ -134,7 +146,7 @@ const [quantity, setQuantity] = useState([50])
                                      </TableRow>
                                    </TableHeader>
                                    <TableBody>
-                                     {invoices.map((invoice) => (
+                                     {calculatedInvoices.map((invoice) => (
                                        <TableRow key={invoice.amount}>
                                          <TableCell className="font-medium">{invoice.amount}</TableCell>
                                          <TableCell>{invoice.a6}</TableCell>
@@ -244,7 +256,7 @@ const [quantity, setQuantity] = useState([50])
                                 /> */}
 
                                 <div>
-                               <Select>
+                               <Select value={selectedMaterial} onValueChange={setSelectedMaterial}>
                                 <Label>Матеріал</Label>
                                  <SelectTrigger className="w-full">
                                    <SelectValue placeholder="Матеріал" />
@@ -252,11 +264,11 @@ const [quantity, setQuantity] = useState([50])
                                  <SelectContent>
                                    <SelectGroup>
                                      {/* <SelectLabel>Fruits</SelectLabel> */}
-                                     <SelectItem value="apple">Самоклеючий папір</SelectItem>
-                                     <SelectItem value="banana">Плівка біла</SelectItem>
-                                     <SelectItem value="blueberry">Плівка прозора</SelectItem>
-                                     <SelectItem value="grapes">Плівка срібло</SelectItem>
-                                     <SelectItem value="pineapple">Плівка золото</SelectItem>
+                                     <SelectItem value="paper">Самоклеючий папір</SelectItem>
+                                     <SelectItem value="white-film">Плівка біла</SelectItem>
+                                     <SelectItem value="clear-film">Плівка прозора</SelectItem>
+                                     <SelectItem value="silver-film">Плівка срібло</SelectItem>
+                                     <SelectItem value="gold-film">Плівка золото</SelectItem>
                                    </SelectGroup>
                                  </SelectContent>
                                </Select>
@@ -264,7 +276,7 @@ const [quantity, setQuantity] = useState([50])
 
    
                                 <div>
-                                <Select>
+                                <Select value={selectedLamination} onValueChange={setSelectedLamination}>
                                     <Label>Ламінація</Label>
                                  <SelectTrigger className="w-full">
                                    <SelectValue placeholder="Ламінація" />
@@ -272,9 +284,9 @@ const [quantity, setQuantity] = useState([50])
                                  <SelectContent>
                                    <SelectGroup>
                                      {/* <SelectLabel>Fruits</SelectLabel> */}
-                                     <SelectItem value="apple">Глінсова</SelectItem>
-                                     <SelectItem value="banana">Матова</SelectItem>
-                                     <SelectItem value="blueberry">Soft touch</SelectItem>
+                                     <SelectItem value="glossy">Глінсова</SelectItem>
+                                     <SelectItem value="matte">Матова</SelectItem>
+                                     <SelectItem value="soft-touch">Soft touch</SelectItem>
    
                                    </SelectGroup>
                                  </SelectContent>
@@ -298,22 +310,7 @@ const [quantity, setQuantity] = useState([50])
                                </TableRow>
                              </TableHeader>
                              <TableBody>
-                               {invoices.map((invoice) => (
-                                //  <TableRow key={invoice.invoice}>
-                                //    <TableCell className="font-medium">{invoice.invoice}</TableCell>
-                                //    <TableCell>{invoice.paymentStatus}</TableCell>
-                                //    <TableCell>{invoice.paymentMethod}</TableCell>
-                                //    <TableCell className="text-right">{invoice.totalAmount}</TableCell>
-                                //  </TableRow>
-                                <TableRow key={invoice.amount}>
-                                         <TableCell className="font-medium">{invoice.amount}</TableCell>
-                                         <TableCell>{invoice.a6}</TableCell>
-                                         <TableCell>{invoice.a5}</TableCell>
-                                         <TableCell>{invoice.a4}</TableCell>
-                                         <TableCell>{invoice.a3}</TableCell>
-                                         <TableCell className="text-right">{invoice.amount}</TableCell>
-                                       </TableRow>
-                               ))}
+
                              </TableBody>
                              <TableFooter>
                                <TableRow>
