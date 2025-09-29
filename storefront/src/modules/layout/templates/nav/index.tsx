@@ -136,7 +136,7 @@ export default async function Nav() {
                 href="/prices"
                 data-testid="nav-account-link"
               >
-                Ціни
+                Prices
               </LocalizedClientLink>
               {process.env.NEXT_PUBLIC_FEATURE_SEARCH_ENABLED && (
                 <LocalizedClientLink
@@ -153,7 +153,7 @@ export default async function Nav() {
                 href="/account"
                 data-testid="nav-account-link"
               >
-                Аккаунт
+                Account
               </LocalizedClientLink>
             </div>
             <Suspense
@@ -164,8 +164,8 @@ export default async function Nav() {
                   href="/cart"
                   data-testid="nav-cart-link"
                 >
-                  <ShoppingCart />
-                  Кошик (0)
+                  
+                  Cart (0)
                 </LocalizedClientLink>
               }
             >
