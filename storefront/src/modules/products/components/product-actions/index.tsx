@@ -147,7 +147,7 @@ export default function ProductActions({
             ? "Select variant"
             : !inStock
             ? "Out of stock"
-            : "Add to cart"}
+            : "Додати в кошик"}
         </Button>
         <MobileActions
           product={product}

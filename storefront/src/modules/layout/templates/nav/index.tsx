@@ -76,7 +76,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@lib/components/ui/dialog"
-import { AppWindowIcon, CodeIcon } from "lucide-react"
+import { AppWindowIcon, CodeIcon, ShoppingCart } from "lucide-react"
 
 import {
   Card,
@@ -158,11 +158,13 @@ export default async function Nav() {
             </div>
             <Suspense
               fallback={
+                
                 <LocalizedClientLink
                   className="hover:text-ui-fg-base flex gap-2"
                   href="/cart"
                   data-testid="nav-cart-link"
                 >
+                  <ShoppingCart />
                   Кошик (0)
                 </LocalizedClientLink>
               }
