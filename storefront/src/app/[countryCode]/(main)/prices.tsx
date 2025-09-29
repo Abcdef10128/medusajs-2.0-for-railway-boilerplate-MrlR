@@ -45,6 +45,7 @@ import { Mail } from "lucide-react"
 
 
 export default function PricesComponent() {
+ const [selectedSize, setSelectedSize] = useState('');
 
  const [selectedMaterial, setSelectedMaterial] = useState('');
   const [selectedLamination, setSelectedLamination] = useState('');
@@ -122,6 +123,24 @@ const calculatedInvoices = useMemo(() => {
     });
   }, [selectedMaterial, selectedLamination]);
 
+
+  const handleOrder = () => {
+  const subject = encodeURIComponent('Замовлення наклейок')
+  const body = encodeURIComponent(`
+Добрий день!
+
+Хочу замовити наклейки:
+- Розмір: ${selectedSize}
+- Матеріал: ${selectedMaterial}
+- Ламінація: ${selectedLamination}
+Далі прикрипіть документ з наліпками з векторною розміткою місць вирізу
+
+
+  `)
+  
+  window.location.href = `mailto:smerch10128@gmail.com?subject=${subject}&body=${body}`
+}
+
   return (
       
                      
@@ -161,7 +180,23 @@ const calculatedInvoices = useMemo(() => {
                                  </Table>
 
 
-
+                                  <div>
+                               <Select value={selectedSize} onValueChange={setSelectedSize}>
+                                <Label>Формат бумаги</Label>
+                                 <SelectTrigger className="w-full">
+                                   <SelectValue placeholder="Формат бумаги" />
+                                 </SelectTrigger>
+                                 <SelectContent>
+                                   <SelectGroup>
+                                     {/* <SelectLabel>Fruits</SelectLabel> */}
+                                     <SelectItem value="A6">A6</SelectItem>
+                                     <SelectItem value="A5">A5</SelectItem>
+                                     <SelectItem value="A4">A4</SelectItem>
+                                     <SelectItem value="A3">A3</SelectItem>
+                                   </SelectGroup>
+                                 </SelectContent>
+                               </Select>
+                                </div>
                                 <div>
                                <Select value={selectedMaterial} onValueChange={setSelectedMaterial}>
                                 <Label>Матеріал</Label>
@@ -229,7 +264,10 @@ const calculatedInvoices = useMemo(() => {
 
                            </TabsContent>
                          </Tabs>
-                         <Button>Замовити <Mail/></Button>
+                         <Button onClick={handleOrder}>
+                            Замовити <Mail/> smerch10128@gmail.com
+                          
+                          </Button>
                        </div>
 
                       
