@@ -26,7 +26,7 @@ export default function CheckoutLayout({
           </LocalizedClientLink>
           <LocalizedClientLink
             href="/"
-            className="txt-compact-xlarge-plus text-ui-fg-subtle hover:text-ui-fg-base"
+            className="txt-compact-xlarge-plus text-ui-fg-subtle hover:text-ui-fg-base flex flex-col gap-1"
             data-testid="store-link"
           >
             <img src="/logo_vector_png.png" className="size-9" alt="" />
@@ -37,7 +37,7 @@ export default function CheckoutLayout({
       </div>
       <div className="relative" data-testid="checkout-container">{children}</div>
       <div className="py-4 w-full flex items-center justify-center">
-        <MedusaCTA />
+        {/* <MedusaCTA /> */}
       </div>
     </div>
   )
