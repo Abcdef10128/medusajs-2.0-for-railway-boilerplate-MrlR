@@ -26,7 +26,7 @@ export default function CheckoutLayout({
           </LocalizedClientLink>
           <LocalizedClientLink
             href="/"
-            className="txt-compact-xlarge-plus text-ui-fg-subtle hover:text-ui-fg-base flex flex-col gap-1"
+            className="txt-compact-xlarge-plus text-ui-fg-subtle hover:text-ui-fg-base flex items-center gap-1"
             data-testid="store-link"
           >
             <img src="/logo_vector_png.png" className="size-9" alt="" />
