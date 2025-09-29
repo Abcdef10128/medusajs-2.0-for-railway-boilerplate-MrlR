@@ -112,7 +112,7 @@ const CartDropdown = ({
                     })
                     .map((item) => (
                       <div
-                        className="grid grid-cols-[122px_1fr] gap-x-2"
+                        className="grid grid-cols-[122px_1fr] gap-x-0"
                         key={item.id}
                         data-testid="cart-item"
                       >
