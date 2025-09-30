@@ -9,6 +9,10 @@ export const metadata: Metadata = {
   title: "Smerch Store",
   description:
     "",
+  
+  icons: {
+    icon: '/favicon.ico'
+  }
 }
 
 export default async function Home({
