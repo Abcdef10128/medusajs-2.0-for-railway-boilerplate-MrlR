@@ -174,7 +174,7 @@ export default async function Nav() {
                   data-testid="nav-cart-link"
                 >
                   
-                  Cart (0)
+                  Кошик (0)
                 </LocalizedClientLink>
               }
             >
