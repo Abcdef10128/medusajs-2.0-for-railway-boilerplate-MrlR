@@ -11,7 +11,8 @@ export const metadata: Metadata = {
     "",
   
   icons: {
-    icon: ['/favicon.ico?v=4']
+    icon: ['storefront\public\favicon.ico'],
+    shortcut: ['storefront\public\favicon.ico']
   }
 }
 
