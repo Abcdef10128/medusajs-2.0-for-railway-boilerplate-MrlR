@@ -138,7 +138,7 @@ export default async function Nav() {
               >
                 Prices
               </LocalizedClientLink>
-              {process.env.NEXT_PUBLIC_FEATURE_SEARCH_ENABLED && (
+              {/* {process.env.NEXT_PUBLIC_FEATURE_SEARCH_ENABLED && (
                 <LocalizedClientLink
                   className="hover:text-ui-fg-base"
                   href="/search"
@@ -147,7 +147,16 @@ export default async function Nav() {
                 >
                   Search
                 </LocalizedClientLink>
-              )}
+              )} */}
+                <LocalizedClientLink
+                  className="hover:text-ui-fg-base"
+                  href="/search"
+                  scroll={false}
+                  data-testid="nav-search-link"
+                >
+                  Search
+                </LocalizedClientLink>
+            
               <LocalizedClientLink
                 className="hover:text-ui-fg-base"
                 href="/account"
