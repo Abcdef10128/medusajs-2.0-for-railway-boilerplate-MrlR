@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 export default function RootLayout(props: { children: React.ReactNode }) {
   return (
     <html lang="en" data-mode="light">
-      <link rel="icon" href="/favicon.ico" />
+      <link rel="icon" type="image/png" href="/favicon.ico" />
       <body>
         <main className="relative">{props.children}</main>
       </body>

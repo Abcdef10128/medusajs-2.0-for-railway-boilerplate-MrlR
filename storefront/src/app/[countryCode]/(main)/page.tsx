@@ -10,11 +10,11 @@ export const metadata: Metadata = {
   description:
     "",
   
-  icons: {
-    icon: ['storefront\public\favicon.ico?v=4'],
-    apple: ['storefront\public\favicon.ico'],
-    shortcut: ['storefront\public\favicon.ico']
-  }
+  // icons: {
+  //   icon: ['storefront\public\favicon.ico?v=4'],
+  //   apple: ['storefront\public\favicon.ico'],
+  //   shortcut: ['storefront\public\favicon.ico']
+  // }
 }
 
 export default async function Home({
