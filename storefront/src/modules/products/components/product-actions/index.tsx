@@ -144,9 +144,9 @@ export default function ProductActions({
           data-testid="add-product-button"
         >
           {!selectedVariant
-            ? "Select variant"
+            ? "Виберіть варіант"
             : !inStock
-            ? "Out of stock"
+            ? "Закінчився"
             : "Додати в кошик"}
         </Button>
         <MobileActions

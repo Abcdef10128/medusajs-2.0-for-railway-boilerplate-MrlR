@@ -17,15 +17,15 @@ const ShowAll = () => {
         className="flex gap-2 justify-center h-fit py-2"
         data-testid="no-search-results-container"
       >
-        <Text>No results found.</Text>
+        <Text>Нічого не знайдено.</Text>
       </Container>
     )
   }
 
   return (
     <Container className="flex sm:flex-col small:flex-row gap-2 justify-center items-center h-fit py-4 small:py-2">
-      <Text>Showing the first {width > 640 ? 6 : 3} results.</Text>
-      <InteractiveLink href={`/results/${query}`}>View all</InteractiveLink>
+      <Text>Показано перші {width > 640 ? 6 : 3} результати.</Text>
+      <InteractiveLink href={`/results/${query}`}>Переглянути всі</InteractiveLink>
     </Container>
   )
 }

@@ -30,14 +30,14 @@ const Review = ({ cart }: { cart: any }) => {
             "opacity-50 pointer-events-none select-none": !isOpen,
           }
           )}>
-            Complete order
+            Завершити замовлення
           </Heading>
         </div>
         {isOpen && previousStepsCompleted && (
           <>
             <div className="flex items-start gap-x-1 w-full mb-6">
               <Text className="txt-medium-plus text-ui-fg-base mb-1">
-                To place order, please complete the payment below.
+                Щоб оформити замовлення, будь ласка, заверште оплату нижче.
               </Text>
             </div>
             <SolanaPayment cart={cart} />
@@ -55,7 +55,7 @@ const Review = ({ cart }: { cart: any }) => {
           "opacity-50 pointer-events-none select-none": !isOpen,
         }
         )}>
-          Review
+          Відгук
         </Heading>
       </div>
       {isOpen && previousStepsCompleted && (
@@ -63,10 +63,8 @@ const Review = ({ cart }: { cart: any }) => {
           <div className="flex items-start gap-x-1 w-full mb-6">
             <div className="w-full">
               <Text className="txt-medium-plus text-ui-fg-base mb-1">
-                By clicking the Place Order button, you confirm that you have
-                read, understand and accept our Terms of Use, Terms of Sale and
-                Returns Policy and acknowledge that you have read Medusa
-                Store&apos;s Privacy Policy.
+                Натискаючи кнопку «Оформити замовлення», ви підтверджуєте, що прочитали, зрозуміли та погоджуєтеся з нашими Умовами використання, Умовами продажу та Політикою повернення, а також визнаєте, що ознайомилися з Політикою конфіденційності магазину Smerch Store.
+
               </Text>
             </div>
           </div>
