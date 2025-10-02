@@ -48,7 +48,9 @@ const Item = ({ item, type = "full" }: ItemProps) => {
 
   return (
     <Table.Row className="w-full" data-testid="product-row">
-      <Table.Cell className="!pl-0 p-4 w-24">
+      {/* <Table.Cell className="!pl-0 p-4 w-24"> */}
+              <Table.Cell className="!pl-0 p-0 w-24">
+
         <LocalizedClientLink
           href={`/products/${handle}`}
           className={clx("flex", {
@@ -82,7 +84,7 @@ const Item = ({ item, type = "full" }: ItemProps) => {
               value={item.quantity}
               onChange={(value) => changeQuantity(parseInt(value.target.value))}
               // className="w-14 h-10 p-4"
-              className="w-14 h-10 p-1"
+              className="w-14 h-10 p-4"
               data-testid="product-select-button"
             >
               {/* TODO: Update this with the v2 way of managing inventory */}
