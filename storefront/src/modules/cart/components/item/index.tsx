@@ -54,7 +54,7 @@ const Item = ({ item, type = "full" }: ItemProps) => {
         <LocalizedClientLink
           href={`/products/${handle}`}
           className={clx("flex", {
-            "w-16": type === "preview",
+            "w-5": type === "preview",
             "small:w-10 w-6": type === "full",
           })}
         >
