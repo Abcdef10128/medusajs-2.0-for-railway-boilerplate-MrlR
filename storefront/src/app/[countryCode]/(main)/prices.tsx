@@ -154,7 +154,9 @@ const calculatedInvoices = useMemo(() => {
                            <TabsContent value="account" className="flex flex-col gap-5">
                              
                                {/* <CardContent> */}
-                               <h1 className="text-4xl font-bold mb-4">Стікери</h1>
+                               <h2 className="text-3xl md:text-4xl font-semibold mb-4 text-gray-800">
+                                Стікери
+                              </h2>
                                  <Table className="border-3">
                                   
                                    {/* <TableCaption>A list of your recent invoices.</TableCaption> */}
