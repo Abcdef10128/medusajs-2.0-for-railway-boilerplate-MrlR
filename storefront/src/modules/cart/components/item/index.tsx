@@ -48,14 +48,12 @@ const Item = ({ item, type = "full" }: ItemProps) => {
 
   return (
     <Table.Row className="w-full" data-testid="product-row">
-      {/* <Table.Cell className="!pl-0 p-4 w-24"> */}
-              <Table.Cell className="!pl-0 p-0 w-10">
-
+      <Table.Cell className="!pl-0 p-4 w-24">
         <LocalizedClientLink
           href={`/products/${handle}`}
           className={clx("flex", {
-            "w-5": type === "preview",
-            "small:w-10 w-6": type === "full",
+            "w-16": type === "preview",
+            "small:w-24 w-12": type === "full",
           })}
         >
           <Thumbnail
@@ -83,7 +81,6 @@ const Item = ({ item, type = "full" }: ItemProps) => {
             <CartItemSelect
               value={item.quantity}
               onChange={(value) => changeQuantity(parseInt(value.target.value))}
-              // className="w-14 h-10 p-4"
               className="w-14 h-10 p-4"
               data-testid="product-select-button"
             >
