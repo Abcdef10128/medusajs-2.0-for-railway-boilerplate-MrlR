@@ -49,7 +49,7 @@ const Item = ({ item, type = "full" }: ItemProps) => {
   return (
     <Table.Row className="w-full" data-testid="product-row">
       {/* <Table.Cell className="!pl-0 p-4 w-24"> */}
-              <Table.Cell className="!pl-0 p-0 w-24">
+              <Table.Cell className="!pl-0 p-0 w-10">
 
         <LocalizedClientLink
           href={`/products/${handle}`}
