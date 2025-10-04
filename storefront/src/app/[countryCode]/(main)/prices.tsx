@@ -106,6 +106,7 @@ const materialPrices = {
     'soft-touch': { a6: 14, a5: 14, a4: 14, a3: 14 },
   };
 
+  
 const calculatedInvoices = useMemo(() => {
     const materialExtra = materialPrices[selectedMaterial] || { a6: 0, a5: 0, a4: 0, a3: 0 };
     const laminationExtra = laminationPrices[selectedLamination] || { a6: 0, a5: 0, a4: 0, a3: 0 };
