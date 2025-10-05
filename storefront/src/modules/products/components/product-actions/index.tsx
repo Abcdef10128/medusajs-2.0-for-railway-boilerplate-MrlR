@@ -94,19 +94,39 @@ export default function ProductActions({
   const inView = useIntersection(actionsRef, "0px")
 
   // add the selected variant to the cart
+  // const handleAddToCart = async () => {
+  //   if (!selectedVariant?.id) return null
+
+  //   setIsAdding(true)
+
+  //   await addToCart({
+  //     variantId: selectedVariant.id,
+  //     quantity: 1,
+  //     countryCode,
+  //   })
+
+  //   setIsAdding(false)
+  // }
+
   const handleAddToCart = async () => {
-    if (!selectedVariant?.id) return null
-
-    setIsAdding(true)
-
+  if (!selectedVariant?.id) return null
+  
+  setIsAdding(true)
+  try {
     await addToCart({
       variantId: selectedVariant.id,
       quantity: 1,
       countryCode,
     })
-
+    // Успешно добавлено - можно показать уведомление
+  } catch (error) {
+    console.error('Ошибка при добавлении в корзину:', error)
+    // Здесь можно показать сообщение об ошибке пользователю
+    // alert('Не удалось добавить товар в корзину')
+  } finally {
     setIsAdding(false)
   }
+}
 
   return (
     <>
