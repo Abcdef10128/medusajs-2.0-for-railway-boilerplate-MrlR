@@ -36,6 +36,7 @@ const Item = ({ item, type = "full" }: ItemProps) => {
     })
       .catch((err) => {
         setError(err.message)
+        console.log("123123")
       })
       .finally(() => {
         setUpdating(false)
