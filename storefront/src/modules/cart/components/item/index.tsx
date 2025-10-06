@@ -35,7 +35,7 @@ const Item = ({ item, type = "full" }: ItemProps) => {
       quantity,
     })
       .catch((err) => {
-        setError(err.message)
+        // setError(err.message)
         console.log("123123")
       })
       .finally(() => {
