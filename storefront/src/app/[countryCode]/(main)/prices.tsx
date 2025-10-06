@@ -147,7 +147,7 @@ const calculatedInvoices = useMemo(() => {
                      
 
                        <div className="flex max-w-[500px] flex-col gap-6">
-                         <Tabs defaultValue="account" className="pt-6">
+                         <Tabs defaultValue="account" className="">
                            {/* <TabsList>
                              <TabsTrigger value="account">Account</TabsTrigger>
                              <TabsTrigger value="password">Password</TabsTrigger>
