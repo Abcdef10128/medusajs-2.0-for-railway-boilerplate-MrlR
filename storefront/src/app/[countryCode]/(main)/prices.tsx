@@ -156,7 +156,7 @@ const calculatedInvoices = useMemo(() => {
                              
                                {/* <CardContent> */}
                                 <h2 className="text-2xl md:text-3xl font-semibold mb-3 text-gray-800">
-                                  Стікери
+                                  Стікери 
                                 </h2>
 
                                  <Table className="border-3">
