@@ -77,7 +77,7 @@ const Item = ({ item, type = "full" }: ItemProps) => {
 
       {type === "full" && (
         <Table.Cell>
-          <div className="flex gap-2 items-center w-12">
+          <div className="flex gap-2 items-center w-2">
             <DeleteButton id={item.id} data-testid="product-delete-button" />
             <CartItemSelect
               value={item.quantity}
