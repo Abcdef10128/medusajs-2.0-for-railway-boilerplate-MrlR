@@ -136,7 +136,8 @@ export default async function Nav() {
                 href="/prices"
                 data-testid="nav-account-link"
               >
-                 <DollarSign />Ціни
+                 {/* <DollarSign /> */}
+                 Ціни
               </LocalizedClientLink>
               {/* {process.env.NEXT_PUBLIC_FEATURE_SEARCH_ENABLED && (
                 <LocalizedClientLink
@@ -154,7 +155,8 @@ export default async function Nav() {
                   scroll={false}
                   data-testid="nav-search-link"
                 >
-                  <Search /> Пошук
+                  {/* <Search />  */}
+                  Пошук
                 </LocalizedClientLink>
             
               <LocalizedClientLink
@@ -162,7 +164,8 @@ export default async function Nav() {
                 href="/account"
                 data-testid="nav-account-link"
               >
-                 <UserRound /> Аккаунт
+                 {/* <UserRound /> */}
+                  Аккаунт
               </LocalizedClientLink>
             </div>
             <Suspense
