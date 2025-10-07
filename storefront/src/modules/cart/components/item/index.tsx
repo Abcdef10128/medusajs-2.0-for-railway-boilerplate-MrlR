@@ -77,12 +77,12 @@ const Item = ({ item, type = "full" }: ItemProps) => {
 
       {type === "full" && (
         <Table.Cell>
-          <div className="flex gap-2 items-center w-2">
+          <div className="flex gap-2 items-center w-18">
             <DeleteButton id={item.id} data-testid="product-delete-button" />
             <CartItemSelect
               value={item.quantity}
               onChange={(value) => changeQuantity(parseInt(value.target.value))}
-              className="w-14 h-10 p-3"
+              className="w-14 h-10 p-2"
               data-testid="product-select-button"
             >
               {/* TODO: Update this with the v2 way of managing inventory */}
