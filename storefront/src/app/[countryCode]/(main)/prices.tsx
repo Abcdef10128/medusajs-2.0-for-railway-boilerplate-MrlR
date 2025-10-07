@@ -188,9 +188,9 @@ const calculatedInvoices = useMemo(() => {
 
                                   <div>
                                <Select value={selectedSize} onValueChange={setSelectedSize}>
-                                <Label>Формат бумаги</Label>
+                                <Label>Формат паперу</Label>
                                  <SelectTrigger className="w-full">
-                                   <SelectValue placeholder="Формат бумаги" />
+                                   <SelectValue placeholder="Формат паперу" />
                                  </SelectTrigger>
                                  <SelectContent>
                                    <SelectGroup>
