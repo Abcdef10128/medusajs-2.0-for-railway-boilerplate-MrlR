@@ -58,6 +58,15 @@ const SideMenu = ({ regions }: { regions: HttpTypes.StoreRegion[] | null }) => {
                   <div
                     data-testid="nav-menu-popup"
                     className="flex flex-col h-full bg-[rgba(3,7,18,0.5)] rounded-rounded justify-between p-6"
+                    style={{
+                      position: 'fixed', // Фиксированная позиция
+                      top: '8px', // Соответствует m-2 (0.5rem = 8px)
+                      left: '8px',
+                      right: '8px',
+                      bottom: '8px',
+                      height: 'calc(100vh - 16px)', // Учитывая отступы
+                      overscrollBehavior: 'contain' // Предотвращает прокрутку за пределы
+                    }}
                   >
                     <div className="flex justify-end" id="xmark">
                       <button data-testid="close-menu-button" onClick={close}>
