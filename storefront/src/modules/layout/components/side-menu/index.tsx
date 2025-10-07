@@ -65,21 +65,19 @@ const SideMenu = ({ regions }: { regions: HttpTypes.StoreRegion[] | null }) => {
                       </button>
                     </div>
                     <ul className="flex flex-col gap-6 items-start justify-start">
-                      {Object.entries(SideMenuItems).map(([name,  { href, icon: Icon }]) => {
-                        return (
-                          <li key={name}>
-                            <LocalizedClientLink
-                              href={href}
-                              className="text-3xl leading-10 hover:text-ui-fg-disabled"
-                              onClick={close}
-                              data-testid={`${name.toLowerCase()}-link`}
-                            >
-                              <Icon size={24} />
-                              {name}
-                            </LocalizedClientLink>
-                          </li>
-                        )
-                      })}
+                      {SideMenuItems.map(({ name, href, icon: Icon }) => (
+                        <li key={name}>
+                          <LocalizedClientLink
+                            href={href}
+                            className="text-3xl leading-10 hover:text-ui-fg-disabled flex items-center gap-3"
+                            onClick={close}
+                            data-testid={`${name.toLowerCase()}-link`}
+                          >
+                            <Icon size={24} />
+                            {name}
+                          </LocalizedClientLink>
+                        </li>
+                      ))}
                     </ul>
                     <div className="flex flex-col gap-y-6">
                       <div
