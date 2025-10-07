@@ -79,7 +79,7 @@ const SideMenu = ({ regions }: { regions: HttpTypes.StoreRegion[] | null }) => {
                         </li>
                       ))}
                     </ul>
-                    <div className="flex flex-col gap-y-6">
+                    {/* <div className="flex flex-col gap-y-6">
                       <div
                         className="flex justify-between"
                         onMouseEnter={toggleState.open}
@@ -102,7 +102,7 @@ const SideMenu = ({ regions }: { regions: HttpTypes.StoreRegion[] | null }) => {
                         © {new Date().getFullYear()} Smerch Store. All rights
                         reserved.
                       </Text>
-                    </div>
+                    </div> */}
                   </div>
                 </Popover.Panel>
               </Transition>
