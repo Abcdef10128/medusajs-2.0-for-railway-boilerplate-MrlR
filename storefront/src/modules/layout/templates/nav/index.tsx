@@ -76,7 +76,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@lib/components/ui/dialog"
-import { AppWindowIcon, CodeIcon, ShoppingCart } from "lucide-react"
+import { AppWindowIcon, CodeIcon, DollarSign, ShoppingCart, UserRound } from "lucide-react"
 
 import {
   Card,
@@ -136,7 +136,7 @@ export default async function Nav() {
                 href="/prices"
                 data-testid="nav-account-link"
               >
-                Ціни
+                 <DollarSign />Ціни
               </LocalizedClientLink>
               {/* {process.env.NEXT_PUBLIC_FEATURE_SEARCH_ENABLED && (
                 <LocalizedClientLink
@@ -154,7 +154,7 @@ export default async function Nav() {
                   scroll={false}
                   data-testid="nav-search-link"
                 >
-                  Пошук
+                  <Search /> Пошук
                 </LocalizedClientLink>
             
               <LocalizedClientLink
@@ -162,7 +162,7 @@ export default async function Nav() {
                 href="/account"
                 data-testid="nav-account-link"
               >
-                Аккаунт
+                 <UserRound /> Аккаунт
               </LocalizedClientLink>
             </div>
             <Suspense
