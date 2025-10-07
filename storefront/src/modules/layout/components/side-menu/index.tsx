@@ -79,6 +79,9 @@ const SideMenu = ({ regions }: { regions: HttpTypes.StoreRegion[] | null }) => {
                         </li>
                       ))}
                     </ul>
+                    <div>
+                      
+                    </div>
                     {/* <div className="flex flex-col gap-y-6">
                       <div
                         className="flex justify-between"
