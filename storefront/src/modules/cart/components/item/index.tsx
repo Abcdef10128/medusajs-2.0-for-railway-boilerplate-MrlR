@@ -82,7 +82,7 @@ const Item = ({ item, type = "full" }: ItemProps) => {
             <CartItemSelect
               value={item.quantity}
               onChange={(value) => changeQuantity(parseInt(value.target.value))}
-              className="w-14 h-10 p-1"
+              className="w-14 h-10 p-3"
               data-testid="product-select-button"
             >
               {/* TODO: Update this with the v2 way of managing inventory */}
