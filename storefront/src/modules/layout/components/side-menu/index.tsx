@@ -69,7 +69,7 @@ const SideMenu = ({ regions }: { regions: HttpTypes.StoreRegion[] | null }) => {
                         <li key={name}>
                           <LocalizedClientLink
                             href={href}
-                            className="text-3xl leading-10 hover:text-ui-fg-disabled flex items-center gap-3"
+                            className="text-2xl leading-10 hover:text-ui-fg-disabled flex items-center gap-3"
                             onClick={close}
                             data-testid={`${name.toLowerCase()}-link`}
                           >
@@ -80,7 +80,7 @@ const SideMenu = ({ regions }: { regions: HttpTypes.StoreRegion[] | null }) => {
                       ))}
                     </ul>
                     <div>
-                      
+
                     </div>
                     {/* <div className="flex flex-col gap-y-6">
                       <div
