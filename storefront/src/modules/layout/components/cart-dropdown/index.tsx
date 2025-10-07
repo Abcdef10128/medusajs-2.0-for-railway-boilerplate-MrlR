@@ -89,7 +89,7 @@ const CartDropdown = ({
             data-testid="nav-cart-link"
           >
           <ShoppingCart size={20} />
-          <span>({totalItems})</span> 
+          <span className="absolute inset-0 flex items-center justify-center text-xs font-bold">({totalItems})</span> 
           
           </LocalizedClientLink>
         </Popover.Button>
