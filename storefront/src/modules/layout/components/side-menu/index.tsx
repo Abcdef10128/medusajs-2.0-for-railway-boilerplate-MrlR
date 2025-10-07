@@ -25,7 +25,7 @@ const SideMenu = ({ regions }: { regions: HttpTypes.StoreRegion[] | null }) => {
   return (
     <div className="h-full">
       <div className="flex items-center h-full">
-        <Popover className="h-full flex">
+        <Popover className="h-full flex z-100">
           {({ open, close }) => (
             <>
               <div className="relative flex h-full">
