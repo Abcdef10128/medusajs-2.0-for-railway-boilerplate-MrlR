@@ -20,7 +20,9 @@ const SkeletonLineItem = () => {
       </Table.Cell>
       <Table.Cell>
         <div className="flex gap-2">
-          <div className="w-12 h-6 bg-gray-200 animate-pulse" />
+          {/* <div className="w-12 h-6 bg-gray-200 animate-pulse" /> */}
+          <div className="w-6 h-6 bg-gray-200 animate-pulse" />
+
         </div>
       </Table.Cell>
       <Table.Cell>
