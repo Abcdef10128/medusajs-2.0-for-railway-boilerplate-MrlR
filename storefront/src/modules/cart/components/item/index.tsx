@@ -49,7 +49,7 @@ const Item = ({ item, type = "full" }: ItemProps) => {
 
   return (
     <Table.Row className="w-full" data-testid="product-row">
-      <Table.Cell className="!pl-0 p-4 w-24">
+      <Table.Cell className="!pl-0 p-2 w-24">
         <LocalizedClientLink
           href={`/products/${handle}`}
           className={clx("flex", {
@@ -77,7 +77,7 @@ const Item = ({ item, type = "full" }: ItemProps) => {
 
       {type === "full" && (
         <Table.Cell>
-          <div className="flex gap-2 items-center w-28">
+          <div className="flex gap-2 items-center w-12">
             <DeleteButton id={item.id} data-testid="product-delete-button" />
             <CartItemSelect
               value={item.quantity}
