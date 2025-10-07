@@ -76,7 +76,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@lib/components/ui/dialog"
-import { AppWindowIcon, CodeIcon, DollarSign, ShoppingCart, UserRound } from "lucide-react"
+import { AppWindowIcon, CodeIcon, DollarSign, Search, ShoppingCart, UserRound } from "lucide-react"
 
 import {
   Card,
