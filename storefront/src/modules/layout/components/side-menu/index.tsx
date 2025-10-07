@@ -1,5 +1,5 @@
 "use client"
-
+import { Home, Store, DollarSign, Search, User, ShoppingCart } from 'lucide-react';
 import { Popover, Transition } from "@headlessui/react"
 import { ArrowRightMini, XMark } from "@medusajs/icons"
 import { Text, clx, useToggleState } from "@medusajs/ui"
@@ -8,17 +8,24 @@ import { Fragment } from "react"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 import CountrySelect from "../country-select"
 import { HttpTypes } from "@medusajs/types"
-import { Menu } from "lucide-react"
+import { Icon, Menu } from "lucide-react"
 
-const SideMenuItems = {
-  Головна: "/",
-  Магазин: "/store",
-  Ціни: "/prices",
-  Пошук: "/search",
-  Аккаунт: "/account",
-  Кошик: "/cart",
-}
-
+// const SideMenuItems = {
+//   Головна: "/",
+//   Магазин: "/store",
+//   Ціни: "/prices",
+//   Пошук: "/search",
+//   Аккаунт: "/account",
+//   Кошик: "/cart",
+// }
+const SideMenuItems = [
+  { name: "Головна", href: "/", icon: Home },
+  { name: "Магазин", href: "/store", icon: Store },
+  { name: "Ціни", href: "/prices", icon: DollarSign },
+  { name: "Пошук", href: "/search", icon: Search },
+  { name: "Аккаунт", href: "/account", icon: User },
+  { name: "Кошик", href: "/cart", icon: ShoppingCart },
+];
 const SideMenu = ({ regions }: { regions: HttpTypes.StoreRegion[] | null }) => {
   const toggleState = useToggleState()
 
@@ -58,7 +65,7 @@ const SideMenu = ({ regions }: { regions: HttpTypes.StoreRegion[] | null }) => {
                       </button>
                     </div>
                     <ul className="flex flex-col gap-6 items-start justify-start">
-                      {Object.entries(SideMenuItems).map(([name, href]) => {
+                      {Object.entries(SideMenuItems).map(([name,  { href, icon: Icon }]) => {
                         return (
                           <li key={name}>
                             <LocalizedClientLink
@@ -67,6 +74,7 @@ const SideMenu = ({ regions }: { regions: HttpTypes.StoreRegion[] | null }) => {
                               onClick={close}
                               data-testid={`${name.toLowerCase()}-link`}
                             >
+                              <Icon size={24} />
                               {name}
                             </LocalizedClientLink>
                           </li>
