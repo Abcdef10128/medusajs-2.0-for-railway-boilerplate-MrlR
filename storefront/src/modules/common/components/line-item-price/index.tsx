@@ -39,6 +39,8 @@ const LineItemPrice = ({ item, style = "default" }: LineItemPriceProps) => {
                 {convertToLocale({
                   amount: originalPrice,
                   currency_code,
+                  minimumFractionDigits: 0,
+                  maximumFractionDigits: 0,
                 })}
               </span>
             </p>
@@ -58,6 +60,8 @@ const LineItemPrice = ({ item, style = "default" }: LineItemPriceProps) => {
           {convertToLocale({
             amount: currentPrice,
             currency_code,
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0,
           })}
         </span>
       </div>
