@@ -8,13 +8,15 @@ import { Fragment } from "react"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 import CountrySelect from "../country-select"
 import { HttpTypes } from "@medusajs/types"
+import { Menu } from "lucide-react"
 
 const SideMenuItems = {
   Головна: "/",
   Магазин: "/store",
+  Ціни: "/prices",
   Пошук: "/search",
   Аккаунт: "/account",
-  Корзина: "/cart",
+  Кошик: "/cart",
 }
 
 const SideMenu = ({ regions }: { regions: HttpTypes.StoreRegion[] | null }) => {
@@ -31,7 +33,7 @@ const SideMenu = ({ regions }: { regions: HttpTypes.StoreRegion[] | null }) => {
                   data-testid="nav-menu-button"
                   className="relative h-full flex items-center transition-all ease-out duration-200 focus:outline-none hover:text-ui-fg-base"
                 >
-                  Меню
+                   <Menu />
                 </Popover.Button>
               </div>
 
