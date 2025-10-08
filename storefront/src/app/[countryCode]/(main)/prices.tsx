@@ -52,38 +52,38 @@ export default function PricesComponent() {
 
 const baseInvoices = [
   {
-    amount: "10",
+    amount: "10 шт.",
     a6: 550,
     a5: 700,
     a4: 1000,
     a3: 1250,
   },
     {
-    amount: "50",
+    amount: "50 шт.",
     a6: 1200,
     a5: 1600,
     a4: 2800,
     a3: 5000,
   },  {
-    amount: "100",
+    amount: "100 шт.",
     a6: 1650,
     a5: 2850,
     a4: 5000,
     a3: 8750,
   },  {
-    amount: "500",
+    amount: "500 шт.",
     a6: 6400,
     a5: 11000,
     a4: 19000,
     a3: 35000,
   },  {
-    amount: "1000",
+    amount: "1000 шт.",
     a6: 11000,
     a5: 19000,
     a4: 35000,
     a3: 64000,
   }, {
-    amount: "2500",
+    amount: "2500 шт.",
     a6: 24000,
     a5: 44000,
     a4: 80000,
@@ -164,7 +164,7 @@ const calculatedInvoices = useMemo(() => {
                                    {/* <TableCaption>A list of your recent invoices.</TableCaption> */}
                                    <TableHeader>
                                      <TableRow>
-                                       <TableHead className="w-[100px]"></TableHead>
+                                       <TableHead className="w-[60px]"></TableHead>
                                        <TableHead>A6</TableHead>
                                        <TableHead>A5</TableHead>
                                        <TableHead>A4</TableHead>
