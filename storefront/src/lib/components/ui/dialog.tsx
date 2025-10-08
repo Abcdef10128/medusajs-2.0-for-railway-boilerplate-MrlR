@@ -35,7 +35,7 @@ const DialogContent = React.forwardRef<
 >(({ className, children, ...props }, ref) => (
   <DialogPortal>
     <DialogOverlay>
-
+      <div className="relative">
       <DialogPrimitive.Content
         ref={ref}
         className={cn(
@@ -50,6 +50,8 @@ const DialogContent = React.forwardRef<
           <span className="sr-only">Close</span>
         </DialogPrimitive.Close>
     </DialogPrimitive.Content>
+      </div>
+
     </DialogOverlay>
 
   </DialogPortal>
