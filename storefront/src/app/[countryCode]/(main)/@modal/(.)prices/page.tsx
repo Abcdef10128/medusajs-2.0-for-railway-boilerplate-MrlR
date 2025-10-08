@@ -125,10 +125,8 @@ export default function Prices() {
             <DialogContent className="w-auto">
                 <PricesComponent />
             </DialogContent>
-            
-        
-                
-              </Dialog>
+                 
+     </Dialog>
   )
 }
 
