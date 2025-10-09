@@ -13,7 +13,7 @@ type ConvertToLocaleParams = {
 
 export const convertToLocale = ({
   amount,
-  currency_code = "₴",
+  currency_code,
   minimumFractionDigits,
   maximumFractionDigits,
   locale = "en-US",
