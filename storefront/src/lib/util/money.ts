@@ -3,8 +3,10 @@ import { isEmpty } from "./isEmpty"
 type ConvertToLocaleParams = {
   amount: number
   currency_code: string
-  minimumFractionDigits?: number
-  maximumFractionDigits?: number
+  // minimumFractionDigits?: number
+  // maximumFractionDigits?: number
+    minimumFractionDigits?: 0
+  maximumFractionDigits?: 0
 
   locale?: string
 }
