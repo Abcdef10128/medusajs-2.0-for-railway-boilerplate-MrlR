@@ -2,12 +2,10 @@ import { isEmpty } from "./isEmpty"
 
 type ConvertToLocaleParams = {
   amount: number
-  currency_code: "₴"
-  // currency_code: string
-  // minimumFractionDigits?: number
-  // maximumFractionDigits?: number
-    minimumFractionDigits?: 0
-  maximumFractionDigits?: 0
+  currency_code: string
+  minimumFractionDigits?: number
+  maximumFractionDigits?: number
+
   locale?: string
 }
 
