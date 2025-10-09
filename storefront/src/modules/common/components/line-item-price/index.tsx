@@ -38,7 +38,7 @@ const LineItemPrice = ({ item, style = "default" }: LineItemPriceProps) => {
               >
                 {convertToLocale({
                   amount: originalPrice,
-                  currency_code: '₴',
+                  currency_code,
                   minimumFractionDigits: 0,
                   maximumFractionDigits: 0,
                 })}
@@ -59,7 +59,7 @@ const LineItemPrice = ({ item, style = "default" }: LineItemPriceProps) => {
         >
           {convertToLocale({
             amount: currentPrice,
-            currency_code : '₴',
+            currency_code,
             minimumFractionDigits: 0,
             maximumFractionDigits: 0,
           })}
