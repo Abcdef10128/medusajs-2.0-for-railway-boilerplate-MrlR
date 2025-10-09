@@ -13,7 +13,7 @@ export default async function PreviewPrice({ price }: { price: VariantPrice }) {
           className="line-through text-ui-fg-muted"
           data-testid="original-price"
         >
-          {price.original_price}  ₴
+          {price.original_price} ₴
         </Text>
       )}
       <Text
@@ -22,7 +22,7 @@ export default async function PreviewPrice({ price }: { price: VariantPrice }) {
         })}
         data-testid="price"
       >
-        {price.calculated_price}  ₴
+        {price.calculated_price} ₴
       </Text>
     </>
   )
