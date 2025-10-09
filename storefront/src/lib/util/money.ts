@@ -24,8 +24,7 @@ export const convertToLocale = ({
         
         minimumFractionDigits: 0,
         maximumFractionDigits: 0,
-        // currency: currency_code,
-                currency: '₴',
+        currency: currency_code,
 
 
       }).format(amount)
