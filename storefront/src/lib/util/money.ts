@@ -18,9 +18,10 @@ export const convertToLocale = ({
   return currency_code && !isEmpty(currency_code)
     ? new Intl.NumberFormat(locale, {
         style: "currency",
-        currency: currency_code,
+        
         minimumFractionDigits,
         maximumFractionDigits,
+        currency: currency_code,
       }).format(amount)
     : amount.toString()
 }
