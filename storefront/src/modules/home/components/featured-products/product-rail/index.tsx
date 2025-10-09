@@ -20,14 +20,16 @@ export default function ProductRail({
   return (
     // <div className="content-container py-12 small:py-24">
       <div className="content-container ">
-        
+
       <div className="flex justify-between mb-8">
         <Text className="txt-xlarge">{collection.title}</Text>
         <InteractiveLink href={`/collections/${collection.handle}`}>
           Переглянути всі
         </InteractiveLink>
       </div>
-      <ul className="grid grid-cols-2 small:grid-cols-3 gap-x-6 gap-y-24 small:gap-y-36">
+      {/* <ul className="grid grid-cols-2 small:grid-cols-3 gap-x-6 gap-y-24 small:gap-y-36"> */}
+              <ul className="grid grid-cols-2 small:grid-cols-3 gap-x-6 gap-y-12 small:gap-y-12 ">
+
         {products &&
           products.map((product) => (
             <li key={product.id}>
