@@ -22,8 +22,8 @@ export const convertToLocale = ({
     ? new Intl.NumberFormat(locale, {
         style: "currency",
         
-        minimumFractionDigits,
-        maximumFractionDigits,
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 0,
         currency: currency_code,
       }).format(amount)
     : amount.toString()
