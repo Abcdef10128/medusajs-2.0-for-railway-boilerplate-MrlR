@@ -25,7 +25,7 @@ const LineItemPrice = ({ item, style = "default" }: LineItemPriceProps) => {
 
   return (
     <div className="flex flex-col gap-x-2 text-ui-fg-subtle items-end">
-      <div className="text-left flex">
+      <div className="text-left">
         {hasReducedPrice && (
           <>
             <p>
@@ -33,7 +33,7 @@ const LineItemPrice = ({ item, style = "default" }: LineItemPriceProps) => {
                 <span className="text-ui-fg-subtle">Original: </span>
               )}
               <span
-                className="line-through text-ui-fg-muted"
+                className="line-through text-ui-fg-muted w-auto"
                 data-testid="product-original-price"
               >
                 {convertToLocale({
