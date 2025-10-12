@@ -182,7 +182,7 @@ const CartDropdown = ({
                   <div className="flex items-center justify-between">
                     <span className="text-ui-fg-base font-semibold">
                       Всього{" "}
-                      <span className="font-normal">(excl. taxes)</span>
+                      {/* <span className="font-normal">(excl. taxes)</span> */}
                     </span>
                     <span
                       className="text-large-semi"
