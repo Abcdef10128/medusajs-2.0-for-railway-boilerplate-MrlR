@@ -225,9 +225,22 @@ const OrdersTableWidget = () => {
                   <Table.Cell>
                     <Badge>{order.status}</Badge>
                   </Table.Cell>
-                  <Table.Cell>
+                  {/* <Table.Cell>
                     {(order.total / 100).toFixed(2)} {order.currency_code?.toUpperCase()}
-                  </Table.Cell>
+                  </Table.Cell> */}
+                  <Table.Cell>
+                    {order.total != null 
+                        ? `${(order.total / 100).toFixed(2)} ${order.currency_code?.toUpperCase() || ''}` 
+                        : 'N/A'
+                    }
+                    </Table.Cell>
+                    <Table.Cell>
+                    {(() => {
+                        const total = Number(order.total)
+                        if (isNaN(total)) return 'N/A'
+                        return `${(total / 100).toFixed(2)} ${order.currency_code?.toUpperCase() || ''}`
+                    })()}
+                    </Table.Cell>
                 </Table.Row>
               )
             })
