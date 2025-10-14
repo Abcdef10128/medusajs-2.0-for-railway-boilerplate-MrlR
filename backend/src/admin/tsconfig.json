@@ -1,8 +1,21 @@
+// {
+//   "extends": "../../tsconfig.json",
+//   "compilerOptions": {
+//     "module": "esnext"
+//   },
+//   "include": ["."],
+//   "exclude": ["**/*.spec.js"]
+// }
+
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "module": "esnext"
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "jsx": "react-jsx",
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true
   },
   "include": ["."],
-  "exclude": ["**/*.spec.js"]
+  "exclude": ["**/*.spec.js", "node_modules"]
 }
