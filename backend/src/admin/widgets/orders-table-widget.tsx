@@ -228,7 +228,7 @@ const OrdersTableWidget = () => {
                   {/* <Table.Cell>
                     {(order.total / 100).toFixed(2)} {order.currency_code?.toUpperCase()}
                   </Table.Cell> */}
-                  
+
                   <Table.Cell>
                     {order.total != null 
                         ? `${(order.total / 100).toFixed(2)} ${order.currency_code?.toUpperCase() || ''}` 
@@ -243,6 +243,7 @@ const OrdersTableWidget = () => {
                         return `${(total / 100).toFixed(2)} ${order.currency_code?.toUpperCase() || ''}`
                     })()}
                     </Table.Cell>
+                    
                 </Table.Row>
               )
             })
