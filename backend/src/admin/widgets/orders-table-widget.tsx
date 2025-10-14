@@ -234,6 +234,7 @@ const OrdersTableWidget = () => {
                         : 'N/A'
                     }
                     </Table.Cell>
+                    
                     <Table.Cell>
                     {(() => {
                         const total = Number(order.total)
