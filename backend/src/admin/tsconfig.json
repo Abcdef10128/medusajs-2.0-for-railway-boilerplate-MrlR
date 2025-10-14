@@ -10,12 +10,10 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "module": "ESNext",
-    "moduleResolution": "bundler",
-    "jsx": "react-jsx",
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true
+    "module": "Node16",
+    "moduleResolution": "Node16",
+    "jsx": "react-jsx"
   },
   "include": ["."],
-  "exclude": ["**/*.spec.js", "node_modules"]
+  "exclude": ["**/*.spec.js"]
 }
