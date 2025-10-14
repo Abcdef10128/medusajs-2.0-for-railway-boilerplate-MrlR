@@ -44,7 +44,10 @@ const medusaConfig = {
     },
     build: {
       rollupOptions: {
-        external: ["@medusajs/dashboard"]
+        external: ["@medusajs/dashboard",
+           "@medusajs/ui",              // Добавьте эту строку
+          "@medusajs/admin-sdk" 
+        ]
       }
     }
   },
