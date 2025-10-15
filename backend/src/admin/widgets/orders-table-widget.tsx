@@ -334,9 +334,9 @@ const OrdersProductsWidget = () => {
             const product = item.variant?.product
             const collectionId = product?.collection_id
             const collection = collectionsData.collections?.find((c: any) => c.id === collectionId)
-            console.log(item.price_with_tax)
-console.log(item.raw_price)
-console.log(item.total)
+//             console.log(item.price_with_tax)
+// console.log(item.raw_price)
+// console.log(item.total)
 console.log(item.unit_price)
 
             allProducts.push({
@@ -344,7 +344,7 @@ console.log(item.unit_price)
               title: product?.title || 'Unknown Product',
               sku: product?.sku || '-',
               quantity: item.quantity || 0,
-              price: item.subtotal || item.unit_price || 0,
+              price: item.unit_price,
             //   currency_code: order.currency_code || 'USD',
             currency_code: DEFAULT_CURRENCY,
               order_id: order.id,
