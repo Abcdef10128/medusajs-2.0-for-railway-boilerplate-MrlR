@@ -449,9 +449,9 @@ const formatPrice = (price: number) => {
             <Table.HeaderCell>Quantity</Table.HeaderCell>
             <Table.HeaderCell>Price</Table.HeaderCell>
             <Table.HeaderCell>Total</Table.HeaderCell>
+                        <Table.HeaderCell>себестоимость</Table.HeaderCell>
                         <Table.HeaderCell>Royalty</Table.HeaderCell>
-                        <Table.HeaderCell>Royalty</Table.HeaderCell>
-                        <Table.HeaderCell>Royalty</Table.HeaderCell>
+                        <Table.HeaderCell>наша доля</Table.HeaderCell>
 
             <Table.HeaderCell>Collection</Table.HeaderCell>
             <Table.HeaderCell>Order Date</Table.HeaderCell>
@@ -480,12 +480,12 @@ const formatPrice = (price: number) => {
                   <Table.Cell className="font-medium">
                     {formatPrice(total, product.currency_code)}
                   </Table.Cell>
-                  <Table.Cell className="text-left">{(product.price-24) * product.quantity}</Table.Cell>
+                  <Table.Cell className="text-left">{total-(product.price-24) * product.quantity}</Table.Cell>
                 <Table.Cell className="font-medium">
                     {formatPrice(total*0.2, product.currency_code)}
                   </Table.Cell>
                 <Table.Cell className="font-medium">
-                    {formatPrice(total-total*0.2 - (product.price-24) * product.quantity, product.currency_code)}
+                    {formatPrice(total-total*0.2 - (product.price-24) * product.quantity)}
                   </Table.Cell>
                   <Table.Cell>
                     <Badge size="small">{product.collection_title}</Badge>
