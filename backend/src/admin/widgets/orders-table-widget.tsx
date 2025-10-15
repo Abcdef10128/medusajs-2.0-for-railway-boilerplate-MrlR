@@ -315,8 +315,7 @@ const OrdersProductsWidget = () => {
   useEffect(() => {
     // Загружаем заказы и коллекции
     Promise.all([
-      fetch('/admin/orders?limit=100&fields=+items.variant.product.collection_id,+items.variant.product.collections,+items.variant.product.sku', {
-        credentials: 'include',
+      fetch('/admin/orders?limit=100&expand=items,items.variant,items.variant.product,customer&fields=+items.variant.product.collection_id,+items.variant.product.collections,+items.variant.product.sku,+items.title,+items.variant.title', {        credentials: 'include',
         headers: { 'Content-Type': 'application/json' }
       }).then(res => res.json()),
       
@@ -341,7 +340,8 @@ console.log(item.unit_price)
 
             allProducts.push({
               id: item.id,
-              title: product?.title || 'Unknown Product',
+            //   title: product?.title || 'Unknown Product',
+              title: item.title || product?.title || 'Unknown Product',
               sku: product?.sku || '-',
               quantity: item.quantity || 0,
               price: item.unit_price,
@@ -471,7 +471,7 @@ const formatPrice = (price: number) => {
                   <Table.Cell className="font-medium">
                     <Badge size="small">{product.order_display_id}</Badge>
                   </Table.Cell>
-                  <Table.Cell>{product.title}</Table.Cell>
+                  <Table.Cell>{product.title || item.variant?.product?.title || 'Unknown Product'}</Table.Cell>
                   <Table.Cell className="text-gray-600">{product.sku}</Table.Cell>
                   <Table.Cell className="text-center">{product.quantity}</Table.Cell>
                   <Table.Cell>{formatPrice(product.price, product.currency_code)}</Table.Cell>
