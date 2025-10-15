@@ -334,10 +334,7 @@ const OrdersProductsWidget = () => {
             const product = item.variant?.product
             const collectionId = product?.collection_id
             const collection = collectionsData.collections?.find((c: any) => c.id === collectionId)
-//             console.log(item.price_with_tax)
-// console.log(item.raw_price)
-// console.log(item.total)
-console.log(item.unit_price)
+
 
             allProducts.push({
               id: item.id,
@@ -448,10 +445,12 @@ const formatPrice = (price: number) => {
           <Table.Row>
             <Table.HeaderCell>Order ID</Table.HeaderCell>
             <Table.HeaderCell>Product Title</Table.HeaderCell>
-            <Table.HeaderCell>SKU</Table.HeaderCell>
+            {/* <Table.HeaderCell>SKU</Table.HeaderCell> */}
             <Table.HeaderCell>Quantity</Table.HeaderCell>
             <Table.HeaderCell>Price</Table.HeaderCell>
             <Table.HeaderCell>Total</Table.HeaderCell>
+                        <Table.HeaderCell>Royalty</Table.HeaderCell>
+
             <Table.HeaderCell>Collection</Table.HeaderCell>
             <Table.HeaderCell>Order Date</Table.HeaderCell>
           </Table.Row>
@@ -473,11 +472,14 @@ const formatPrice = (price: number) => {
                     <Badge size="small">{product.order_display_id}</Badge>
                   </Table.Cell>
                   <Table.Cell>{product.title || item.variant?.product?.title || 'Unknown Product'}</Table.Cell>
-                  <Table.Cell className="text-gray-600">{product.sku}</Table.Cell>
+                  {/* <Table.Cell className="text-gray-600">{product.sku}</Table.Cell> */}
                   <Table.Cell className="text-center">{product.quantity}</Table.Cell>
                   <Table.Cell>{formatPrice(product.price, product.currency_code)}</Table.Cell>
                   <Table.Cell className="font-medium">
                     {formatPrice(total, product.currency_code)}
+                  </Table.Cell>
+                                    <Table.Cell className="font-medium">
+                    {formatPrice(total*0.2, product.currency_code)}
                   </Table.Cell>
                   <Table.Cell>
                     <Badge size="small">{product.collection_title}</Badge>
