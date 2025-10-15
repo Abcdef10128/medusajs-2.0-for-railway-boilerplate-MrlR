@@ -485,7 +485,7 @@ const formatPrice = (price: number) => {
                     {formatPrice(total*0.2, product.currency_code)}
                   </Table.Cell>
                 <Table.Cell className="font-medium">
-                    {formatPrice(total-total*0.2 - (product.price-24) * product.quantity)}
+                    {formatPrice(total-total*0.2 - total-(product.price-24) * product.quantity , product.currency_code)}
                   </Table.Cell>
                   <Table.Cell>
                     <Badge size="small">{product.collection_title}</Badge>
