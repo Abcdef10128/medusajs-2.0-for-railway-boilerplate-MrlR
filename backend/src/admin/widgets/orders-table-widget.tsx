@@ -334,11 +334,10 @@ const OrdersProductsWidget = () => {
             const product = item.variant?.product
             const collectionId = product?.collection_id
             const collection = collectionsData.collections?.find((c: any) => c.id === collectionId)
-            console.log(item.price_with_tax
-)
+            console.log(item.price_with_tax)
 console.log(item.raw_price)
 console.log(item.total)
-console.log(line_item.unit_price)
+console.log(item.unit_price)
 
             allProducts.push({
               id: item.id,
