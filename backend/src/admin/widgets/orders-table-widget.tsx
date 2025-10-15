@@ -473,13 +473,17 @@ const formatPrice = (price: number) => {
                   </Table.Cell>
                   <Table.Cell>{product.title || item.variant?.product?.title || 'Unknown Product'}</Table.Cell>
                   {/* <Table.Cell className="text-gray-600">{product.sku}</Table.Cell> */}
-                  <Table.Cell className="text-center">{product.quantity}</Table.Cell>
+                  <Table.Cell className="text-left">{product.quantity}</Table.Cell>
                   <Table.Cell>{formatPrice(product.price, product.currency_code)}</Table.Cell>
                   <Table.Cell className="font-medium">
                     {formatPrice(total, product.currency_code)}
                   </Table.Cell>
-                                    <Table.Cell className="font-medium">
+                  <Table.Cell className="text-left">{(product.price-24) * product.quantity}</Table.Cell>
+                <Table.Cell className="font-medium">
                     {formatPrice(total*0.2, product.currency_code)}
+                  </Table.Cell>
+                <Table.Cell className="font-medium">
+                    {formatPrice(total-total*0.2 - (product.price-24) * product.quantity, product.currency_code)}
                   </Table.Cell>
                   <Table.Cell>
                     <Badge size="small">{product.collection_title}</Badge>
