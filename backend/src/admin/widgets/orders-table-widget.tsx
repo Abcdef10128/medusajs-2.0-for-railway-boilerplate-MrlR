@@ -315,7 +315,8 @@ const OrdersProductsWidget = () => {
   useEffect(() => {
     // Загружаем заказы и коллекции
     Promise.all([
-      fetch('/admin/orders?limit=100&expand=items,items.variant,items.variant.product,customer&fields=+items.variant.product.collection_id,+items.variant.product.collections,+items.variant.product.sku,+items.title,+items.variant.title', {        credentials: 'include',
+      fetch('/admin/orders?limit=100&fields=+items.variant.product.collection_id,+items.variant.product.collections,+items.variant.product.sku', {
+        credentials: 'include',        
         headers: { 'Content-Type': 'application/json' }
       }).then(res => res.json()),
       
