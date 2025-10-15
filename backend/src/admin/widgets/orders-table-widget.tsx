@@ -450,6 +450,8 @@ const formatPrice = (price: number) => {
             <Table.HeaderCell>Price</Table.HeaderCell>
             <Table.HeaderCell>Total</Table.HeaderCell>
                         <Table.HeaderCell>Royalty</Table.HeaderCell>
+                        <Table.HeaderCell>Royalty</Table.HeaderCell>
+                        <Table.HeaderCell>Royalty</Table.HeaderCell>
 
             <Table.HeaderCell>Collection</Table.HeaderCell>
             <Table.HeaderCell>Order Date</Table.HeaderCell>
