@@ -400,7 +400,7 @@ console.log(item.unit_price)
 //     return `${(price / 100).toFixed(2)} ${currency}`
 //   }
 const formatPrice = (price: number) => {
-     const priceInUAH = price / 100
+     const priceInUAH = price 
      return `${CURRENCY_SYMBOL} ${priceInUAH.toFixed(2)}`
    }
   return (
