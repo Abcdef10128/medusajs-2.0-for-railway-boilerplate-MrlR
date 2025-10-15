@@ -285,6 +285,11 @@ const OrdersProductsWidget = () => {
   const [selectedMonth, setSelectedMonth] = useState<string>("all")
   const [selectedCollection, setSelectedCollection] = useState<string>("all")
 
+
+  const DEFAULT_CURRENCY = "UAH"
+  const CURRENCY_SYMBOL = "₴"
+
+
   // Генерируем массив месяцев
   const generateMonths = () => {
     const months = [{ value: "all", label: "All Orders" }]
@@ -386,10 +391,13 @@ const OrdersProductsWidget = () => {
     return <div className="p-4">Loading...</div>
   }
 
-  const formatPrice = (price: number, currency: string) => {
-    return `${(price / 100).toFixed(2)} ${currency}`
-  }
-
+//   const formatPrice = (price: number, currency: string) => {
+//     return `${(price / 100).toFixed(2)} ${currency}`
+//   }
+const formatPrice = (price: number) => {
+     const priceInUAH = price / 100
+     return `${CURRENCY_SYMBOL} ${priceInUAH.toFixed(2)}`
+   }
   return (
     <Container className="p-4">
       {/* Фильтры */}
