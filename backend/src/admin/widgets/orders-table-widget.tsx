@@ -262,8 +262,10 @@
 //v1
 
 import { defineWidgetConfig } from "@medusajs/admin-sdk"
-import { Container, Table, Select, Badge } from "@medusajs/ui"
+import { Container, Table, Select, Badge, Button } from "@medusajs/ui"
 import { useEffect, useState } from "react"
+import jsPDF from "jspdf"
+import "jspdf-autotable"
 
 interface Product {
   id: string
@@ -401,6 +403,74 @@ const formatPrice = (price: number) => {
      const priceInUAH = price 
      return `${CURRENCY_SYMBOL} ${priceInUAH.toFixed(2)}`
    }
+
+const exportToPDF = () => {
+    const doc = new jsPDF.jsPDF()
+    
+    doc.setFontSize(16)
+    doc.text('Orders Report', 14, 15)
+    
+    doc.setFontSize(10)
+    const monthLabel = months.find(m => m.value === selectedMonth)?.label || 'All Orders'
+    doc.text(`Period: ${monthLabel}`, 14, 25)
+    if (selectedCollection !== 'all') {
+      doc.text(`Collection: ${selectedCollection}`, 14, 32)
+    }
+    
+    const tableData = filteredProducts.map(product => {
+      const total = product.price * product.quantity
+      const royalty = total * 0.2
+      const netProfit = total - royalty - (24 * product.quantity)
+      
+      return [
+        product.order_display_id,
+        product.title,
+        product.quantity.toString(),
+        product.collection_title,
+        new Date(product.order_date).toLocaleDateString(),
+        `${(product.price / 100).toFixed(2)}`,
+        `${(total / 100).toFixed(2)}`,
+        (24 * product.quantity).toString(),
+        `${(royalty / 100).toFixed(2)}`,
+        `${(netProfit / 100).toFixed(2)}`
+      ]
+    })
+    
+    const totalQuantity = filteredProducts.reduce((sum, p) => sum + p.quantity, 0)
+    const totalPrice = filteredProducts.reduce((sum, p) => sum + p.price, 0)
+    const totalSum = filteredProducts.reduce((sum, p) => sum + (p.price * p.quantity), 0)
+    const totalCost = filteredProducts.reduce((sum, p) => sum + (24 * p.quantity), 0)
+    const totalRoyalty = filteredProducts.reduce((sum, p) => sum + ((p.price * p.quantity) * 0.2), 0)
+    const totalNetProfit = filteredProducts.reduce((sum, p) => sum + ((p.price * p.quantity) - ((p.price * p.quantity) * 0.2) - (24 * p.quantity)), 0)
+    
+    tableData.push([
+      'TOTAL',
+      '',
+      totalQuantity.toString(),
+      '',
+      '',
+      `${(totalPrice / 100).toFixed(2)}`,
+      `${(totalSum / 100).toFixed(2)}`,
+      totalCost.toString(),
+      `${(totalRoyalty / 100).toFixed(2)}`,
+      `${(totalNetProfit / 100).toFixed(2)}`
+    ])
+    
+    ;(doc as any).autoTable({
+      head: [['Order ID', 'Product Title', 'Quantity', 'Collection', 'Order Date', 'Price (UAH)', 'Total (UAH)', 'себестоимость', 'Royalty (UAH)', 'наша доля (UAH)']],
+      body: tableData,
+      startY: selectedCollection !== 'all' ? 40 : 35,
+      theme: 'grid',
+      styles: { fontSize: 8, cellPadding: 2 },
+      headStyles: { fillColor: [41, 128, 185], textColor: 255, fontStyle: 'bold' },
+      bodyStyles: { textColor: 0 },
+      alternateRowStyles: { fillColor: [240, 240, 240] },
+      margin: 10
+    })
+    
+    doc.save(`orders-report-${new Date().toISOString().slice(0, 10)}.pdf`)
+  }
+
   return (
     <Container className="p-4">
       {/* Фильтры */}
@@ -547,7 +617,14 @@ const formatPrice = (price: number) => {
 
 
       </Table>
-
+        <Button 
+          onClick={exportToPDF}
+          disabled={filteredProducts.length === 0}
+          className="flex items-center gap-2"
+        >
+          {/* <Download size={16} /> */}
+          Download PDF
+        </Button>
     </Container>
   )
 }
