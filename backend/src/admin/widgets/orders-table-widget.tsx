@@ -488,15 +488,13 @@ const formatPrice = (price: number) => {
   const exportToPDF = async () => {
   try {
 
-    // if (!(window as any).pdfMake) {
+    if (!(window as any).pdfMake) {
 
-    //   await loadScript('backend/libs/pdfmake.min.js')
-    //   await loadScript('backend/libs/vfs_fonts.min.js')
-    // }
+      await loadScript('backend/libs/pdfmake.min.js')
+      await loadScript('backend/libs/vfs_fonts.min.js')
+    }
 
-const pdfMake = require('pdfmake/build/pdfmake')
-const pdfFonts = require('pdfmake/build/vfs_fonts')
-pdfMake.vfs = pdfFonts.pdfMake.vfs
+
 
     const monthLabel = months.find(m => m.value === selectedMonth)?.label || 'Всі замовлення'
     
