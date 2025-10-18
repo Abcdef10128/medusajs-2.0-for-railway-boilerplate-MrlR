@@ -440,7 +440,7 @@ const formatPrice = (price: number) => {
       </div>
 
       {/* Таблица товаров */}
-      <Table>
+      <Table className='rounded-2'>
         <Table.Header>
           <Table.Row>
             <Table.HeaderCell>Order ID</Table.HeaderCell>
@@ -507,14 +507,15 @@ const formatPrice = (price: number) => {
 
         {filteredProducts.length > 0 && (
           <Table.Body>
-            <Table.Row className="font-bold border-t-2 border-gray-300">
+            <Table.Row className="font-bold ">
               <Table.Cell className="font-bold">TOTAL:</Table.Cell>
               <Table.Cell></Table.Cell>
-              <Table.Cell>
+
+              <Table.Cell></Table.Cell>
+              <Table.Cell></Table.Cell>
+                            <Table.Cell>
                 {filteredProducts.reduce((sum, p) => sum + p.quantity, 0)}
               </Table.Cell>
-              <Table.Cell></Table.Cell>
-              <Table.Cell></Table.Cell>
               <Table.Cell>
                 {formatPrice(
                   filteredProducts.reduce((sum, p) => sum + p.price, 0)
