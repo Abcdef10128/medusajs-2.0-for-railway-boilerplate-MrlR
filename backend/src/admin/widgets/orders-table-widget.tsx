@@ -268,9 +268,11 @@ import jsPDF from "jspdf"
 import "jspdf-autotable"
 import autoTable from "jspdf-autotable"
 
-
-
-
+// import pdfMake from 'pdfmake/build/pdfmake'
+// import pdfFonts from 'pdfmake/build/vfs_fonts'
+import pdfMake from 'pdfmake/build/pdfmake'
+import * as pdfFonts from 'pdfmake/build/vfs_fonts'
+pdfMake.vfs = pdfFonts.pdfMake.vfs
 interface Product {
   id: string
   title: string
@@ -408,84 +410,191 @@ const formatPrice = (price: number) => {
      return `${CURRENCY_SYMBOL} ${priceInUAH.toFixed(2)}`
    }
 
-  const exportToPDF = () => {
-    try {
-      const doc = new jsPDF()
+  // const exportToPDF = () => {
+  //   try {
+  //     const doc = new jsPDF()
 
 
-    doc.addFont('https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.66/fonts/Roboto/Roboto-Regular.ttf', 'Roboto', 'normal')
-    doc.setFont('Roboto')
+  //   doc.addFont('https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.66/fonts/Roboto/Roboto-Regular.ttf', 'Roboto', 'normal')
+  //   doc.setFont('Roboto')
 
 
-      doc.setFontSize(16)
-      doc.text('Звіт продажів магазину', 14, 15)
+  //     doc.setFontSize(16)
+  //     doc.text('Звіт продажів магазину', 14, 15)
       
-      doc.setFontSize(10)
-      const monthLabel = months.find(m => m.value === selectedMonth)?.label || 'All Orders'
-      doc.text(`Період: ${monthLabel}`, 14, 25)
-      if (selectedCollection !== 'all') {
-        doc.text(`Collection: ${selectedCollection}`, 14, 32)
-      }
+  //     doc.setFontSize(10)
+  //     const monthLabel = months.find(m => m.value === selectedMonth)?.label || 'All Orders'
+  //     doc.text(`Період: ${monthLabel}`, 14, 25)
+  //     if (selectedCollection !== 'all') {
+  //       doc.text(`Collection: ${selectedCollection}`, 14, 32)
+  //     }
       
-      const tableData = filteredProducts.map(product => {
-        const total = product.price * product.quantity
-        const royalty = total * 0.2
-        const netProfit = total - royalty - (24 * product.quantity)
+  //     const tableData = filteredProducts.map(product => {
+  //       const total = product.price * product.quantity
+  //       const royalty = total * 0.2
+  //       const netProfit = total - royalty - (24 * product.quantity)
         
-        return [
-          product.order_display_id,
-          product.title,
-          product.quantity.toString(),
-          product.collection_title,
-          new Date(product.order_date).toLocaleDateString(),
-          `${(product.price / 100).toFixed(2)}`,
-          `${(total / 100).toFixed(2)}`,
-          (24 * product.quantity).toString(),
-          `${(royalty / 100).toFixed(2)}`,
-          `${(netProfit / 100).toFixed(2)}`
-        ]
-      })
+  //       return [
+  //         product.order_display_id,
+  //         product.title,
+  //         product.quantity.toString(),
+  //         product.collection_title,
+  //         new Date(product.order_date).toLocaleDateString(),
+  //         `${(product.price / 100).toFixed(2)}`,
+  //         `${(total / 100).toFixed(2)}`,
+  //         (24 * product.quantity).toString(),
+  //         `${(royalty / 100).toFixed(2)}`,
+  //         `${(netProfit / 100).toFixed(2)}`
+  //       ]
+  //     })
       
-      const totalQuantity = filteredProducts.reduce((sum, p) => sum + p.quantity, 0)
-      const totalPrice = filteredProducts.reduce((sum, p) => sum + p.price, 0)
-      const totalSum = filteredProducts.reduce((sum, p) => sum + (p.price * p.quantity), 0)
-      const totalCost = filteredProducts.reduce((sum, p) => sum + (24 * p.quantity), 0)
-      const totalRoyalty = filteredProducts.reduce((sum, p) => sum + ((p.price * p.quantity) * 0.2), 0)
-      const totalNetProfit = filteredProducts.reduce((sum, p) => sum + ((p.price * p.quantity) - ((p.price * p.quantity) * 0.2) - (24 * p.quantity)), 0)
+  //     const totalQuantity = filteredProducts.reduce((sum, p) => sum + p.quantity, 0)
+  //     const totalPrice = filteredProducts.reduce((sum, p) => sum + p.price, 0)
+  //     const totalSum = filteredProducts.reduce((sum, p) => sum + (p.price * p.quantity), 0)
+  //     const totalCost = filteredProducts.reduce((sum, p) => sum + (24 * p.quantity), 0)
+  //     const totalRoyalty = filteredProducts.reduce((sum, p) => sum + ((p.price * p.quantity) * 0.2), 0)
+  //     const totalNetProfit = filteredProducts.reduce((sum, p) => sum + ((p.price * p.quantity) - ((p.price * p.quantity) * 0.2) - (24 * p.quantity)), 0)
       
-      tableData.push([
-        'TOTAL',
-        '',
-        totalQuantity.toString(),
-        '',
-        '',
-        `${(totalPrice ).toFixed(2)}`,
-        `${(totalSum ).toFixed(2)}`,
-        totalCost.toString(),
-        `${(totalRoyalty ).toFixed(2)}`,
-        `${(totalNetProfit ).toFixed(2)}`
-      ])
+  //     tableData.push([
+  //       'TOTAL',
+  //       '',
+  //       totalQuantity.toString(),
+  //       '',
+  //       '',
+  //       `${(totalPrice ).toFixed(2)}`,
+  //       `${(totalSum ).toFixed(2)}`,
+  //       totalCost.toString(),
+  //       `${(totalRoyalty ).toFixed(2)}`,
+  //       `${(totalNetProfit ).toFixed(2)}`
+  //     ])
       
-      autoTable(doc, {
-        head: [['Order ID', 'Product Title', 'Qty', 'Collection', 'Date', 'Price', 'Total', 'Cost', 'Royalty', 'Profit']],
-        body: tableData,
-        startY: 40,
-        theme: 'grid',
-        styles: { fontSize: 7, cellPadding: 2 },
-        headStyles: { fillColor: [41, 128, 185], textColor: 255, fontStyle: 'bold' },
-        bodyStyles: { textColor: 0 },
-        alternateRowStyles: { fillColor: [240, 240, 240] },
-        margin: 10
-      })
+  //     autoTable(doc, {
+  //       head: [['Order ID', 'Product Title', 'Qty', 'Collection', 'Date', 'Price', 'Total', 'Cost', 'Royalty', 'Profit']],
+  //       body: tableData,
+  //       startY: 40,
+  //       theme: 'grid',
+  //       styles: { fontSize: 7, cellPadding: 2 },
+  //       headStyles: { fillColor: [41, 128, 185], textColor: 255, fontStyle: 'bold' },
+  //       bodyStyles: { textColor: 0 },
+  //       alternateRowStyles: { fillColor: [240, 240, 240] },
+  //       margin: 10
+  //     })
       
-      doc.save(`orders-report-${new Date().toISOString().slice(0, 10)}.pdf`)
-      console.log('PDF saved successfully')
-    } catch (error) {
-      console.error('Error exporting PDF:', error)
-      alert('Error exporting PDF: ' + error)
+  //     doc.save(`orders-report-${new Date().toISOString().slice(0, 10)}.pdf`)
+  //     console.log('PDF saved successfully')
+  //   } catch (error) {
+  //     console.error('Error exporting PDF:', error)
+  //     alert('Error exporting PDF: ' + error)
+  //   }
+  // }
+  const exportToPDF = () => {
+  try {
+    const monthLabel = months.find(m => m.value === selectedMonth)?.label || 'Всі замовлення'
+    
+    const tableData = filteredProducts.map(product => {
+      const total = product.price * product.quantity
+      const royalty = total * 0.2
+      const netProfit = total - royalty - (24 * product.quantity)
+      
+      return [
+        product.order_display_id,
+        product.title,
+        product.quantity.toString(),
+        product.collection_title,
+        new Date(product.order_date).toLocaleDateString('uk-UA'),
+        `${(product.price / 100).toFixed(2)}`,
+        `${(total / 100).toFixed(2)}`,
+        (24 * product.quantity).toString(),
+        `${(royalty / 100).toFixed(2)}`,
+        `${(netProfit / 100).toFixed(2)}`
+      ]
+    })
+    
+    // Итоговая строка
+    const totalQuantity = filteredProducts.reduce((sum, p) => sum + p.quantity, 0)
+    const totalPrice = filteredProducts.reduce((sum, p) => sum + p.price, 0)
+    const totalSum = filteredProducts.reduce((sum, p) => sum + (p.price * p.quantity), 0)
+    const totalCost = filteredProducts.reduce((sum, p) => sum + (24 * p.quantity), 0)
+    const totalRoyalty = filteredProducts.reduce((sum, p) => sum + ((p.price * p.quantity) * 0.2), 0)
+    const totalNetProfit = filteredProducts.reduce((sum, p) => sum + ((p.price * p.quantity) - ((p.price * p.quantity) * 0.2) - (24 * p.quantity)), 0)
+    
+    tableData.push([
+      { text: 'ВСЬОГО', bold: true },
+      '',
+      { text: totalQuantity.toString(), bold: true },
+      '',
+      '',
+      { text: `${(totalPrice).toFixed(2)}`, bold: true },
+      { text: `${(totalSum).toFixed(2)}`, bold: true },
+      { text: totalCost.toString(), bold: true },
+      { text: `${(totalRoyalty).toFixed(2)}`, bold: true },
+      { text: `${(totalNetProfit).toFixed(2)}`, bold: true }
+    ])
+    
+    const docDefinition = {
+      content: [
+        { text: 'Звіт продажів магазину', style: 'header' },
+        { text: `Період: ${monthLabel}`, style: 'subheader', margin: [0, 5, 0, 5] },
+        selectedCollection !== 'all' ? { text: `Колекція: ${selectedCollection}`, margin: [0, 0, 0, 10] } : {},
+        {
+          table: {
+            headerRows: 1,
+            widths: ['auto', '*', 'auto', 'auto', 'auto', 'auto', 'auto', 'auto', 'auto', 'auto'],
+            body: [
+              [
+                { text: 'Order ID', style: 'tableHeader' },
+                { text: 'Назва товару', style: 'tableHeader' },
+                { text: 'Кільк.', style: 'tableHeader' },
+                { text: 'Колекція', style: 'tableHeader' },
+                { text: 'Дата', style: 'tableHeader' },
+                { text: 'Ціна', style: 'tableHeader' },
+                { text: 'Сума', style: 'tableHeader' },
+                { text: 'Собіварт.', style: 'tableHeader' },
+                { text: 'Роялті', style: 'tableHeader' },
+                { text: 'Прибуток', style: 'tableHeader' }
+              ],
+              ...tableData
+            ]
+          },
+          layout: {
+            fillColor: function (rowIndex) {
+              return rowIndex === 0 ? '#2980b9' : (rowIndex % 2 === 0 ? '#f0f0f0' : null)
+            },
+            hLineWidth: function () { return 0.5 },
+            vLineWidth: function () { return 0.5 },
+            hLineColor: function () { return '#cccccc' },
+            vLineColor: function () { return '#cccccc' }
+          }
+        }
+      ],
+      styles: {
+        header: {
+          fontSize: 16,
+          bold: true,
+          margin: [0, 0, 0, 10]
+        },
+        subheader: {
+          fontSize: 10
+        },
+        tableHeader: {
+          bold: true,
+          fontSize: 9,
+          color: 'white'
+        }
+      },
+      defaultStyle: {
+        fontSize: 8
+      },
+      pageOrientation: 'landscape'
     }
+    
+    pdfMake.createPdf(docDefinition).download(`orders-report-${new Date().toISOString().slice(0, 10)}.pdf`)
+    console.log('PDF saved successfully')
+  } catch (error) {
+    console.error('Error exporting PDF:', error)
+    alert('Error exporting PDF: ' + error)
   }
-  
+}
   return (
     <Container className="p-4">
       {/* Фильтры */}
