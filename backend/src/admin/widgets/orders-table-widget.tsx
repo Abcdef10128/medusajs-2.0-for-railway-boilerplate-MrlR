@@ -489,8 +489,8 @@ const formatPrice = (price: number) => {
   try {
 
 if (!(window as any).pdfMake) {
-  await loadScript('backend/libs/pdfmake.min.js')
-  await loadScript('backend/libs/vfs_fonts.min.js')
+  await loadScript('/libs/pdfmake.min.js')
+  await loadScript('/libs/vfs_fonts.min.js')
 }
 
 
