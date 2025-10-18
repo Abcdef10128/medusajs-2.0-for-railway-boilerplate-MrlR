@@ -408,7 +408,7 @@ const formatPrice = (price: number) => {
   const exportToPDF = () => {
     try {
       const doc = new jsPDF()
-      doc.setFont('Inter', 'normal')
+      doc.setFont('Inter.ttf', 'normal')
       doc.setFontSize(16)
       doc.text('Звіт продажів магазину', 14, 15)
       
