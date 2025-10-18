@@ -447,14 +447,15 @@ const formatPrice = (price: number) => {
             <Table.HeaderCell>Product Title</Table.HeaderCell>
             {/* <Table.HeaderCell>SKU</Table.HeaderCell> */}
             <Table.HeaderCell>Quantity</Table.HeaderCell>
-            <Table.HeaderCell>Price</Table.HeaderCell>
+
+
+            <Table.HeaderCell>Collection</Table.HeaderCell>
+            <Table.HeaderCell>Order Date</Table.HeaderCell>
+                        <Table.HeaderCell>Price</Table.HeaderCell>
             <Table.HeaderCell>Total</Table.HeaderCell>
                         <Table.HeaderCell>себестоимость</Table.HeaderCell>
                         <Table.HeaderCell>Royalty</Table.HeaderCell>
                         <Table.HeaderCell>наша доля</Table.HeaderCell>
-
-            <Table.HeaderCell>Collection</Table.HeaderCell>
-            <Table.HeaderCell>Order Date</Table.HeaderCell>
           </Table.Row>
         </Table.Header>
         <Table.Body>
@@ -476,14 +477,15 @@ const formatPrice = (price: number) => {
                   </Table.Cell>
                   <Table.Cell>{product.title || item.variant?.product?.title || 'Unknown Product'}</Table.Cell>
                   {/* <Table.Cell className="text-gray-600">{product.sku}</Table.Cell> */}
-                  <Table.Cell className="text-left">{product.quantity}</Table.Cell>
 
                   <Table.Cell>
                     <Badge size="small">{product.collection_title}</Badge>
                   </Table.Cell>
                   <Table.Cell>
                     {new Date(product.order_date).toLocaleDateString()}
-                  </Table.Cell>                  
+                  </Table.Cell> 
+                  <Table.Cell className="text-left">{product.quantity}</Table.Cell>
+                 
                   <Table.Cell>{formatPrice(product.price, product.currency_code)}</Table.Cell>
                   <Table.Cell className="font-medium">
                     {formatPrice(total, product.currency_code)}
@@ -505,7 +507,7 @@ const formatPrice = (price: number) => {
 
         {filteredProducts.length > 0 && (
           <Table.Body>
-            <Table.Row className="bg-gray-100 font-bold border-t-2 border-gray-300">
+            <Table.Row className="font-bold border-t-2 border-gray-300">
               <Table.Cell className="font-bold">TOTAL:</Table.Cell>
               <Table.Cell></Table.Cell>
               <Table.Cell>
@@ -542,21 +544,9 @@ const formatPrice = (price: number) => {
         )}
 
 
-        
+
       </Table>
 
-      {/* Статистика */}
-      <div className="mt-4 text-sm text-gray-600">
-        <div>Showing {filteredProducts.length} products from {new Set(filteredProducts.map(p => p.order_display_id)).size} orders</div>
-        {filteredProducts.length > 0 && (
-          <div className="mt-2 font-medium">
-            Total Revenue: {formatPrice(
-              filteredProducts.reduce((sum, p) => sum + (p.price * p.quantity), 0),
-              filteredProducts[0]?.currency_code || 'USD'
-            )}
-          </div>
-        )}
-      </div>
     </Container>
   )
 }
