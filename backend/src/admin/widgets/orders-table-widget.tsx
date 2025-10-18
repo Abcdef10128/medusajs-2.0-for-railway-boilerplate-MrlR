@@ -265,10 +265,6 @@ import { defineWidgetConfig } from "@medusajs/admin-sdk"
 import { Container, Table, Select, Badge, Button } from "@medusajs/ui"
 import { useEffect, useState } from "react"
 
-import * as pdfMake from 'pdfmake/build/pdfmake'
-import * as pdfFonts from 'pdfmake/build/vfs_fonts'
-
-(pdfMake as any).vfs = pdfFonts.pdfMake.vfs
 
 
 interface Product {
@@ -489,11 +485,13 @@ const formatPrice = (price: number) => {
   try {
 
 
-//  if (!(window as any).pdfMake) {
-//       await loadScript('https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js')
-//       await loadScript('https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.min.js')
-//     }
-//     const pdfMake = (window as any).pdfMake
+ if (!(window as any).pdfMake) {
+      await loadScript('https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js')
+      await loadScript('https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.min.js')
+    }
+    const pdfMake = (window as any).pdfMake
+
+
     const monthLabel = months.find(m => m.value === selectedMonth)?.label || 'Всі замовлення'
     
     const tableData = filteredProducts.map(product => {
@@ -763,5 +761,9 @@ export const config = defineWidgetConfig({
 
 export default OrdersProductsWidget
 
+
+function loadScript(arg0: string) {
+  throw new Error("Function not implemented.")
+}
 //v2 
 
