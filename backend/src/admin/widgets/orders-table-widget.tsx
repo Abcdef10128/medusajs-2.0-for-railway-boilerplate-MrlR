@@ -410,11 +410,11 @@ const formatPrice = (price: number) => {
       const doc = new jsPDF()
       
       doc.setFontSize(16)
-      doc.text('Orders Report', 14, 15)
+      doc.text('Звіт продажів магазину', 14, 15)
       
       doc.setFontSize(10)
       const monthLabel = months.find(m => m.value === selectedMonth)?.label || 'All Orders'
-      doc.text(`Period: ${monthLabel}`, 14, 25)
+      doc.text(`Період: ${monthLabel}`, 14, 25)
       if (selectedCollection !== 'all') {
         doc.text(`Collection: ${selectedCollection}`, 14, 32)
       }
@@ -451,11 +451,11 @@ const formatPrice = (price: number) => {
         totalQuantity.toString(),
         '',
         '',
-        `${(totalPrice / 100).toFixed(2)}`,
-        `${(totalSum / 100).toFixed(2)}`,
+        `${(totalPrice ).toFixed(2)}`,
+        `${(totalSum ).toFixed(2)}`,
         totalCost.toString(),
-        `${(totalRoyalty / 100).toFixed(2)}`,
-        `${(totalNetProfit / 100).toFixed(2)}`
+        `${(totalRoyalty ).toFixed(2)}`,
+        `${(totalNetProfit ).toFixed(2)}`
       ])
       
       autoTable(doc, {
