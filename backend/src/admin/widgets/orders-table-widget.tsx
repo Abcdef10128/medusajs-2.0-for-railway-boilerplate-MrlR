@@ -470,9 +470,9 @@ const formatPrice = (price: number) => {
               
               return (
                 <Table.Row key={product.id}>
-                  <Table.Cell className="font-medium">
+                  <Table.Cell className="font-medium" onClick={() => window.location.href = `/app/orders/${product.order_id}`}>
                     
-                    <Badge href={`/orders/${product.order_id}`} size="small">{product.order_display_id}</Badge>
+                    <Badge size="small">{product.order_display_id}</Badge>
                   </Table.Cell>
                   <Table.Cell>{product.title || item.variant?.product?.title || 'Unknown Product'}</Table.Cell>
                   {/* <Table.Cell className="text-gray-600">{product.sku}</Table.Cell> */}
