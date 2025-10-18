@@ -264,11 +264,16 @@
 import { defineWidgetConfig } from "@medusajs/admin-sdk"
 import { Container, Table, Select, Badge, Button } from "@medusajs/ui"
 import { useEffect, useState } from "react"
-import jsPDF from "jspdf"
-import "jspdf-autotable"
-import autoTable from "jspdf-autotable"
 
-import pdfMake from 'pdfmake'
+// import * as pdfMake from 'pdfmake/build/pdfmake'
+// import * as pdfFonts from 'pdfmake/build/vfs_fonts'
+
+// (pdfMake as any).vfs = pdfFonts.pdfMake.vfs
+
+const pdfMake = require('pdfmake/build/pdfmake')
+const pdfFonts = require('pdfmake/build/vfs_fonts')
+
+pdfMake.vfs = pdfFonts.pdfMake.vfs
 
 interface Product {
   id: string
@@ -488,8 +493,11 @@ const formatPrice = (price: number) => {
   try {
 
 
-
-    
+//  if (!(window as any).pdfMake) {
+//       await loadScript('https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js')
+//       await loadScript('https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.min.js')
+//     }
+//     const pdfMake = (window as any).pdfMake
     const monthLabel = months.find(m => m.value === selectedMonth)?.label || 'Всі замовлення'
     
     const tableData = filteredProducts.map(product => {

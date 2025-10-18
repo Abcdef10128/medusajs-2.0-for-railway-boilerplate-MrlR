@@ -42,7 +42,7 @@
     "medusa-payment-solana": "0.3.3",
     "medusajs-launch-utils": "^0.0.17",
     "minio": "^8.0.3",
-    "pdfmake": "^0.2.20",
+    "pdfmake": "^0.1.70",
     "pg": "^8.13.1",
     "resend": "4.0.1",
     "ulid": "^2.3.0"
