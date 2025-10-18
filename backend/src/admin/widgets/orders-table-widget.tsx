@@ -482,15 +482,16 @@ const formatPrice = (price: number) => {
   //   }
   // }
 
-  const pdfMake = require('pdfmake/build/pdfmake')
-const pdfFonts = require('pdfmake/build/vfs_fonts')
-pdfMake.vfs = pdfFonts.pdfMake.vfs
+
 
 
   const exportToPDF = async () => {
   try {
 
-
+    if (!(window as any).pdfMake) {
+      await loadScript('https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js')
+      await loadScript('https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.min.js')
+    }
 
 
 
@@ -600,6 +601,18 @@ pdfMake.vfs = pdfFonts.pdfMake.vfs
     alert('Error exporting PDF: ' + error)
   }
 }
+
+function loadScript(src: string): Promise<void> {
+  return new Promise((resolve, reject) => {
+    const script = document.createElement('script')
+    script.src = src
+    script.onload = () => resolve()
+    script.onerror = reject
+    document.head.appendChild(script)
+  })
+}
+
+
   return (
     <Container className="p-4">
       {/* Фильтры */}
