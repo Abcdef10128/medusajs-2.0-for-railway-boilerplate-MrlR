@@ -493,7 +493,7 @@ const formatPrice = (price: number) => {
       await loadScript('backend/libs/pdfmake.min.js')
       await loadScript('backend/libs/vfs_fonts.min.js')
     }
-
+    const pdfMake = (window as any).pdfMake
     const monthLabel = months.find(m => m.value === selectedMonth)?.label || 'Всі замовлення'
     
     const tableData = filteredProducts.map(product => {
