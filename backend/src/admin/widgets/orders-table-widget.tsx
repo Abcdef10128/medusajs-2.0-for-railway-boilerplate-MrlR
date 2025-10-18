@@ -481,15 +481,17 @@ const formatPrice = (price: number) => {
   //     alert('Error exporting PDF: ' + error)
   //   }
   // }
+
+  const pdfMake = require('pdfmake/build/pdfmake')
+const pdfFonts = require('pdfmake/build/vfs_fonts')
+pdfMake.vfs = pdfFonts.pdfMake.vfs
+
+
   const exportToPDF = async () => {
   try {
 
 
- if (!(window as any).pdfMake) {
-      await loadScript('https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js')
-      await loadScript('https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.min.js')
-    }
-    const pdfMake = (window as any).pdfMake
+
 
 
     const monthLabel = months.find(m => m.value === selectedMonth)?.label || 'Всі замовлення'
@@ -761,9 +763,5 @@ export const config = defineWidgetConfig({
 
 export default OrdersProductsWidget
 
-
-function loadScript(arg0: string) {
-  throw new Error("Function not implemented.")
-}
 //v2 
 
