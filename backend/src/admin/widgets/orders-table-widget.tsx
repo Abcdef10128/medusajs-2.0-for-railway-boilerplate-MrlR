@@ -266,6 +266,7 @@ import { Container, Table, Select, Badge, Button } from "@medusajs/ui"
 import { useEffect, useState } from "react"
 import jsPDF from "jspdf"
 import "jspdf-autotable"
+import autoTable from "jspdf-autotable"
 
 interface Product {
   id: string
@@ -457,7 +458,7 @@ const formatPrice = (price: number) => {
         `${(totalNetProfit / 100).toFixed(2)}`
       ])
       
-      ;(doc as any).autoTable({
+      autoTable(doc, {
         head: [['Order ID', 'Product Title', 'Qty', 'Collection', 'Date', 'Price', 'Total', 'Cost', 'Royalty', 'Profit']],
         body: tableData,
         startY: 40,
