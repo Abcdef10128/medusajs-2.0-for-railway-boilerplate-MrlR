@@ -267,7 +267,10 @@ import { useEffect, useState } from "react"
 import jsPDF from "jspdf"
 import "jspdf-autotable"
 import autoTable from "jspdf-autotable"
-import './fonts/Inter.ttf'
+
+
+
+
 interface Product {
   id: string
   title: string
@@ -408,7 +411,12 @@ const formatPrice = (price: number) => {
   const exportToPDF = () => {
     try {
       const doc = new jsPDF()
-      doc.setFont('Inter.ttf', 'normal')
+
+
+    doc.addFont('https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.66/fonts/Roboto/Roboto-Regular.ttf', 'Roboto', 'normal')
+    doc.setFont('Roboto')
+
+
       doc.setFontSize(16)
       doc.text('Звіт продажів магазину', 14, 15)
       
@@ -477,7 +485,7 @@ const formatPrice = (price: number) => {
       alert('Error exporting PDF: ' + error)
     }
   }
-
+  
   return (
     <Container className="p-4">
       {/* Фильтры */}
