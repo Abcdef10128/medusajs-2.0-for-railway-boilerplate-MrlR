@@ -267,7 +267,7 @@ import { useEffect, useState } from "react"
 import jsPDF from "jspdf"
 import "jspdf-autotable"
 import autoTable from "jspdf-autotable"
-
+import './fonts/Inter.ttf'
 interface Product {
   id: string
   title: string
@@ -408,7 +408,7 @@ const formatPrice = (price: number) => {
   const exportToPDF = () => {
     try {
       const doc = new jsPDF()
-      doc.setFont("helvetica")
+      doc.setFont('Inter', 'normal')
       doc.setFontSize(16)
       doc.text('Звіт продажів магазину', 14, 15)
       
