@@ -268,11 +268,8 @@ import jsPDF from "jspdf"
 import "jspdf-autotable"
 import autoTable from "jspdf-autotable"
 
-// import pdfMake from 'pdfmake/build/pdfmake'
-// import pdfFonts from 'pdfmake/build/vfs_fonts'
-import pdfMake from 'pdfmake/build/pdfmake'
-import * as pdfFonts from 'pdfmake/build/vfs_fonts'
-pdfMake.vfs = pdfFonts.pdfMake.vfs
+
+
 interface Product {
   id: string
   title: string
@@ -487,8 +484,16 @@ const formatPrice = (price: number) => {
   //     alert('Error exporting PDF: ' + error)
   //   }
   // }
-  const exportToPDF = () => {
+  const exportToPDF = async () => {
   try {
+
+    const pdfMakeModule = await import('pdfmake/build/pdfmake')
+    const pdfFontsModule = await import('pdfmake/build/vfs_fonts')
+    
+    const pdfMake = pdfMakeModule.default
+    pdfMake.vfs = pdfFontsModule.default.pdfMake.vfs
+
+    
     const monthLabel = months.find(m => m.value === selectedMonth)?.label || 'Всі замовлення'
     
     const tableData = filteredProducts.map(product => {
