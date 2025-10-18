@@ -470,13 +470,20 @@ const formatPrice = (price: number) => {
               
               return (
                 <Table.Row key={product.id}>
-                  <Table.Cell className="font-medium" onClick={() => window.location.href = `/app/orders/${product.order_id}`}>
+                  <Table.Cell className="font-medium cursor-pointer" onClick={() => window.location.href = `/app/orders/${product.order_id}`}>
                     
                     <Badge size="small">{product.order_display_id}</Badge>
                   </Table.Cell>
                   <Table.Cell>{product.title || item.variant?.product?.title || 'Unknown Product'}</Table.Cell>
                   {/* <Table.Cell className="text-gray-600">{product.sku}</Table.Cell> */}
                   <Table.Cell className="text-left">{product.quantity}</Table.Cell>
+
+                  <Table.Cell>
+                    <Badge size="small">{product.collection_title}</Badge>
+                  </Table.Cell>
+                  <Table.Cell>
+                    {new Date(product.order_date).toLocaleDateString()}
+                  </Table.Cell>                  
                   <Table.Cell>{formatPrice(product.price, product.currency_code)}</Table.Cell>
                   <Table.Cell className="font-medium">
                     {formatPrice(total, product.currency_code)}
@@ -488,17 +495,54 @@ const formatPrice = (price: number) => {
                 <Table.Cell className="font-medium">
                     {formatPrice(total-total*0.2 - 24 * product.quantity, product.currency_code)}
                   </Table.Cell>
-                  <Table.Cell>
-                    <Badge size="small">{product.collection_title}</Badge>
-                  </Table.Cell>
-                  <Table.Cell>
-                    {new Date(product.order_date).toLocaleDateString()}
-                  </Table.Cell>
                 </Table.Row>
               )
             })
           )}
         </Table.Body>
+
+
+
+        {filteredProducts.length > 0 && (
+          <Table.Body>
+            <Table.Row className="bg-gray-100 font-bold border-t-2 border-gray-300">
+              <Table.Cell className="font-bold">TOTAL:</Table.Cell>
+              <Table.Cell></Table.Cell>
+              <Table.Cell>
+                {filteredProducts.reduce((sum, p) => sum + p.quantity, 0)}
+              </Table.Cell>
+              <Table.Cell></Table.Cell>
+              <Table.Cell></Table.Cell>
+              <Table.Cell>
+                {formatPrice(
+                  filteredProducts.reduce((sum, p) => sum + p.price, 0)
+                )}
+              </Table.Cell>
+              <Table.Cell className="font-bold">
+                {formatPrice(
+                  filteredProducts.reduce((sum, p) => sum + (p.price * p.quantity), 0)
+                )}
+              </Table.Cell>
+              <Table.Cell>
+                {filteredProducts.reduce((sum, p) => sum + (24 * p.quantity), 0)}
+              </Table.Cell>
+              <Table.Cell className="font-bold">
+                {formatPrice(
+                  filteredProducts.reduce((sum, p) => sum + ((p.price * p.quantity) * 0.2), 0)
+                )}
+              </Table.Cell>
+              <Table.Cell className="font-bold">
+                {formatPrice(
+                  filteredProducts.reduce((sum, p) => sum + ((p.price * p.quantity) - ((p.price * p.quantity) * 0.2) - (24 * p.quantity)), 0)
+                )}
+              </Table.Cell>
+            </Table.Row>
+          </Table.Body>
+
+        )}
+
+
+        
       </Table>
 
       {/* Статистика */}
