@@ -406,7 +406,7 @@ const formatPrice = (price: number) => {
 
   const exportToPDF = () => {
     try {
-      const doc = new jsPDF.jsPDF()
+      const doc = new jsPDF()
       
       doc.setFontSize(16)
       doc.text('Orders Report', 14, 15)
