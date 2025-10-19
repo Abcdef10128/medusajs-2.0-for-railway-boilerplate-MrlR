@@ -513,7 +513,7 @@ const formatPrice = (price: number) => {
         product.order_display_id,
         product.title,
         product.quantity.toString(),
-        product.collection_title,
+        // product.collection_title,
         new Date(product.order_date).toLocaleDateString('uk-UA'),
         `${(product.price / 100).toFixed(2)}`,
         `${(total / 100).toFixed(2)}`,
@@ -536,7 +536,7 @@ const formatPrice = (price: number) => {
       '',
       { text: totalQuantity.toString(), bold: true },
       '',
-      '',
+      // '',
       { text: `${(totalPrice).toFixed(2)}`, bold: true },
       { text: `${(totalSum).toFixed(2)}`, bold: true },
       // { text: totalCost.toString(), bold: true },
@@ -552,7 +552,7 @@ const formatPrice = (price: number) => {
         {
           table: {
             headerRows: 1,
-            widths: ['auto', '*', 'auto', 'auto', 'auto', 'auto', 'auto', 'auto'],
+            widths: ['auto', '*', 'auto', 'auto', 'auto', 'auto', 'auto'],
             body: [
               [
                 { text: 'Order ID', style: 'tableHeader' },
