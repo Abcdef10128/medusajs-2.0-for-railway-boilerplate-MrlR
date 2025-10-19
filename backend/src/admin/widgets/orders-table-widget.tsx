@@ -492,7 +492,7 @@ const formatPrice = (price: number) => {
       // await loadScript('https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js')
       // await loadScript('https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.min.js')
       await loadScript('/libs/pdfmake.min.js')
-  await loadScript('/libs/vfs_fonts.min.js')
+      await loadScript('/libs/vfs_fonts.min.js')
     }
 
     const pdfMake = (window as any).pdfMake
