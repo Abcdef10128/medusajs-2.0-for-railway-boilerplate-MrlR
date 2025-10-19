@@ -513,7 +513,7 @@ const formatPrice = (price: number) => {
         product.order_display_id,
         product.title,
         product.quantity.toString(),
-        product.collection_title,
+        // product.collection_title,
         new Date(product.order_date).toLocaleDateString('uk-UA'),
         `${(product.price / 100).toFixed(2)}`,
         `${(total / 100).toFixed(2)}`,
@@ -552,13 +552,13 @@ const formatPrice = (price: number) => {
         {
           table: {
             headerRows: 1,
-            widths: ['auto', '*', 'auto', 'auto', 'auto', 'auto', 'auto', 'auto'],
+            widths: ['auto', '*', 'auto', 'auto', 'auto', 'auto', 'auto'],
             body: [
               [
                 { text: 'Order ID', style: 'tableHeader' },
                 { text: 'Назва товару', style: 'tableHeader' },
                 { text: 'Кільк.', style: 'tableHeader' },
-                { text: 'Колекція', style: 'tableHeader' },
+                // { text: 'Колекція', style: 'tableHeader' },
                 { text: 'Дата', style: 'tableHeader' },
                 { text: 'Ціна', style: 'tableHeader' },
                 { text: 'Сума', style: 'tableHeader' },
