@@ -774,6 +774,7 @@ function loadScript(src: string): Promise<void> {
 
 export const config = defineWidgetConfig({
   zone: "order.list.before",
+
 })
 
 export default OrdersProductsWidget
