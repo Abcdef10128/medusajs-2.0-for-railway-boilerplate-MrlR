@@ -489,10 +489,9 @@ const formatPrice = (price: number) => {
   try {
 
    if (!(window as any).pdfMake) {
-      // await loadScript('https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js')
-      // await loadScript('https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.min.js')
-      await loadScript('pdfmake.min.js')
-      await loadScript('vfs_fonts.min.js')
+      await loadScript('https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js')
+      await loadScript('https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.min.js')
+
     }
 
     const pdfMake = (window as any).pdfMake
@@ -765,7 +764,7 @@ function loadScript(src: string): Promise<void> {
         <Button 
           onClick={exportToPDF}
           disabled={filteredProducts.length === 0}
-          className="flex items-center gap-2"
+          className="flex items-center gap-2 mt-2 w-full"
         >
           Download PDF
         </Button>
