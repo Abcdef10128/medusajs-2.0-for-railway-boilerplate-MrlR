@@ -515,10 +515,10 @@ const formatPrice = (price: number) => {
         product.quantity.toString(),
         // product.collection_title,
         new Date(product.order_date).toLocaleDateString('uk-UA'),
-        `${(product.price / 100).toFixed(2)}`,
-        `${(total / 100).toFixed(2)}`,
+        `${(product.price).toFixed(2)}`,
+        `${(total).toFixed(2)}`,
         // (24 * product.quantity).toString(),
-        `${(royalty / 100).toFixed(2)}`,
+        `${(royalty).toFixed(2)}`,
         // `${(netProfit / 100).toFixed(2)}`
       ]
     })
@@ -547,7 +547,7 @@ const formatPrice = (price: number) => {
     const docDefinition = {
       content: [
         { text: `Звіт продажів магазину ${collectionTitle}`  , style: 'header' },
-        { text: `Період: ${monthLabel}`, style: 'subheader', margin: [0, 5, 0, 5] },
+        { text: `Період: ${monthLabel}`, style: 'subheader', margin: [0, 0, 0, 20] },
         selectedCollection !== 'all' ? { text: `Колекція: ${selectedCollection}`, margin: [0, 0, 0, 10] } : {},
         {
           table: {
@@ -571,7 +571,10 @@ const formatPrice = (price: number) => {
           },
           layout: {
             fillColor: function (rowIndex) {
-              return rowIndex === 0 ? '#2980b9' : (rowIndex % 2 === 0 ? '#f0f0f0' : null)
+              // return rowIndex === 0 ? '#2980b9' : (rowIndex % 2 === 0 ? '#f0f0f0' : null)
+                return rowIndex === 0 ? 'black' : (rowIndex % 2 === 0 ? '#f0f0f0' : null)
+
+              
             },
             hLineWidth: function () { return 0.5 },
             vLineWidth: function () { return 0.5 },
