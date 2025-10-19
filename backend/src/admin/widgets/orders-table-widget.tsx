@@ -517,9 +517,9 @@ const formatPrice = (price: number) => {
         new Date(product.order_date).toLocaleDateString('uk-UA'),
         `${(product.price / 100).toFixed(2)}`,
         `${(total / 100).toFixed(2)}`,
-        (24 * product.quantity).toString(),
+        // (24 * product.quantity).toString(),
         `${(royalty / 100).toFixed(2)}`,
-        `${(netProfit / 100).toFixed(2)}`
+        // `${(netProfit / 100).toFixed(2)}`
       ]
     })
     
@@ -539,9 +539,9 @@ const formatPrice = (price: number) => {
       '',
       { text: `${(totalPrice).toFixed(2)}`, bold: true },
       { text: `${(totalSum).toFixed(2)}`, bold: true },
-      { text: totalCost.toString(), bold: true },
+      // { text: totalCost.toString(), bold: true },
       { text: `${(totalRoyalty).toFixed(2)}`, bold: true },
-      { text: `${(totalNetProfit).toFixed(2)}`, bold: true }
+      // { text: `${(totalNetProfit).toFixed(2)}`, bold: true }
     ])
     
     const docDefinition = {
@@ -562,9 +562,9 @@ const formatPrice = (price: number) => {
                 { text: 'Дата', style: 'tableHeader' },
                 { text: 'Ціна', style: 'tableHeader' },
                 { text: 'Сума', style: 'tableHeader' },
-                { text: 'Собіварт.', style: 'tableHeader' },
+                // { text: 'Собіварт.', style: 'tableHeader' },
                 { text: 'Роялті', style: 'tableHeader' },
-                { text: 'Прибуток', style: 'tableHeader' }
+                // { text: 'Прибуток', style: 'tableHeader' }
               ],
               ...tableData
             ]
