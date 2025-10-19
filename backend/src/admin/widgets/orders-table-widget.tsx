@@ -566,7 +566,7 @@ const formatPrice = (price: number) => {
           },
           layout: {
             fillColor: function (rowIndex) {
-              return rowIndex === 0 ? '#2980b9' : (rowIndex % 2 === 0 ? '#f0f0f0' : null)
+              return rowIndex === 0 ? '#464646ff' : (rowIndex % 2 === 0 ? '#f0f0f0' : null)
             },
             hLineWidth: function () { return 0.5 },
             vLineWidth: function () { return 0.5 },
