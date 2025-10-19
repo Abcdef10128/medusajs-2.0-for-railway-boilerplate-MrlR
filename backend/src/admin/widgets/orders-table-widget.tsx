@@ -547,7 +547,7 @@ const formatPrice = (price: number) => {
     const docDefinition = {
       content: [
         { text: `Звіт продажів магазину ${collectionTitle}`  , style: 'header' },
-        { text: `Період: ${monthLabel}`, style: 'subheader', margin: [0, 0, 0, 20] },
+        { text: `Період: ${monthLabel}`, style: 'subheader', margin: [0, 0, 0, 10] },
         selectedCollection !== 'all' ? { text: `Колекція: ${selectedCollection}`, margin: [0, 0, 0, 10] } : {},
         {
           table: {
@@ -579,8 +579,14 @@ const formatPrice = (price: number) => {
             hLineWidth: function () { return 0.5 },
             vLineWidth: function () { return 0.5 },
             hLineColor: function () { return '#cccccc' },
-            vLineColor: function () { return '#cccccc' }
-          }
+            vLineColor: function () { return '#cccccc' },
+
+            paddingLeft: function(i) { return 8 },
+            paddingRight: function(i) { return 8 },
+            paddingTop: function(i) { return 6 },
+            paddingBottom: function(i) { return 6 }
+          },
+          margin: [0, 0, 0, 0]
         }
       ],
       styles: {
