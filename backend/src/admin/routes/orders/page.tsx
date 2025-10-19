@@ -1,13 +1,13 @@
-import { Container } from "@medusajs/ui"
+import { Container, Heading } from "@medusajs/ui"
 
-const OrdersPage = () => {
+const CustomOrdersPage = () => {
   return (
     <Container>
-      <div className="flex items-center justify-center h-96">
-        <p className="text-gray-500">Доступ до замовлень обмежено</p>
-      </div>
+      <Heading level="h1">Заказы</Heading>
+      <p>Таблица заказов скрыта</p>
+      {/* Здесь можете добавить свой контент */}
     </Container>
   )
 }
 
-export default OrdersPage
+export default CustomOrdersPage
