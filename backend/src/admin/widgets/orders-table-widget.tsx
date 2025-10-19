@@ -499,6 +499,11 @@ const formatPrice = (price: number) => {
 
     const monthLabel = months.find(m => m.value === selectedMonth)?.label || 'Всі замовлення'
     
+    const collectionTitle = filteredProducts.length > 0 
+      ? filteredProducts[0].collection_title 
+      : selectedCollection
+
+
     const tableData = filteredProducts.map(product => {
       const total = product.price * product.quantity
       const royalty = total * 0.2
@@ -534,14 +539,14 @@ const formatPrice = (price: number) => {
       '',
       { text: `${(totalPrice).toFixed(2)}`, bold: true },
       { text: `${(totalSum).toFixed(2)}`, bold: true },
-      { text: totalCost.toString(), bold: true },
+      // { text: totalCost.toString(), bold: true },
       { text: `${(totalRoyalty).toFixed(2)}`, bold: true },
-      { text: `${(totalNetProfit).toFixed(2)}`, bold: true }
+      // { text: `${(totalNetProfit).toFixed(2)}`, bold: true }
     ])
     
     const docDefinition = {
       content: [
-        { text: 'Звіт продажів магазину', style: 'header' },
+        { text: `Звіт продажів магазину ${collectionTitle}`  , style: 'header' },
         { text: `Період: ${monthLabel}`, style: 'subheader', margin: [0, 5, 0, 5] },
         selectedCollection !== 'all' ? { text: `Колекція: ${selectedCollection}`, margin: [0, 0, 0, 10] } : {},
         {
@@ -557,9 +562,9 @@ const formatPrice = (price: number) => {
                 { text: 'Дата', style: 'tableHeader' },
                 { text: 'Ціна', style: 'tableHeader' },
                 { text: 'Сума', style: 'tableHeader' },
-                { text: 'Собіварт.', style: 'tableHeader' },
+                // { text: 'Собіварт.', style: 'tableHeader' },
                 { text: 'Роялті', style: 'tableHeader' },
-                { text: 'Прибуток', style: 'tableHeader' }
+                // { text: 'Прибуток', style: 'tableHeader' }
               ],
               ...tableData
             ]
