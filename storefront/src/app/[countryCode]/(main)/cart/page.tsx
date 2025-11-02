@@ -5,7 +5,6 @@ import { enrichLineItems, retrieveCart } from "@lib/data/cart"
 import { HttpTypes } from "@medusajs/types"
 import { getCustomer } from "@lib/data/customer"
 
-
 export const metadata: Metadata = {
   title: "Cart",
   description: "View your cart",
