@@ -1,6 +1,5 @@
 import { Metadata } from "next"
 import CartTemplate from "@modules/cart/templates"
-
 import { enrichLineItems, retrieveCart } from "@lib/data/cart"
 import { HttpTypes } from "@medusajs/types"
 import { getCustomer } from "@lib/data/customer"
