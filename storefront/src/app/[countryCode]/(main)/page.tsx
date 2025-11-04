@@ -32,7 +32,7 @@ export default async function Home({
   return (
     <>
       <Hero />
-      <div className="">
+      <div className="mb-12">
         <ul className="flex flex-col gap-x-6">
           <FeaturedProducts collections={collections} region={region} />
         </ul>
