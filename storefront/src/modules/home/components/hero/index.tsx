@@ -67,7 +67,7 @@ const Hero = () => {
         </div>
       </div> */}
 
-      Слайдер
+      {/* Слайдер
       <div className="mx-auto max-w-[1435px] p-5">
         <Carousel setApi={setApi} className="w-full">
           <CarouselContent>
@@ -87,10 +87,10 @@ const Hero = () => {
         <div className="text-muted-foreground py-2 text-center text-sm">
           Slide {current} of {count}
         </div>
-      </div>
+      </div> */}
 
       Секция товаров
-      <div className="py-12 content-container">
+      {/* <div className="py-12 content-container">
         <div className="mb-8 text-center">
           <Heading level="h2" className="text-2xl-semi">
             Всі продукти
@@ -104,7 +104,7 @@ const Hero = () => {
             countryCode={"ua"}
           />
         </Suspense>
-      </div>
+      </div> */}
     </div>
   )
 }
