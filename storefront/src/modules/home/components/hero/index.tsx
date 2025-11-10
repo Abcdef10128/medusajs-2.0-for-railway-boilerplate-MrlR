@@ -89,7 +89,6 @@ const Hero = () => {
         </div>
       </div> */}
 
-      Секция товаров
       {/* <div className="py-12 content-container">
         <div className="mb-8 text-center">
           <Heading level="h2" className="text-2xl-semi">
