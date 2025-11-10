@@ -9,6 +9,7 @@ export const metadata: Metadata = {
   description:
     "",
   
+    
   // icons: {
   //   icon: ['storefront\public\favicon.ico?v=4'],
   //   apple: ['storefront\public\favicon.ico'],
