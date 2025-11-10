@@ -4,7 +4,6 @@ import Hero from "@modules/home/components/hero"
 import { getCollectionsWithProducts } from "@lib/data/collections"
 import { getRegion } from "@lib/data/regions"
 
-
 export const metadata: Metadata = {
   title: "Smerch Store",
   description:
