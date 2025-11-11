@@ -33,10 +33,9 @@ export default async function Home({
     <>
       <Hero />
       <div className="mb-8 px-4">
-        {/* <h2 className="text-2xl font-bold mb-4">Наши коллекции</h2> */}
-        <ul className="space-y-2 flex max-w-[1392px]">
+        <ul className="space-y-2 flex items-center max-w-[1392px]">
           {collections.map((collection) => (
-            <li key={collection.id} className=" h-5 px-3 border rounded hover:bg-gray-50">
+            <li key={collection.id} className=" h-12 px-3 border rounded hover:bg-gray-50">
               {collection.title}
             </li>
           ))}
