@@ -32,7 +32,7 @@ export default async function Home({
   return (
     <>
       <Hero />
-      <div className="mb-8 px-4">
+      {/* <div className="mb-8 px-4">
         <ul className="space-y-2 flex items-center max-w-[1392px]">
           {collections.map((collection) => (
             <li key={collection.id} className=" h-12 px-3 border rounded hover:bg-gray-50">
@@ -40,7 +40,7 @@ export default async function Home({
             </li>
           ))}
         </ul>
-      </div>
+      </div> */}
       <div className="mb-12">
         <ul className="flex flex-col gap-x-6">
           <FeaturedProducts collections={collections} region={region} />
