@@ -2,8 +2,8 @@
 
 export default function CollectionNav({ collections }) {
   return (
-    <div className="sticky top-[63px] bg-white z-10">
-      <ul className="flex items-center max-w-[1392px] mx-auto overflow-x-auto gap-2 pb-2 h-[63px]">
+    <div className="sticky top-16 z-10">
+      <ul className="flex items-center max-w-[1392px] mx-auto overflow-x-auto gap-2 h-16">
         {collections.map((collection) => (
           <li key={collection.id} className="whitespace-nowrap">
             <button
