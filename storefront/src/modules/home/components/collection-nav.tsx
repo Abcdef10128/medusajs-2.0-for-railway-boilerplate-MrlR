@@ -88,7 +88,7 @@ export default function CollectionNav({ collections }) {
     const element = document.getElementById(`collection-${collectionId}`)
     
     if (element) {
-      const offset = 100
+      const offset = 126
       const elementPosition = element.getBoundingClientRect().top
       const offsetPosition = elementPosition + window.pageYOffset - offset
       
@@ -100,10 +100,10 @@ export default function CollectionNav({ collections }) {
   }
 
   return (
-    <div className="sticky top-16 z-10 bg-white shadow-sm">
-      <ul className="flex items-center max-w-[1392px] mx-auto overflow-x-auto gap-2 h-16 px-4 scroll-smooth">
+    <div className="sticky top-16 z-10 ">
+      <ul className="flex items-center max-w-[1392px] mx-auto overflow-x-auto gap-2 h-12 px-4 scroll-smooth">
         {collections.map((collection) => (
-          <li key={collection.id} className="whitespace-nowrap">
+          <li key={collection.id} className="whitespace-nowrap pb-[2px]">
             <button
               ref={(el) => (buttonRefs.current[collection.id] = el)}
               onClick={() => handleButtonClick(collection.id)}
