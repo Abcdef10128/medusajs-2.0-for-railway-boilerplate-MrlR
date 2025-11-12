@@ -1,3 +1,5 @@
+'use client'
+
 import { Metadata } from "next"
 import FeaturedProducts from "@modules/home/components/featured-products"
 import Hero from "@modules/home/components/hero"
@@ -47,7 +49,7 @@ export default async function Home({
           ))}
         </ul>
       </div> */}
-      <div className="mb-8 px-4">
+      <div className="mb-8 px-4 р-[63px] fixed">
         <ul className="flex items-center max-w-[1392px] mx-auto overflow-x-auto gap-1">
           {collections.map((collection) => (
             <li key={collection.id} className="whitespace-nowrap">
