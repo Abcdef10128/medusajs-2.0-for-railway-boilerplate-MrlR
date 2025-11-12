@@ -47,7 +47,6 @@ export default function CollectionNav({ collections }) {
   useEffect(() => {
     const observers: IntersectionObserver[] = []
 
-    // Отслеживание прокрутки пользователем
     const handleScroll = () => {
       isUserScrolling.current = true
       clearTimeout(scrollTimeout.current)
@@ -65,10 +64,10 @@ export default function CollectionNav({ collections }) {
         const observer = new IntersectionObserver(
           (entries) => {
             entries.forEach((entry) => {
-              if (entry.isIntersecting) {
+              // КЛЮЧЕВОЕ ИЗМЕНЕНИЕ: проверяем intersectionRatio
+              if (entry.isIntersecting && entry.intersectionRatio > 0.1) {
                 setActiveCollection(collection.id)
                 
-                // Прокручивать кнопку только если пользователь НЕ кликнул
                 if (!isUserScrolling.current) {
                   setTimeout(() => {
                     buttonRefs.current[collection.id]?.scrollIntoView({
@@ -82,8 +81,8 @@ export default function CollectionNav({ collections }) {
             })
           },
           {
-            threshold: 0.5, // Увеличил до 50% для более стабильного определения
-            rootMargin: '-20% 0px -30% 0px' // Уменьшил отступы
+            threshold: [0, 0.1, 0.25, 0.5, 0.75, 1], // Множественные пороги
+            rootMargin: '-100px 0px -50% 0px' // Верхняя часть экрана = активная зона
           }
         )
 
@@ -113,7 +112,6 @@ export default function CollectionNav({ collections }) {
         behavior: 'smooth'
       })
       
-      // Сбросить флаг после завершения прокрутки
       setTimeout(() => {
         isUserScrolling.current = false
       }, 1000)
