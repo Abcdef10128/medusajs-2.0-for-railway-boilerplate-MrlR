@@ -32,15 +32,38 @@ export default async function Home({
   return (
     <>
       <Hero />
-      <div className="mb-8 px-4">
+      {/* <div className="mb-8 px-4">
         <ul className="flex items-center max-w-[1392px] mx-auto overflow-x-auto gap-1">
           {collections.map((collection) => (
             <li key={collection.id} className="whitespace-nowrap p-3 border rounded-xl hover:bg-gray-50">
-              {collection.title}
+          <a 
+            href={`#collection-${collection.id}`}
+            className="block p-3 border rounded-xl hover:bg-gray-50 transition"
+          >
+          {collection.title}
+        </a>            
+        </li>
+
+          ))}
+        </ul>
+      </div> */}
+      <div className="mb-8 px-4">
+        <ul className="flex items-center max-w-[1392px] mx-auto overflow-x-auto gap-1">
+          {collections.map((collection) => (
+            <li key={collection.id} className="whitespace-nowrap">
+              <button
+                onClick={() => {
+                  const element = document.getElementById(`collection-${collection.id}`)
+                  element?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+                }}
+                className="p-3 border rounded-xl hover:bg-gray-50 transition"
+              >
+                {collection.title}
+              </button>
             </li>
           ))}
         </ul>
-      </div>
+    </div>
       <div className="mb-12">
         <ul className="flex flex-col gap-x-6">
           <FeaturedProducts collections={collections} region={region} />
