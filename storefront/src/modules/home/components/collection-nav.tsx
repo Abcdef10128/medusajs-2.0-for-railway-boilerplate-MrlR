@@ -1,17 +1,114 @@
+// 'use client'
+
+// export default function CollectionNav({ collections }) {
+//   return (
+//     <div className="sticky top-16 z-10">
+//       <ul className="flex items-center max-w-[1392px] mx-auto overflow-x-auto gap-2 h-16">
+//         {collections.map((collection) => (
+//           <li key={collection.id} className="whitespace-nowrap">
+//             <button
+//             //   onClick={() => {
+//             //     const element = document.getElementById(`collection-${collection.id}`)
+//             //     element?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+//             //   }}
+//             onClick={() => {
+//                 const element = document.getElementById(`collection-${collection.id}`)
+//                 if (element) {
+//                 const offset = 100 // отступ сверху в пикселях
+//                 const elementPosition = element.getBoundingClientRect().top
+//                 const offsetPosition = elementPosition + window.pageYOffset - offset
+                
+//                 window.scrollTo({
+//                     top: offsetPosition,
+//                     behavior: 'smooth'
+//                 })
+//                 }
+//             }}
+//               className="p-3 border rounded-xl hover:bg-gray-50 transition"
+//             >
+//               {collection.title}
+//             </button>
+//           </li>
+//         ))}
+//       </ul>
+//     </div>
+//   )
+// }
+
 'use client'
 
+import { useEffect, useState, useRef } from 'react'
+
 export default function CollectionNav({ collections }) {
+  const [activeCollection, setActiveCollection] = useState<string | null>(null)
+  const buttonRefs = useRef<{ [key: string]: HTMLButtonElement | null }>({})
+
+  useEffect(() => {
+    const observers: IntersectionObserver[] = []
+
+    collections.forEach((collection) => {
+      const element = document.getElementById(`collection-${collection.id}`)
+      
+      if (element) {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                setActiveCollection(collection.id)
+                // Прокрутить кнопку в видимую область
+                buttonRefs.current[collection.id]?.scrollIntoView({
+                  behavior: 'smooth',
+                  block: 'nearest',
+                  inline: 'center'
+                })
+              }
+            })
+          },
+          {
+            threshold: 0.3,
+            rootMargin: '-100px 0px -50% 0px'
+          }
+        )
+
+        observer.observe(element)
+        observers.push(observer)
+      }
+    })
+
+    return () => {
+      observers.forEach((observer) => observer.disconnect())
+    }
+  }, [collections])
+
   return (
-    <div className="sticky top-16 z-10">
-      <ul className="flex items-center max-w-[1392px] mx-auto overflow-x-auto gap-2 h-16">
+    <div className="sticky top-16 z-10 bg-white shadow-sm">
+      <ul className="flex items-center max-w-[1392px] mx-auto overflow-x-auto gap-2 h-16 px-4">
         {collections.map((collection) => (
           <li key={collection.id} className="whitespace-nowrap">
             <button
-              onClick={() => {
-                const element = document.getElementById(`collection-${collection.id}`)
-                element?.scrollIntoView({ behavior: 'smooth', block: 'start' })
-              }}
-              className="p-3 border rounded-xl hover:bg-gray-50 transition"
+              ref={(el) => (buttonRefs.current[collection.id] = el)}
+            //   onClick={() => {
+            //     const element = document.getElementById(`collection-${collection.id}`)
+            //     element?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+            //   }}
+                onClick={() => {
+                    const element = document.getElementById(`collection-${collection.id}`)
+                    if (element) {
+                    const offset = 100 // отступ сверху в пикселях
+                    const elementPosition = element.getBoundingClientRect().top
+                    const offsetPosition = elementPosition + window.pageYOffset - offset
+                    
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    })
+                    }
+                }}
+              className={`p-3 border rounded-xl transition-all duration-200 ${
+                activeCollection === collection.id
+                  ? 'bg-black text-white border-black scale-105'
+                  : 'bg-white text-black hover:bg-gray-50'
+              }`}
             >
               {collection.title}
             </button>
