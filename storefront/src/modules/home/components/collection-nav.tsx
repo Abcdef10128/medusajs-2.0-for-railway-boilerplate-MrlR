@@ -101,13 +101,13 @@ export default function CollectionNav({ collections }) {
 
   return (
     <div className="sticky top-16 z-10 ">
-      <ul className="flex items-center max-w-[1392px] mx-auto overflow-x-auto gap-2 h-12 px-4 scroll-smooth">
+      <ul className="flex items-center max-w-[1392px] mx-auto overflow-x-auto gap-2 h-16 px-4 scroll-smooth">
         {collections.map((collection) => (
           <li key={collection.id} className="whitespace-nowrap pb-[2px]">
             <button
               ref={(el) => (buttonRefs.current[collection.id] = el)}
               onClick={() => handleButtonClick(collection.id)}
-              className={`p-3 border rounded-xl transition-all duration-200 ${
+              className={`py-2 px-3 border rounded-full transition-all duration-200 ${
                 activeCollection === collection.id
                   ? 'bg-black text-white border-black scale-105'
                   : 'bg-white text-black hover:bg-gray-50'
