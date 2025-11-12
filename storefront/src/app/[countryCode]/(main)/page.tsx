@@ -33,7 +33,7 @@ export default async function Home({
     <>
       <Hero />
       <div className="mb-8 px-4">
-        <ul className="space-y-2 flex items-center max-w-[1392px] mx-auto overflow-x-auto gap-1">
+        <ul className="flex items-center max-w-[1392px] mx-auto overflow-x-auto gap-1">
           {collections.map((collection) => (
             <li key={collection.id} className="m-0 p-3 border rounded-xl hover:bg-gray-50">
               {collection.title}
