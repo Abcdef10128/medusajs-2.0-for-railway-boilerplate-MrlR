@@ -45,61 +45,46 @@ export default function CollectionNav({ collections }) {
   const scrollTimeout = useRef<NodeJS.Timeout>()
 
   useEffect(() => {
-    const observers: IntersectionObserver[] = []
-
     const handleScroll = () => {
       isUserScrolling.current = true
       clearTimeout(scrollTimeout.current)
+      
       scrollTimeout.current = setTimeout(() => {
         isUserScrolling.current = false
-      }, 150)
+        
+        // Найти коллекцию, которая ближе всего к верху экрана
+        let closestCollection = null
+        let closestDistance = Infinity
+        
+        collections.forEach((collection) => {
+          const element = document.getElementById(`collection-${collection.id}`)
+          if (element) {
+            const rect = element.getBoundingClientRect()
+            const distance = Math.abs(rect.top - 150) // 150px от верха = зона активации
+            
+            if (distance < closestDistance && rect.top < window.innerHeight && rect.bottom > 0) {
+              closestDistance = distance
+              closestCollection = collection.id
+            }
+          }
+        })
+        
+        if (closestCollection) {
+          setActiveCollection(closestCollection)
+        }
+      }, 100)
     }
 
     window.addEventListener('scroll', handleScroll, { passive: true })
-
-    collections.forEach((collection) => {
-      const element = document.getElementById(`collection-${collection.id}`)
-      
-      if (element) {
-        const observer = new IntersectionObserver(
-          (entries) => {
-            entries.forEach((entry) => {
-              // КЛЮЧЕВОЕ ИЗМЕНЕНИЕ: проверяем intersectionRatio
-              if (entry.isIntersecting && entry.intersectionRatio > 0.1) {
-                setActiveCollection(collection.id)
-                
-                if (!isUserScrolling.current) {
-                  setTimeout(() => {
-                    buttonRefs.current[collection.id]?.scrollIntoView({
-                      behavior: 'smooth',
-                      block: 'nearest',
-                      inline: 'center'
-                    })
-                  }, 100)
-                }
-              }
-            })
-          },
-          {
-            threshold: [0, 0.1, 0.25, 0.5, 0.75, 1], // Множественные пороги
-            rootMargin: '-100px 0px -50% 0px' // Верхняя часть экрана = активная зона
-          }
-        )
-
-        observer.observe(element)
-        observers.push(observer)
-      }
-    })
+    handleScroll() // Вызвать сразу для определения начальной позиции
 
     return () => {
       window.removeEventListener('scroll', handleScroll)
-      observers.forEach((observer) => observer.disconnect())
       clearTimeout(scrollTimeout.current)
     }
   }, [collections])
 
   const handleButtonClick = (collectionId: string) => {
-    isUserScrolling.current = true
     const element = document.getElementById(`collection-${collectionId}`)
     
     if (element) {
@@ -111,10 +96,6 @@ export default function CollectionNav({ collections }) {
         top: offsetPosition,
         behavior: 'smooth'
       })
-      
-      setTimeout(() => {
-        isUserScrolling.current = false
-      }, 1000)
     }
   }
 
