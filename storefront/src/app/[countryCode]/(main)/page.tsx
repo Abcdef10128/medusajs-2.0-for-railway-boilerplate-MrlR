@@ -1,10 +1,11 @@
-'use client'
+
 
 import { Metadata } from "next"
 import FeaturedProducts from "@modules/home/components/featured-products"
 import Hero from "@modules/home/components/hero"
 import { getCollectionsWithProducts } from "@lib/data/collections"
 import { getRegion } from "@lib/data/regions"
+import CollectionNav from "@modules/home/components/collection-nav"
 
 export const metadata: Metadata = {
   title: "Smerch Store",
@@ -49,23 +50,17 @@ export default async function Home({
           ))}
         </ul>
       </div> */}
-      <div className="mb-8 px-4 р-[63px] fixed">
+      {/* <div className="mb-8 px-4 р-[63px] fixed">
         <ul className="flex items-center max-w-[1392px] mx-auto overflow-x-auto gap-1">
           {collections.map((collection) => (
             <li key={collection.id} className="whitespace-nowrap">
-              <button
-                onClick={() => {
-                  const element = document.getElementById(`collection-${collection.id}`)
-                  element?.scrollIntoView({ behavior: 'smooth', block: 'start' })
-                }}
-                className="p-3 border rounded-xl hover:bg-gray-50 transition"
-              >
+              
                 {collection.title}
-              </button>
             </li>
           ))}
         </ul>
-    </div>
+    </div> */}
+    <CollectionNav collections={collections} />
       <div className="mb-12">
         <ul className="flex flex-col gap-x-6">
           <FeaturedProducts collections={collections} region={region} />
