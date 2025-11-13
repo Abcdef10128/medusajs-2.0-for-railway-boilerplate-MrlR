@@ -146,7 +146,7 @@ const CartDropdown = ({
                                   <LocalizedClientLink
                                     href={`/products/${item.variant?.product?.handle}`}
                                     data-testid="product-link"
-                                    className="whitespace-nowrap"
+                                    className="overflow-hidden text-ellipsis whitespace-nowrap block"
                                   >
                                     {item.title}
                                   </LocalizedClientLink>
