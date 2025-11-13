@@ -95,6 +95,55 @@ const MobileActions: React.FC<MobileActionsProps> = ({
                 <div></div>
               )}
             </div>
+            {/* <div className="grid grid-cols-2 w-full gap-x-4">
+              <Button
+                onClick={open}
+                variant="secondary"
+                className="w-full"
+                data-testid="mobile-actions-button"
+              >
+                <div className="flex items-center justify-between w-full">
+                  <span>
+                    {variant
+                      ? Object.values(options).join(" / ")
+                      : "Вибрати опції"}
+                  </span>
+                  <ChevronDown />
+                </div>
+              </Button>
+              <Button
+                onClick={handleAddToCart}
+                disabled={!inStock || !variant}
+                className="w-full"
+                isLoading={isAdding}
+                data-testid="mobile-cart-button"
+              >
+                {!variant
+                  ? "Виберіть варіант"
+                  : !inStock
+                  ? "Закінчився"
+                  : "Додати в кошик"}
+              </Button>
+            </div> */}
+
+          {variant?.product?.options?.length = 0 && ( 
+            <div className="w-full gap-x-4">
+              <Button
+                onClick={handleAddToCart}
+                disabled={!inStock || !variant}
+                className="w-full"
+                isLoading={isAdding}
+                data-testid="mobile-cart-button"
+              >
+                {!variant
+                  ? "Виберіть варіант"
+                  : !inStock
+                  ? "Закінчився"
+                  : "Додати в кошик"}
+              </Button>
+            </div>
+          ) }        
+          {variant?.product?.options?.length > 0 && (
             <div className="grid grid-cols-2 w-full gap-x-4">
               <Button
                 onClick={open}
@@ -125,6 +174,8 @@ const MobileActions: React.FC<MobileActionsProps> = ({
                   : "Додати в кошик"}
               </Button>
             </div>
+          )}
+
           </div>
         </Transition>
       </div>
