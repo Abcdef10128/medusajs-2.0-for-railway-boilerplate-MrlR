@@ -143,7 +143,7 @@ const MobileActions: React.FC<MobileActionsProps> = ({
               </Button>
             </div>
           ) }        
-          {product.options?.length > 0 && (
+          {product.options?.length > 1 && (
             <div className="grid grid-cols-2 w-full gap-x-4">
               <Button
                 onClick={open}
