@@ -125,26 +125,9 @@ const MobileActions: React.FC<MobileActionsProps> = ({
                   : "Додати в кошик"}
               </Button>
             </div> */}
-
-          {product.options?.length === 0 && ( 
-            <div className="w-full gap-x-4">
-              <Button
-                onClick={handleAddToCart}
-                disabled={!inStock || !variant}
-                className="w-full"
-                isLoading={isAdding}
-                data-testid="mobile-cart-button"
-              >
-                {!variant
-                  ? "Виберіть варіант"
-                  : !inStock
-                  ? "Закінчився"
-                  : "Додати в кошик"}
-              </Button>
-            </div>
-          ) }        
-          {product.options?.length > 1 && (
-            <div className="grid grid-cols-2 w-full gap-x-4">
+                              
+                              
+                              <div className="grid w-full gap-x-4">
               <Button
                 onClick={open}
                 variant="secondary"
@@ -174,7 +157,7 @@ const MobileActions: React.FC<MobileActionsProps> = ({
                   : "Додати в кошик"}
               </Button>
             </div>
-          )}
+
 
           </div>
         </Transition>
