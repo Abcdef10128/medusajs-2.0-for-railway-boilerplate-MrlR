@@ -107,7 +107,7 @@ export default function CollectionNav({ collections }) {
             <button
               ref={(el) => (buttonRefs.current[collection.id] = el)}
               onClick={() => handleButtonClick(collection.id)}
-              className={`py-2 px-3 pt-[2px] border rounded-full transition-all duration-200 ${
+              className={`py-2 px-3 rounded-full transition-all duration-200 ${
                 activeCollection === collection.id
                   ? 'bg-black text-white border-black scale-105'
                   : 'bg-white text-black hover:bg-gray-50'
