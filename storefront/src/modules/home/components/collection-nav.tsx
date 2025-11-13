@@ -100,7 +100,7 @@ export default function CollectionNav({ collections }) {
   }
 
   return (
-    <div className="sticky top-16 z-10 backdrop-blur-xl ">
+    <div className="sticky top-16 z-20 backdrop-blur-xl ">
       <ul className="flex items-center max-w-[1392px] mx-auto overflow-x-auto gap-2 h-16 px-4 scroll-smooth">
         {collections.map((collection) => (
           <li key={collection.id} className="whitespace-nowrap ">
@@ -109,7 +109,7 @@ export default function CollectionNav({ collections }) {
               onClick={() => handleButtonClick(collection.id)}
               className={`py-2 px-3 rounded-full transition-all duration-200 ${
                 activeCollection === collection.id
-                  ? 'bg-black text-white border-black scale-105'
+                  ? 'bg-black text-white border-black'
                   : 'bg-white text-black hover:bg-gray-50'
               }`}
             >
