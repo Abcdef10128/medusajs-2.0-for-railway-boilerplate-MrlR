@@ -126,7 +126,7 @@ const MobileActions: React.FC<MobileActionsProps> = ({
               </Button>
             </div> */}
 
-          {variant?.product?.options?.length === 0 && ( 
+          {product.options?.length === 0 && ( 
             <div className="w-full gap-x-4">
               <Button
                 onClick={handleAddToCart}
@@ -143,7 +143,7 @@ const MobileActions: React.FC<MobileActionsProps> = ({
               </Button>
             </div>
           ) }        
-          {variant?.product?.options?.length > 0 && (
+          {product.options?.length > 0 && (
             <div className="grid grid-cols-2 w-full gap-x-4">
               <Button
                 onClick={open}
