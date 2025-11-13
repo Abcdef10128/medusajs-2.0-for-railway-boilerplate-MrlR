@@ -126,7 +126,7 @@ const MobileActions: React.FC<MobileActionsProps> = ({
               </Button>
             </div> */}
 
-          {variant?.product?.options?.length = 0 && ( 
+          {variant?.product?.options?.length === 0 && ( 
             <div className="w-full gap-x-4">
               <Button
                 onClick={handleAddToCart}
