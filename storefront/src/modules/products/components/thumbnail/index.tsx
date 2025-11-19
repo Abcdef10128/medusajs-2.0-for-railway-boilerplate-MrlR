@@ -47,6 +47,7 @@ const Thumbnail: React.FC<ThumbnailProps> = ({
   )
 }
 
+
 const ImageOrPlaceholder = ({
   image,
   size,
