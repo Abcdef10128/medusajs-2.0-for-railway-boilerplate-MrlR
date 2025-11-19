@@ -52,7 +52,6 @@ export default function CollectionNav({ collections }) {
       scrollTimeout.current = setTimeout(() => {
         isUserScrolling.current = false
         
-        // Найти коллекцию, которая ближе всего к верху экрана
         let closestCollection = null
         let closestDistance = Infinity
         
@@ -60,24 +59,37 @@ export default function CollectionNav({ collections }) {
           const element = document.getElementById(`collection-${collection.id}`)
           if (element) {
             const rect = element.getBoundingClientRect()
-            const distance = Math.abs(rect.top - 150) // 150px от верха = зона активации
+            const distance = Math.abs(rect.top - 150)
             
-            if (distance < closestDistance && rect.top < window.innerHeight && rect.bottom > 0) {
+            if (distance < closestDistance && rect.bottom > 0) {
               closestDistance = distance
               closestCollection = collection.id
             }
           }
         })
         
-        if (closestCollection) {
-          setActiveCollection(closestCollection)
+        // Если не нашли коллекцию в зоне активации, выбираем первую видимую
+        if (!closestCollection && collections.length > 0) {
+          for (const collection of collections) {
+            const element = document.getElementById(`collection-${collection.id}`)
+            if (element) {
+              const rect = element.getBoundingClientRect()
+              // Если элемент хотя бы частично виден
+              if (rect.bottom > 150) {
+                closestCollection = collection.id
+                break
+              }
+            }
+          }
         }
+        
+        setActiveCollection(closestCollection)
       }, 100)
     }
 
     window.addEventListener('scroll', handleScroll, { passive: true })
-    handleScroll() // Вызвать сразу для определения начальной позиции
-
+    handleScroll()
+    
     return () => {
       window.removeEventListener('scroll', handleScroll)
       clearTimeout(scrollTimeout.current)
