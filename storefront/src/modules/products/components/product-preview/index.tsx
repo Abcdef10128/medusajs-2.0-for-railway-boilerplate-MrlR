@@ -35,7 +35,7 @@ export default async function ProductPreview({
         <Thumbnail
           thumbnail={product.thumbnail}
           images={product.images}
-          size="square"
+          size="rectangle"
           // size="full"
           isFeatured={isFeatured}
         />
