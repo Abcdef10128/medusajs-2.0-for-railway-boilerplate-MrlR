@@ -6,7 +6,6 @@ import { SortOptions } from "@modules/store/components/refinement-list/sort-prod
 import PaginatedProducts from "@modules/store/templates/paginated-products"
 import { HttpTypes } from "@medusajs/types"
 
-
 export default function CollectionTemplate({
   sortBy,
   collection,
